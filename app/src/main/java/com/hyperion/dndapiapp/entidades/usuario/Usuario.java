@@ -19,6 +19,12 @@ public class Usuario {
         this.contrasenia = contrasenia;
     }
 
+    public Usuario(String nombre, String correo, String contrasenia) {
+        this.nombre = nombre;
+        this.correo = correo;
+        this.contrasenia = contrasenia;
+    }
+
     /* =============== METODOS =============== */
 
     /* =============== GETTERS & SETTERS =============== */

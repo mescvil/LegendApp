@@ -11,4 +11,6 @@ public interface CallsUsuario {
     @POST("private/login")
     Call<Usuario> doLogin(@Body Usuario usuario);
 
+    @POST("private/register")
+    Call<Object> registra(@Body Usuario usuario);
 }

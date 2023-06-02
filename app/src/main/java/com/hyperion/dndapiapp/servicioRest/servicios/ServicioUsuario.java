@@ -96,4 +96,47 @@ public class ServicioUsuario {
         });
     }
 
+    public void registraUsuario(Usuario usuario, String encoder, CallbackCustom<Boolean> callback) {
+
+        try {
+            usuario.setContrasenia(seguridad.encriptar(usuario.getContrasenia(), encoder));
+        } catch (Exception e) {
+            Log.d("LOGIN-USUARIO", "Fallo al encriptar la contraseña");
+            callback.fallo("Fallo al encriptar la contraseña");
+        }
+
+        RetrofitHelper retrofitHelper = RetrofitHelper.getInstance();
+        Call<Object> call = retrofitHelper.getCallsUsuario().registra(usuario);
+
+        call.enqueue(new Callback<Object>() {
+            @Override
+            public void onResponse(@NonNull Call<Object> call,
+                                   @NonNull Response<Object> response) {
+
+                if (response.code() == 201) {
+                    Log.d("REGISTRO-USUARIO", String.format("Registro realizado con exito [%s]", usuario.getCorreo()));
+                    callback.exito(true);
+                    return;
+                }
+
+                if (response.code() == 400) {
+                    Log.d("REGISTRO-USUARIO", "Registro fallido [Usuario duplicado]");
+                    callback.fallo("Usuario ya registrado en el sistema");
+                    return;
+                }
+
+                Log.d("REGISTRO-USUARIO", "Registro fallido no se sabe porque");
+                callback.fallo("Fallo en el registro");
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<Object> call,
+                                  @NonNull Throwable t) {
+
+                Log.d("REGISTRO-USUARIO", String.format("Registro fallido -> %s", t.getMessage()));
+                callback.fallo("Fallo en el registro");
+            }
+        });
+    }
+
 }
