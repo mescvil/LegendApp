@@ -1,5 +1,7 @@
 package com.hyperion.dndapiapp.servicioRest.calls;
 
+import com.hyperion.dndapiapp.entidades.equipamiento.Arma;
+import com.hyperion.dndapiapp.entidades.equipamiento.Armadura;
 import com.hyperion.dndapiapp.entidades.equipamiento.Hechizo;
 import com.hyperion.dndapiapp.servicioRest.RespuestaApi;
 
@@ -11,6 +13,12 @@ public interface CallsEquipamiento {
 
     @GET("equipamiento/hechizos")
     Call<RespuestaApi<Hechizo>> getHechizos();
+
+    @GET("equipamiento/armas")
+    Call<RespuestaApi<Arma>> getArmas();
+
+    @GET("equipamiento/armaduras")
+    Call<RespuestaApi<Armadura>> getArmaduras();
 
     @GET("equipamiento/hechizos/")
     Call<RespuestaApi<Hechizo>> getHechizosPaginacion(@Query("size") int tamanioPagina,

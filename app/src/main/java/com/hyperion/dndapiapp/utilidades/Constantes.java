@@ -25,4 +25,13 @@ public abstract class Constantes {
 
     /* ============== Url imagenes ============== */
     public static final String URL_BASE_IMAGEN_CRIATURAS = "https://raw.githubusercontent.com/mescvil/api-dnd/master/api/criaturas/";
+
+    /* ============== Tipo de item lista ============== */
+    public static final int ITEM_ENEMIGO = 0;
+    public static final int ITEM_HECHIZO = 1;
+    public static final int ITEM_CLASE = 2;
+    public static final int ITEM_EQUIPAMIENTO = 3;
+    public static final int ITEM_RAZA = 4;
+    public static final int ITEM_TRASFONDO = 5;
+    public static final int ITEM_COMPENTENCIA = 6;
 }

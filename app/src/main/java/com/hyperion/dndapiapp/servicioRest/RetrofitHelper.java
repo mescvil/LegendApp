@@ -1,8 +1,13 @@
 package com.hyperion.dndapiapp.servicioRest;
 
+import android.provider.CallLog;
+
 import com.hyperion.dndapiapp.servicioRest.calls.CallsClases;
+import com.hyperion.dndapiapp.servicioRest.calls.CallsCompetencias;
 import com.hyperion.dndapiapp.servicioRest.calls.CallsEnemigos;
 import com.hyperion.dndapiapp.servicioRest.calls.CallsEquipamiento;
+import com.hyperion.dndapiapp.servicioRest.calls.CallsRazas;
+import com.hyperion.dndapiapp.servicioRest.calls.CallsTrasfondos;
 import com.hyperion.dndapiapp.servicioRest.calls.CallsUsuario;
 
 import retrofit2.Retrofit;
@@ -40,5 +45,17 @@ public class RetrofitHelper {
 
     public CallsUsuario getCallsUsuario() {
         return retrofit.create(CallsUsuario.class);
+    }
+
+    public CallsRazas getCallRazas() {
+        return retrofit.create(CallsRazas.class);
+    }
+
+    public CallsTrasfondos getCallTrasfondos() {
+        return retrofit.create(CallsTrasfondos.class);
+    }
+
+    public CallsCompetencias getCallCompetencias(){
+        return retrofit.create(CallsCompetencias.class);
     }
 }

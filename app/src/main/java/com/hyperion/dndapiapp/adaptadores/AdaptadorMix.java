@@ -1,5 +1,12 @@
 package com.hyperion.dndapiapp.adaptadores;
 
+import static com.hyperion.dndapiapp.utilidades.Constantes.ITEM_CLASE;
+import static com.hyperion.dndapiapp.utilidades.Constantes.ITEM_COMPENTENCIA;
+import static com.hyperion.dndapiapp.utilidades.Constantes.ITEM_ENEMIGO;
+import static com.hyperion.dndapiapp.utilidades.Constantes.ITEM_EQUIPAMIENTO;
+import static com.hyperion.dndapiapp.utilidades.Constantes.ITEM_HECHIZO;
+import static com.hyperion.dndapiapp.utilidades.Constantes.ITEM_RAZA;
+import static com.hyperion.dndapiapp.utilidades.Constantes.ITEM_TRASFONDO;
 import static com.hyperion.dndapiapp.utilidades.Utils.ordenaListaPorNombre;
 
 import android.annotation.SuppressLint;
@@ -13,8 +20,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.hyperion.dndapiapp.R;
 import com.hyperion.dndapiapp.entidades.clases.Clase;
+import com.hyperion.dndapiapp.entidades.competencias.Competencia;
 import com.hyperion.dndapiapp.entidades.enemigos.Enemigo;
+import com.hyperion.dndapiapp.entidades.equipamiento.Equipamiento;
 import com.hyperion.dndapiapp.entidades.equipamiento.Hechizo;
+import com.hyperion.dndapiapp.entidades.razas.Raza;
+import com.hyperion.dndapiapp.entidades.trasfondos.Trasfondo;
 import com.hyperion.dndapiapp.utilidades.OrdenablePorNombre;
 
 import java.util.ArrayList;
@@ -22,10 +33,6 @@ import java.util.List;
 
 @SuppressLint("NotifyDataSetChanged")
 public class AdaptadorMix extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-
-    private static final int ITEM_ENEMIGO = 0;
-    private static final int ITEM_HECHIZO = 1;
-    private static final int ITEM_CLASE = 2;
     private final Context context;
     private List<OrdenablePorNombre> elementos;
     private List<OrdenablePorNombre> elementosBackup;
@@ -56,6 +63,26 @@ public class AdaptadorMix extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             return new ClaseHolder(view);
         }
 
+        if (viewType == ITEM_EQUIPAMIENTO) {
+            View view = layoutInflater.inflate(R.layout.item_lista_equipamiento, parent, false);
+            return new EquipamientoHolder(view);
+        }
+
+        if (viewType == ITEM_RAZA) {
+            View view = layoutInflater.inflate(R.layout.item_lista_raza, parent, false);
+            return new RazaHolder(view);
+        }
+
+        if (viewType == ITEM_TRASFONDO) {
+            View view = layoutInflater.inflate(R.layout.item_lista_trasfondo, parent, false);
+            return new TrasfondoHolder(view);
+        }
+
+        if (viewType == ITEM_COMPENTENCIA) {
+            View view = layoutInflater.inflate(R.layout.item_lista_competencia, parent, false);
+            return new CompetenciaHolder(view);
+        }
+
         View view = layoutInflater.inflate(R.layout.item_lista_null, parent, false);
         return new HechizoHolder(view);
     }
@@ -65,16 +92,42 @@ public class AdaptadorMix extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         if (elementos.get(position) instanceof Enemigo) {
             Enemigo enemigo = (Enemigo) elementos.get(position);
             ((EnemigoHolder) holder).bindItem(enemigo, context);
+            return;
         }
 
         if (elementos.get(position) instanceof Hechizo) {
             Hechizo hechizo = (Hechizo) elementos.get(position);
             ((HechizoHolder) holder).bindItem(hechizo);
+            return;
         }
 
         if (elementos.get(position) instanceof Clase) {
             Clase clase = (Clase) elementos.get(position);
             ((ClaseHolder) holder).bindItem(clase);
+            return;
+        }
+
+        if (elementos.get(position) instanceof Equipamiento) {
+            Equipamiento equipamiento = (Equipamiento) elementos.get(position);
+            ((EquipamientoHolder) holder).bindItem(equipamiento);
+            return;
+        }
+
+        if (elementos.get(position) instanceof Raza) {
+            Raza raza = (Raza) elementos.get(position);
+            ((RazaHolder) holder).bindItem(raza);
+            return;
+        }
+
+        if (elementos.get(position) instanceof Trasfondo) {
+            Trasfondo trasfondo = (Trasfondo) elementos.get(position);
+            ((TrasfondoHolder) holder).bindItem(trasfondo);
+            return;
+        }
+
+        if (elementos.get(position) instanceof Competencia) {
+            Competencia competencia = (Competencia) elementos.get(position);
+            ((CompetenciaHolder) holder).bindItem(competencia);
         }
     }
 
@@ -87,10 +140,24 @@ public class AdaptadorMix extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     public int getItemViewType(int position) {
         if (elementos.get(position) instanceof Hechizo)
             return ITEM_HECHIZO;
+
         if (elementos.get(position) instanceof Enemigo)
+
             return ITEM_ENEMIGO;
         if (elementos.get(position) instanceof Clase)
+
             return ITEM_CLASE;
+        if (elementos.get(position) instanceof Equipamiento)
+            return ITEM_EQUIPAMIENTO;
+
+        if (elementos.get(position) instanceof Raza)
+            return ITEM_RAZA;
+
+        if (elementos.get(position) instanceof Trasfondo)
+            return ITEM_TRASFONDO;
+
+        if (elementos.get(position) instanceof Competencia)
+            return ITEM_COMPENTENCIA;
 
         return -1;
     }
@@ -122,17 +189,33 @@ public class AdaptadorMix extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             elementos.addAll(elementosBackup);
         } else {
             for (OrdenablePorNombre objeto : elementosBackup) {
-                if (objeto instanceof Enemigo)
+                if (objeto instanceof Enemigo) {
                     if (((Enemigo) objeto).getNombre().toLowerCase().contains(texto.toLowerCase()))
                         elementos.add(objeto);
-
-                if (objeto instanceof Clase)
+                } else if (objeto instanceof Clase) {
                     if (((Clase) objeto).getNombre().toLowerCase().contains(texto.toLowerCase()))
                         elementos.add(objeto);
 
-                if (objeto instanceof Hechizo)
+                } else if (objeto instanceof Hechizo) {
                     if (((Hechizo) objeto).getNombre().toLowerCase().contains(texto.toLowerCase()))
                         elementos.add(objeto);
+
+                } else if (objeto instanceof Equipamiento) {
+                    if (((Equipamiento) objeto).getNombre().toLowerCase().contains(texto.toLowerCase()))
+                        elementos.add(objeto);
+
+                } else if (objeto instanceof Raza) {
+                    if (((Raza) objeto).getNombre().toLowerCase().contains(texto.toLowerCase()))
+                        elementos.add(objeto);
+
+                } else if (objeto instanceof Trasfondo) {
+                    if (((Trasfondo) objeto).getNombre().toLowerCase().contains(texto.toLowerCase()))
+                        elementos.add(objeto);
+
+                } else if (objeto instanceof Competencia) {
+                    if (((Competencia) objeto).getNombre().toLowerCase().contains(texto.toLowerCase()))
+                        elementos.add(objeto);
+                }
             }
         }
         notifyDataSetChanged();

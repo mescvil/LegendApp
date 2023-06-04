@@ -21,12 +21,10 @@
             android:exported="false" />
         <activity
             android:name=".actividades.MainActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".actividades.LoginActivity"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity"
             android:exported="false" />
         <activity
             android:name=".actividades.EmptyMainActivity"

@@ -3,7 +3,7 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.DnDAPIApp" parent="Theme.Material3.Dark.NoActionBar">
         <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
-
+        <item name="android:statusBarColor">@color/fondoClaro</item>
         <item name="colorPrimary">@color/rojoOscuro</item>
         <item name="colorAccent">@color/rojo</item>
         <item name="android:windowBackground">@color/fondo</item>

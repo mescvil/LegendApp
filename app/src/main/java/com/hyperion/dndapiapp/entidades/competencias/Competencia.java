@@ -1,19 +1,14 @@
-package com.hyperion.dndapiapp.entidades.trasfondos;
+package com.hyperion.dndapiapp.entidades.competencias;
 
 import com.google.gson.annotations.SerializedName;
-import com.hyperion.dndapiapp.entidades.competencias.Competencia;
 import com.hyperion.dndapiapp.utilidades.OrdenablePorNombre;
 
-import java.util.List;
-
-public class Trasfondo implements OrdenablePorNombre {
+public class Competencia implements OrdenablePorNombre {
 
     @SerializedName("nombre")
     private String nombre;
     @SerializedName("descripcion")
     private String descripcion;
-    @SerializedName("competencias")
-    private List<Competencia> competencias;
 
     /* =============== CONSTRUCTORES =============== */
 
@@ -36,13 +31,5 @@ public class Trasfondo implements OrdenablePorNombre {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
-    }
-
-    public List<Competencia> getCompetencias() {
-        return competencias;
-    }
-
-    public void setCompetencias(List<Competencia> competencias) {
-        this.competencias = competencias;
     }
 }

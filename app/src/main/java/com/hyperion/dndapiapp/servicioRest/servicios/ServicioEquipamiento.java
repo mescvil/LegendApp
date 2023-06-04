@@ -4,7 +4,8 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
-import com.hyperion.dndapiapp.entidades.clases.Clase;
+import com.hyperion.dndapiapp.entidades.equipamiento.Arma;
+import com.hyperion.dndapiapp.entidades.equipamiento.Armadura;
 import com.hyperion.dndapiapp.entidades.equipamiento.Hechizo;
 import com.hyperion.dndapiapp.servicioRest.RespuestaApi;
 import com.hyperion.dndapiapp.servicioRest.RetrofitHelper;
@@ -35,7 +36,7 @@ public class ServicioEquipamiento {
                                    @NonNull Response<RespuestaApi<Hechizo>> response) {
 
                 if (response.body() != null) {
-                    Log.d("REST-HECHIZOS", String.format("Hechizos obtenidos con exito [%d]", response.body().getnElementos()));
+                    Log.d("API", String.format("Hechizos obtenidos con exito [%d]", response.body().getnElementos()));
                     callback.exito(response.body().getResultado());
                 }
             }
@@ -44,7 +45,57 @@ public class ServicioEquipamiento {
             public void onFailure(@NonNull Call<RespuestaApi<Hechizo>> call,
                                   @NonNull Throwable t) {
 
-                Log.d("REST-HECHIZOS", "No es posible obtener los Hechizos :" + t);
+                Log.d("API-ERROR", "No es posible obtener los Hechizos :" + t);
+                callback.fallo();
+            }
+        });
+    }
+
+    public void getAllArmas(CallbackLista<Arma> callback) {
+        RetrofitHelper retrofitHelper = RetrofitHelper.getInstance();
+        Call<RespuestaApi<Arma>> call = retrofitHelper.getCallsEquipamiento().getArmas();
+
+        call.enqueue(new Callback<RespuestaApi<Arma>>() {
+            @Override
+            public void onResponse(@NonNull Call<RespuestaApi<Arma>> call,
+                                   @NonNull Response<RespuestaApi<Arma>> response) {
+
+                if (response.body() != null) {
+                    Log.d("API", String.format("Armas obtenidas con exito [%d]", response.body().getnElementos()));
+                    callback.exito(response.body().getResultado());
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<RespuestaApi<Arma>> call,
+                                  @NonNull Throwable t) {
+
+                Log.d("API-ERROR", "No es posible obtener las Armas :" + t);
+                callback.fallo();
+            }
+        });
+    }
+
+    public void getAllArmaduras(CallbackLista<Armadura> callback) {
+        RetrofitHelper retrofitHelper = RetrofitHelper.getInstance();
+        Call<RespuestaApi<Armadura>> call = retrofitHelper.getCallsEquipamiento().getArmaduras();
+
+        call.enqueue(new Callback<RespuestaApi<Armadura>>() {
+            @Override
+            public void onResponse(@NonNull Call<RespuestaApi<Armadura>> call,
+                                   @NonNull Response<RespuestaApi<Armadura>> response) {
+
+                if (response.body() != null) {
+                    Log.d("API", String.format("Armaduras obtenidas con exito [%d]", response.body().getnElementos()));
+                    callback.exito(response.body().getResultado());
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<RespuestaApi<Armadura>> call,
+                                  @NonNull Throwable t) {
+
+                Log.d("API-ERROR", "No es posible obtener las Armaduras :" + t);
                 callback.fallo();
             }
         });

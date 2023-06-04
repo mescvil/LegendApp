@@ -16,21 +16,21 @@
 
 
         <ImageView
-            android:id="@+id/imageViewClase"
+            android:id="@+id/imageViewEquipamiento"
             android:layout_width="75dp"
             android:layout_height="75dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
-            android:background="@drawable/borde_imagen_clases"
-            android:scaleType="fitCenter"
+            android:background="@drawable/borde_imagen_equipamiento"
+            android:scaleType="fitXY"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/icono_clases" />
+            app:srcCompat="@drawable/icono_equipamiento" />
 
         <TextView
-            android:id="@+id/textViewNombreClase"
+            android:id="@+id/textViewNombreEquipamiento"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -41,33 +41,30 @@
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageViewClase"
+            app:layout_constraintStart_toEndOf="@+id/imageViewEquipamiento"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textViewCaracteristica_"
+            android:id="@+id/textViewPrecio_"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginBottom="16dp"
-            android:text="Característica:"
+            android:text="Precio:"
             android:textColor="#FFFFFF"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageViewClase" />
+            app:layout_constraintStart_toEndOf="@+id/imageViewEquipamiento" />
 
         <TextView
-            android:id="@+id/textViewCaracteristica"
-            android:layout_width="0dp"
+            android:id="@+id/textViewPrecio"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:text="Fuerza, Otra cosa"
+            android:layout_marginStart="4dp"
+            android:text="12 piezas de oro"
             android:textColor="#FFFFFF"
-            android:textSize="12sp"
-            app:layout_constraintBottom_toBottomOf="@+id/textViewCaracteristica_"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textViewCaracteristica_"
-            app:layout_constraintTop_toTopOf="@+id/textViewCaracteristica_" />
+            app:layout_constraintBottom_toBottomOf="@+id/textViewPrecio_"
+            app:layout_constraintStart_toEndOf="@+id/textViewPrecio_"
+            app:layout_constraintTop_toTopOf="@+id/textViewPrecio_" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

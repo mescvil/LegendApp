@@ -34,7 +34,7 @@ public class ServicioEnemigos {
                                    @NonNull Response<RespuestaApi<Enemigo>> response) {
 
                 if (response.body() != null) {
-                    Log.d("REST-ENEMIGOS", String.format("Enemigos obtenidos con exito [%d]", response.body().getnElementos()));
+                    Log.d("API", String.format("Enemigos obtenidos con exito [%d]", response.body().getnElementos()));
                     callback.exito(response.body().getResultado());
                 }
             }
@@ -43,7 +43,7 @@ public class ServicioEnemigos {
             public void onFailure(@NonNull Call<RespuestaApi<Enemigo>> call,
                                   @NonNull Throwable t) {
 
-                Log.d("REST-ENEMIGOS", "No es posible obtener los enemigos :" + t);
+                Log.d("API-ERROR", "No es posible obtener los enemigos :" + t);
                 callback.fallo();
             }
         });

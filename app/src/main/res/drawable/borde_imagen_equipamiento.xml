@@ -8,6 +8,6 @@
         android:right="4dp"
         android:top="4dp" />
     <stroke
-        android:width="2dp"
-        android:color="@color/azulHechizo" />
+        android:width="1dp"
+        android:color="@color/hint" />
 </shape>

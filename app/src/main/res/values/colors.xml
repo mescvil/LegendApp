@@ -13,5 +13,6 @@
     <color name="lavanda">#9575CD</color>
     <color name="verdeCriatura">#388E3C</color>
     <color name="azulHechizo">#64B5F6</color>
-    <color name="naranjaClase">#FFB74D</color>
+    <color name="naranjaClase">#FF9800</color>
+    <color name="moradoTrasfondo">#673AB7</color>
 </resources>

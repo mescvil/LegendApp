@@ -34,7 +34,7 @@ public class ServicioClases {
                                    @NonNull Response<RespuestaApi<Clase>> response) {
 
                 if (response.body() != null) {
-                    Log.d("REST-CLASES", String.format("Clases obtenidas con exito [%d]", response.body().getnElementos()));
+                    Log.d("API", String.format("Clases obtenidas con exito [%d]", response.body().getnElementos()));
                     callback.exito(response.body().getResultado());
                 }
             }
@@ -43,7 +43,7 @@ public class ServicioClases {
             public void onFailure(@NonNull Call<RespuestaApi<Clase>> call,
                                   @NonNull Throwable t) {
 
-                Log.d("REST-CLASES", "No es posible obtener las clases :" + t);
+                Log.d("API-ERROR", "No es posible obtener las clases :" + t);
                 callback.fallo();
             }
         });

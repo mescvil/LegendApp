@@ -1,6 +1,7 @@
 package com.hyperion.dndapiapp.entidades.clases;
 
 import com.google.gson.annotations.SerializedName;
+import com.hyperion.dndapiapp.entidades.competencias.Competencia;
 import com.hyperion.dndapiapp.entidades.equipamiento.Arma;
 import com.hyperion.dndapiapp.entidades.equipamiento.Armadura;
 import com.hyperion.dndapiapp.entidades.equipamiento.Hechizo;

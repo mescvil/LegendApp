@@ -16,21 +16,21 @@
 
 
         <ImageView
-            android:id="@+id/imageViewHechizo"
+            android:id="@+id/imageViewRaza"
             android:layout_width="75dp"
             android:layout_height="75dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
-            android:background="@drawable/borde_imagen_hechizo"
+            android:background="@drawable/borde_imagen_raza"
             android:scaleType="fitXY"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/icono_hechizos" />
+            app:srcCompat="@drawable/icono_raza" />
 
         <TextView
-            android:id="@+id/textViewNombreHechizo"
+            android:id="@+id/textViewNombreRaza"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -41,52 +41,52 @@
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageViewHechizo"
+            app:layout_constraintStart_toEndOf="@+id/imageViewRaza"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textViewNivel_"
+            android:id="@+id/textViewEdad_"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginBottom="16dp"
-            android:text="Nivel:"
+            android:text="Esperanza:"
             android:textColor="#FFFFFF"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageViewHechizo" />
+            app:layout_constraintStart_toEndOf="@+id/imageViewRaza" />
 
         <TextView
-            android:id="@+id/textViewAlcance_"
+            android:id="@+id/textViewVelocidad_"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="Alcance:"
+            android:text="Velocidad:"
             android:textColor="#FFFFFF"
             app:layout_constraintBottom_toBottomOf="@+id/textView7"
             app:layout_constraintStart_toEndOf="@+id/textView7"
             app:layout_constraintTop_toTopOf="@+id/textView7" />
 
         <TextView
-            android:id="@+id/textViewNivel"
+            android:id="@+id/textViewEdad"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:text="12"
             android:textColor="#FFFFFF"
-            app:layout_constraintBottom_toBottomOf="@+id/textViewNivel_"
-            app:layout_constraintStart_toEndOf="@+id/textViewNivel_"
-            app:layout_constraintTop_toTopOf="@+id/textViewNivel_" />
+            app:layout_constraintBottom_toBottomOf="@+id/textViewEdad_"
+            app:layout_constraintStart_toEndOf="@+id/textViewEdad_"
+            app:layout_constraintTop_toTopOf="@+id/textViewEdad_" />
 
         <TextView
-            android:id="@+id/textViewAlcance"
+            android:id="@+id/textViewVelocidad"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:text="10"
             android:textColor="#FFFFFF"
-            app:layout_constraintBottom_toBottomOf="@+id/textViewAlcance_"
-            app:layout_constraintStart_toEndOf="@+id/textViewAlcance_"
-            app:layout_constraintTop_toTopOf="@+id/textViewAlcance_" />
+            app:layout_constraintBottom_toBottomOf="@+id/textViewVelocidad_"
+            app:layout_constraintStart_toEndOf="@+id/textViewVelocidad_"
+            app:layout_constraintTop_toTopOf="@+id/textViewVelocidad_" />
 
         <TextView
             android:id="@+id/textViewPies"
@@ -95,9 +95,9 @@
             android:layout_marginStart="4dp"
             android:text="pies"
             android:textColor="#FFFFFF"
-            app:layout_constraintBottom_toBottomOf="@+id/textViewAlcance"
-            app:layout_constraintStart_toEndOf="@+id/textViewAlcance"
-            app:layout_constraintTop_toTopOf="@+id/textViewAlcance" />
+            app:layout_constraintBottom_toBottomOf="@+id/textViewVelocidad"
+            app:layout_constraintStart_toEndOf="@+id/textViewVelocidad"
+            app:layout_constraintTop_toTopOf="@+id/textViewVelocidad" />
 
         <TextView
             android:id="@+id/textView7"
@@ -105,12 +105,12 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:text="•"
-            android:textColor="@color/azulHechizo"
+            android:textColor="@color/amarilloDebug"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/textViewNivel"
-            app:layout_constraintStart_toEndOf="@+id/textViewNivel"
-            app:layout_constraintTop_toTopOf="@+id/textViewNivel" />
+            app:layout_constraintBottom_toBottomOf="@+id/textViewEdad"
+            app:layout_constraintStart_toEndOf="@+id/textViewEdad"
+            app:layout_constraintTop_toTopOf="@+id/textViewEdad" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>
