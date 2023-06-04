@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:layout_marginHorizontal="8dp"
+    android:layout_marginVertical="4dp"
+    android:backgroundTint="#12181c"
+    app:cardCornerRadius="12dp"
+    app:cardMaxElevation="24dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <ImageView
+            android:id="@+id/imageViewHechizo"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/borde_imagen_hechizo"
+            android:scaleType="fitXY"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/icono_hechizos" />
+
+        <TextView
+            android:id="@+id/textViewNombreHechizo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:text="Nombre"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageViewHechizo"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textViewNivel_"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="Nivel:"
+            android:textColor="#FFFFFF"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageViewHechizo" />
+
+        <TextView
+            android:id="@+id/textViewAlcance_"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Alcance:"
+            android:textColor="#FFFFFF"
+            app:layout_constraintBottom_toBottomOf="@+id/textView7"
+            app:layout_constraintStart_toEndOf="@+id/textView7"
+            app:layout_constraintTop_toTopOf="@+id/textView7" />
+
+        <TextView
+            android:id="@+id/textViewNivel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:text="12"
+            android:textColor="#FFFFFF"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewNivel_"
+            app:layout_constraintStart_toEndOf="@+id/textViewNivel_"
+            app:layout_constraintTop_toTopOf="@+id/textViewNivel_" />
+
+        <TextView
+            android:id="@+id/textViewAlcance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:text="10"
+            android:textColor="#FFFFFF"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewAlcance_"
+            app:layout_constraintStart_toEndOf="@+id/textViewAlcance_"
+            app:layout_constraintTop_toTopOf="@+id/textViewAlcance_" />
+
+        <TextView
+            android:id="@+id/textViewPies"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:text="pies"
+            android:textColor="#FFFFFF"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewAlcance"
+            app:layout_constraintStart_toEndOf="@+id/textViewAlcance"
+            app:layout_constraintTop_toTopOf="@+id/textViewAlcance" />
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="•"
+            android:textColor="@color/azulHechizo"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewNivel"
+            app:layout_constraintStart_toEndOf="@+id/textViewNivel"
+            app:layout_constraintTop_toTopOf="@+id/textViewNivel" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

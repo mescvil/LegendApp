@@ -20,8 +20,9 @@ public class LoadingDialog {
 
     public void show(String titulo) {
         dialog = new Dialog(context);
-        dialog.setContentView(R.layout.loading_dialog);
+        dialog.setContentView(R.layout.dialogo_cargando);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.setCancelable(false);
 
         TextView textoDialogo = dialog.findViewById(R.id.textoLoading);
         textoDialogo.setText(titulo);

@@ -17,6 +17,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.hyperion.dndapiapp.R;
+import com.hyperion.dndapiapp.dialogos.LoadingDialog;
 import com.hyperion.dndapiapp.entidades.usuario.Usuario;
 import com.hyperion.dndapiapp.servicioRest.callbacks.CallbackCustom;
 import com.hyperion.dndapiapp.servicioRest.servicios.ServicioUsuario;
@@ -24,7 +25,7 @@ import com.hyperion.dndapiapp.servicioRest.servicios.ServicioUsuario;
 public class EmptyMainActivity extends AppCompatActivity {
     private SharedPreferences sharedPref;
     private SharedPreferences.Editor editorShared;
-    private static int n = 0;
+    private LoadingDialog loadingDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +34,7 @@ public class EmptyMainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_empty_main);
         sharedPref = getPreferences(Context.MODE_PRIVATE);
         editorShared = sharedPref.edit();
+        loadingDialog = new LoadingDialog(this);
 
         Bundle extras = getIntent().getExtras();
         if (extras == null) {
@@ -42,10 +44,20 @@ public class EmptyMainActivity extends AppCompatActivity {
                 login();
             }
         } else {
-            if (extras.getBoolean(CIERRA_SESION)) {
-                editorShared.clear();
-                editorShared.apply();
-                login();
+            /* Version Xiaomi que son unos toca huevos */
+            if (extras.containsKey(CIERRA_SESION)) {
+                if (extras.getBoolean(CIERRA_SESION)) {
+                    editorShared.clear();
+                    editorShared.apply();
+                    login();
+                }
+            } else {
+                Log.d("XIAOMI", "Es un xiaomi y es un toca huevos");
+                if (sharedPref.contains(PASS_USUARIO) && sharedPref.contains(CORREO_USUARIO)) {
+                    autologin();
+                } else {
+                    login();
+                }
             }
         }
     }
@@ -61,15 +73,19 @@ public class EmptyMainActivity extends AppCompatActivity {
         String pass = sharedPref.getString(PASS_USUARIO, "");
         Usuario usuario = new Usuario(correo, pass);
 
+        loadingDialog.show("Iniciando sesión");
         ServicioUsuario.getInstance().doLoginNoEncrypt(usuario, new CallbackCustom<Usuario>() {
             @Override
             public void exito(Usuario resultado) {
+                loadingDialog.dismiss();
                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
                 finish();
             }
 
             @Override
             public void fallo(String mensaje) {
+                Toast.makeText(EmptyMainActivity.this, "Error al iniciar sesión automaticamente", Toast.LENGTH_SHORT).show();
+                loadingDialog.dismiss();
                 login();
             }
         });

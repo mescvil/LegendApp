@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navBiblioteca"
+        android:icon="@drawable/lista_nav_bar"
+        android:title="Biblioteca" />
+    <item
+        android:id="@+id/navFavoritos"
+        android:icon="@drawable/favoritos_nav_bar"
+        android:title="Favoritos" />
+    <item
+        android:id="@+id/navFichas"
+        android:icon="@drawable/fichas_nav_bar"
+        android:title="Fichas" />
+</menu>

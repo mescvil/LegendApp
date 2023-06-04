@@ -1,5 +1,8 @@
 package com.hyperion.dndapiapp.utilidades;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Utils {
 
     private final static String EXPRESION_CONTRASENIA = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}$";
@@ -12,5 +15,11 @@ public class Utils {
 
     public static boolean verificaCorreo(String correo) {
         return correo.matches(EXPRESION_CORREO);
+    }
+
+    public static List<OrdenablePorNombre> ordenaListaPorNombre(List<OrdenablePorNombre> listaRecibida) {
+        List<OrdenablePorNombre> listaOrdenada = new ArrayList<>(listaRecibida);
+        listaOrdenada.sort((ordenablePorNombre, t1) -> ordenablePorNombre.getNombre().compareToIgnoreCase(t1.getNombre()));
+        return listaOrdenada;
     }
 }

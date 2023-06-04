@@ -1,9 +1,10 @@
 package com.hyperion.dndapiapp.entidades.equipamiento;
 
 import com.google.gson.annotations.SerializedName;
+import com.hyperion.dndapiapp.utilidades.OrdenablePorNombre;
 
 @SuppressWarnings("unused")
-public class Hechizo {
+public class Hechizo implements OrdenablePorNombre {
 
     @SerializedName("nombre")
     private String nombre;

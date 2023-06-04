@@ -4,11 +4,12 @@ import com.google.gson.annotations.SerializedName;
 import com.hyperion.dndapiapp.entidades.equipamiento.Arma;
 import com.hyperion.dndapiapp.entidades.equipamiento.Armadura;
 import com.hyperion.dndapiapp.entidades.equipamiento.Hechizo;
+import com.hyperion.dndapiapp.utilidades.OrdenablePorNombre;
 
 import java.util.List;
 
 @SuppressWarnings("unused")
-public class Clase {
+public class Clase implements OrdenablePorNombre {
 
     @SerializedName("nombre")
     private String nombre;

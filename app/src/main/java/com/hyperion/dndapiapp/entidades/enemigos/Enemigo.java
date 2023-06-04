@@ -1,11 +1,12 @@
 package com.hyperion.dndapiapp.entidades.enemigos;
 
 import com.google.gson.annotations.SerializedName;
+import com.hyperion.dndapiapp.utilidades.OrdenablePorNombre;
 
 import java.util.List;
 
 @SuppressWarnings("unused")
-public class Enemigo {
+public class Enemigo implements OrdenablePorNombre {
 
     @SerializedName("nombre")
     private String nombre;

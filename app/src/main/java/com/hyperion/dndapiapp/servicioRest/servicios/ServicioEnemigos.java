@@ -13,7 +13,16 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ServicioRest {
+public class ServicioEnemigos {
+
+    private static ServicioEnemigos servicio;
+
+    public static ServicioEnemigos getInstance() {
+        if (servicio == null)
+            servicio = new ServicioEnemigos();
+
+        return servicio;
+    }
 
     public void getAllEnemigos(CallbackLista<Enemigo> callback) {
         RetrofitHelper retrofitHelper = RetrofitHelper.getInstance();

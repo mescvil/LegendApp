@@ -7,5 +7,11 @@
     <color name="fondoTarjeta">#0f1418</color>
     <color name="fondoClaro">#192025</color>
     <color name="rojo">#940B0C</color>
+    <color name="amarilloDebug">#FFD54F</color>
     <color name="rojoOscuro">#5E0808</color>
+    <color name="rojoMenosRojo">#D84C0001</color>
+    <color name="lavanda">#9575CD</color>
+    <color name="verdeCriatura">#388E3C</color>
+    <color name="azulHechizo">#64B5F6</color>
+    <color name="naranjaClase">#FFB74D</color>
 </resources>

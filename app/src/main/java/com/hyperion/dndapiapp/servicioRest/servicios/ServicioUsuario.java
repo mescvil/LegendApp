@@ -18,9 +18,6 @@ public class ServicioUsuario {
     private static ServicioUsuario servicio;
     private static Seguridad seguridad;
 
-    private ServicioUsuario() {
-    }
-
     public static ServicioUsuario getInstance() {
         if (servicio == null) {
             servicio = new ServicioUsuario();

@@ -1,8 +1,9 @@
-package com.hyperion.dndapiapp.entidades.clases;
+package com.hyperion.dndapiapp.entidades.razas;
 
 import com.hyperion.dndapiapp.utilidades.OrdenablePorNombre;
 
-public class Competencia implements OrdenablePorNombre {
+public class Raza implements OrdenablePorNombre {
+
     @Override
     public String getNombre() {
         return null;
