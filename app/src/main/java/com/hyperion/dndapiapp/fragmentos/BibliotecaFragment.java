@@ -13,6 +13,7 @@ import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -48,6 +49,8 @@ import com.hyperion.dndapiapp.servicioRest.servicios.ServicioRazas;
 import com.hyperion.dndapiapp.servicioRest.servicios.ServicioTrasfondos;
 import com.hyperion.dndapiapp.utilidades.OrdenablePorNombre;
 
+import org.jetbrains.annotations.Contract;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -56,8 +59,7 @@ public class BibliotecaFragment extends Fragment {
 
     /* Utiles */
     private final boolean[] filtrosSeleccionados;
-    private final SharedPreferences sharedPreferences;
-    private final SharedPreferences.Editor editor;
+    private SharedPreferences.Editor editor;
     private FragmentBibliotecaBinding binding;
 
     /* Servicios */
@@ -83,10 +85,7 @@ public class BibliotecaFragment extends Fragment {
     private List<Trasfondo> listaTrasfondos;
     private List<Competencia> listaCompentencias;
 
-    public BibliotecaFragment(SharedPreferences sharedPreferences) {
-        this.sharedPreferences = sharedPreferences;
-        editor = sharedPreferences.edit();
-
+    public BibliotecaFragment() {
         servicioEnemigos = ServicioEnemigos.getInstance();
         servicioClases = ServicioClases.getInstance();
         servicioEquipamiento = ServicioEquipamiento.getInstance();
@@ -105,9 +104,18 @@ public class BibliotecaFragment extends Fragment {
         filtrosSeleccionados = new boolean[filtros.length];
     }
 
+    @NonNull
+    @Contract(" -> new")
+    public static BibliotecaFragment newInstance() {
+        return new BibliotecaFragment();
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        editor = sharedPreferences.edit();
 
         for (int i = 0; i < filtros.length; i++) {
             filtrosSeleccionados[i] = sharedPreferences.getBoolean(filtros[i], true);

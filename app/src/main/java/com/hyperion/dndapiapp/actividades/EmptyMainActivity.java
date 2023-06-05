@@ -1,9 +1,10 @@
 package com.hyperion.dndapiapp.actividades;
 
 import static com.hyperion.dndapiapp.utilidades.Constantes.ACTIVIDAD_LOGIN;
-import static com.hyperion.dndapiapp.utilidades.Constantes.CIERRA_SESION;
-import static com.hyperion.dndapiapp.utilidades.Constantes.CORREO_USUARIO;
-import static com.hyperion.dndapiapp.utilidades.Constantes.PASS_USUARIO;
+import static com.hyperion.dndapiapp.utilidades.Constantes.CIERRA_SESION_BUNDLE;
+import static com.hyperion.dndapiapp.utilidades.Constantes.CORREO_USUARIO_BUNDLE;
+import static com.hyperion.dndapiapp.utilidades.Constantes.PASS_USUARIO_BUNDLE;
+import static com.hyperion.dndapiapp.utilidades.Constantes.USUARIO_BUNDLE;
 
 import android.app.Activity;
 import android.content.Context;
@@ -38,22 +39,22 @@ public class EmptyMainActivity extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         if (extras == null) {
-            if (sharedPref.contains(PASS_USUARIO) && sharedPref.contains(CORREO_USUARIO)) {
+            if (sharedPref.contains(PASS_USUARIO_BUNDLE) && sharedPref.contains(CORREO_USUARIO_BUNDLE)) {
                 autologin();
             } else {
                 login();
             }
         } else {
             /* Version Xiaomi que son unos toca huevos */
-            if (extras.containsKey(CIERRA_SESION)) {
-                if (extras.getBoolean(CIERRA_SESION)) {
+            if (extras.containsKey(CIERRA_SESION_BUNDLE)) {
+                if (extras.getBoolean(CIERRA_SESION_BUNDLE)) {
                     editorShared.clear();
                     editorShared.apply();
                     login();
                 }
             } else {
                 Log.d("XIAOMI", "Es un xiaomi y es un toca huevos");
-                if (sharedPref.contains(PASS_USUARIO) && sharedPref.contains(CORREO_USUARIO)) {
+                if (sharedPref.contains(PASS_USUARIO_BUNDLE) && sharedPref.contains(CORREO_USUARIO_BUNDLE)) {
                     autologin();
                 } else {
                     login();
@@ -68,17 +69,19 @@ public class EmptyMainActivity extends AppCompatActivity {
     }
 
     private void autologin() {
-        Intent intent;
-        String correo = sharedPref.getString(CORREO_USUARIO, "");
-        String pass = sharedPref.getString(PASS_USUARIO, "");
+        String correo = sharedPref.getString(CORREO_USUARIO_BUNDLE, "");
+        String pass = sharedPref.getString(PASS_USUARIO_BUNDLE, "");
         Usuario usuario = new Usuario(correo, pass);
 
         loadingDialog.show("Iniciando sesión");
         ServicioUsuario.getInstance().doLoginNoEncrypt(usuario, new CallbackCustom<Usuario>() {
             @Override
             public void exito(Usuario resultado) {
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                intent.putExtra(USUARIO_BUNDLE, resultado);
+
                 loadingDialog.dismiss();
-                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                startActivity(intent);
                 finish();
             }
 
@@ -94,20 +97,20 @@ public class EmptyMainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        String correo;
-        String pass;
 
         if (requestCode == ACTIVIDAD_LOGIN) {
             if (resultCode == Activity.RESULT_OK) {
                 if (data != null) {
-                    correo = data.getStringExtra(CORREO_USUARIO);
-                    pass = data.getStringExtra(PASS_USUARIO);
+                    Usuario usuario = data.getExtras().getParcelable(USUARIO_BUNDLE);
 
-                    editorShared.putString(CORREO_USUARIO, correo);
-                    editorShared.putString(PASS_USUARIO, pass);
+                    editorShared.putString(CORREO_USUARIO_BUNDLE, usuario.getCorreo());
+                    editorShared.putString(PASS_USUARIO_BUNDLE, usuario.getContrasenia());
                     editorShared.apply();
 
-                    startActivity(new Intent(this, MainActivity.class));
+                    Intent intent = new Intent(this, MainActivity.class);
+                    intent.putExtra(USUARIO_BUNDLE, usuario);
+
+                    startActivity(intent);
                     finish();
                 }
             }

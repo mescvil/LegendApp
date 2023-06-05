@@ -20,7 +20,9 @@
 
     /* No borrar pls */
 
-    <style name="Theme.DnDAPIApp" parent="Base.Theme.DnDAPIApp" />
+    <style name="Theme.DnDAPIApp" parent="Base.Theme.DnDAPIApp">
+        <item name="android:textColor">@color/white</item>
+    </style>
 
     <style name="SplashTheme" parent="Base.Theme.DnDAPIApp">
         <item name="android:windowBackground">@drawable/splash_screen</item>

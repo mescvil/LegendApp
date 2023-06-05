@@ -4,9 +4,10 @@ package com.hyperion.dndapiapp.utilidades;
 public abstract class Constantes {
 
     /* ================= Bundles  ================= */
-    public static final String CORREO_USUARIO = "correo";
-    public static final String PASS_USUARIO = "pass";
-    public static final String CIERRA_SESION = "cierraSesion";
+    public static final String CORREO_USUARIO_BUNDLE = "correo";
+    public static final String PASS_USUARIO_BUNDLE = "pass";
+    public static final String CIERRA_SESION_BUNDLE = "cierraSesion";
+    public static final String USUARIO_BUNDLE = "usuario";
 
     /* ================= Actividades  ================= */
     public final static int ACTIVIDAD_LOGIN = 1;

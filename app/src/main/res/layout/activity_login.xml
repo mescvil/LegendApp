@@ -85,7 +85,7 @@
             android:layout_width="0dp"
             android:layout_height="60dp"
             android:layout_marginTop="16dp"
-            android:backgroundTint="#40940B0C"
+            android:backgroundTint="@color/fondoClaro"
             android:text="Regístrate"
             android:textColor="@color/white"
             android:textStyle="normal"

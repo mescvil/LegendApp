@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.hyperion.dndapiapp.R;
 import com.hyperion.dndapiapp.entidades.competencias.Competencia;
-import com.hyperion.dndapiapp.entidades.trasfondos.Trasfondo;
 
 public class CompetenciaHolder extends RecyclerView.ViewHolder {
 

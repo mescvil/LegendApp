@@ -40,7 +40,7 @@ public class RegisterActivity extends AppCompatActivity {
             servicio.registraUsuario(usuario, getString(R.string.encoder), new CallbackCustom<Boolean>() {
                 @Override
                 public void exito(Boolean resultado) {
-                    Toast.makeText(RegisterActivity.this, "Registrado con éxito, puede iniciar sesión", Toast.LENGTH_LONG).show();
+                    Toast.makeText(RegisterActivity.this, "Registrado con éxito, puede iniciar sesión", Toast.LENGTH_SHORT).show();
                     finish();
                 }
 

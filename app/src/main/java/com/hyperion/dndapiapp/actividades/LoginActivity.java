@@ -1,8 +1,7 @@
 package com.hyperion.dndapiapp.actividades;
 
 import static com.hyperion.dndapiapp.utilidades.Constantes.ACTIVIDAD_REGISTER;
-import static com.hyperion.dndapiapp.utilidades.Constantes.CORREO_USUARIO;
-import static com.hyperion.dndapiapp.utilidades.Constantes.PASS_USUARIO;
+import static com.hyperion.dndapiapp.utilidades.Constantes.USUARIO_BUNDLE;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -61,8 +60,7 @@ public class LoginActivity extends AppCompatActivity {
                 loadingDialog.dismiss();
 
                 Intent intentResultado = new Intent();
-                intentResultado.putExtra(CORREO_USUARIO, resultado.getCorreo());
-                intentResultado.putExtra(PASS_USUARIO, resultado.getContrasenia());
+                intentResultado.putExtra(USUARIO_BUNDLE, resultado);
                 setResult(Activity.RESULT_OK, intentResultado);
                 finish();
             }

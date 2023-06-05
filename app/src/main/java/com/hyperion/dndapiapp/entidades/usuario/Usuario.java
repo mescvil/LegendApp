@@ -1,9 +1,14 @@
 package com.hyperion.dndapiapp.entidades.usuario;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
+
 import com.google.gson.annotations.SerializedName;
 
 @SuppressWarnings("unused")
-public class Usuario {
+public class Usuario implements Parcelable {
 
     @SerializedName("nombre")
     private String nombre;
@@ -25,8 +30,37 @@ public class Usuario {
         this.contrasenia = contrasenia;
     }
 
-    /* =============== METODOS =============== */
+    /* =============== METODOS  Parcelable =============== */
 
+    protected Usuario(Parcel in) {
+        nombre = in.readString();
+        correo = in.readString();
+        contrasenia = in.readString();
+    }
+
+    public static final Creator<Usuario> CREATOR = new Creator<Usuario>() {
+        @Override
+        public Usuario createFromParcel(Parcel in) {
+            return new Usuario(in);
+        }
+
+        @Override
+        public Usuario[] newArray(int size) {
+            return new Usuario[size];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(@NonNull Parcel parcel, int i) {
+        parcel.writeString(nombre);
+        parcel.writeString(correo);
+        parcel.writeString(contrasenia);
+    }
     /* =============== GETTERS & SETTERS =============== */
 
     public String getNombre() {

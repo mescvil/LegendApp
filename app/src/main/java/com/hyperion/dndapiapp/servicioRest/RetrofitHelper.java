@@ -1,7 +1,5 @@
 package com.hyperion.dndapiapp.servicioRest;
 
-import android.provider.CallLog;
-
 import com.hyperion.dndapiapp.servicioRest.calls.CallsClases;
 import com.hyperion.dndapiapp.servicioRest.calls.CallsCompetencias;
 import com.hyperion.dndapiapp.servicioRest.calls.CallsEnemigos;
