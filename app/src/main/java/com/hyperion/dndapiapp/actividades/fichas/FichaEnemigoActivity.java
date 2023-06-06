@@ -1,6 +1,7 @@
 package com.hyperion.dndapiapp.actividades.fichas;
 
 import static com.hyperion.dndapiapp.utilidades.Constantes.ENEMIGO_BUNDLE;
+import static com.hyperion.dndapiapp.utilidades.Constantes.filtros;
 
 import android.os.Bundle;
 
@@ -40,6 +41,10 @@ public class FichaEnemigoActivity extends AppCompatActivity {
         viewPager = binding.viewPagerEnemigos;
         adapter = new EnemigosStateAdapter(this, enemigo);
         viewPager.setAdapter(adapter);
+
+        binding.botonAtrasFichaEnemigo.setOnClickListener(view -> {
+            finish();
+        });
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override

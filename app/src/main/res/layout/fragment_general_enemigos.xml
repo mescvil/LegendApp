@@ -4,41 +4,247 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragmentos.fichas.enemigos.GeneralEnemigosFragment" >
+    tools:context=".fragmentos.fichas.enemigos.GeneralEnemigosFragment">
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/imagenFichaEnemigo"
         android:layout_width="149dp"
-        android:layout_height="190dp"
-        android:scaleType="fitXY"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:background="@color/fondoTarjeta"
+        android:scaleType="fitCenter"
         android:src="@drawable/imagen_beholder"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.061"
+        app:layout_constraintBottom_toBottomOf="@+id/constraintLayout3"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.029" />
+        app:layout_constraintTop_toTopOf="@+id/constraintLayout3" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@color/fondoClaro"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.177"
-        app:layout_constraintStart_toEndOf="@+id/imageView2"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3">
+
+        <TextView
+            android:id="@+id/fichaDesafio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:text="No ve"
+            android:textColor="@color/hint"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/fichaDesafioX"
+            app:layout_constraintStart_toEndOf="@+id/fichaDesafioX"
+            app:layout_constraintTop_toTopOf="@+id/fichaDesafioX" />
+
+        <TextView
+            android:id="@+id/fichaAlineamiento"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:text="No ve"
+            android:textColor="@color/hint"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/fichaAlineamientoX"
+            app:layout_constraintStart_toEndOf="@+id/fichaAlineamientoX"
+            app:layout_constraintTop_toTopOf="@+id/fichaAlineamientoX" />
+
+        <TextView
+            android:id="@+id/fichaIdiomas"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="16dp"
+            android:text="No ve"
+            android:textColor="@color/hint"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/fichaIdiomasX"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/fichaIdiomasX"
+            app:layout_constraintTop_toTopOf="@+id/fichaIdiomasX" />
+
+        <TextView
+            android:id="@+id/fichaAlineamientoX"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Alineamiento:"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/fichaHabilidadesX"
+            app:layout_constraintTop_toBottomOf="@+id/fichaHabilidades" />
+
+        <TextView
+            android:id="@+id/fichaIdiomasX"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Idiomas:"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/fichaAlineamientoX"
+            app:layout_constraintTop_toBottomOf="@+id/fichaAlineamientoX" />
+
+        <TextView
+            android:id="@+id/fichaDesafioX"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Desafío:"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/fichaIdiomasX"
+            app:layout_constraintTop_toBottomOf="@+id/fichaIdiomas" />
+
+        <TextView
+            android:id="@+id/fichaTipoX"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Tipo:"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/fichaTipo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:text="Bestia"
+            android:textColor="@color/hint"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/fichaTipoX"
+            app:layout_constraintStart_toEndOf="@+id/fichaTipoX"
+            app:layout_constraintTop_toTopOf="@+id/fichaTipoX" />
+
+        <TextView
+            android:id="@+id/fichaTamanioX"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Tamaño:"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/fichaTipoX"
+            app:layout_constraintTop_toBottomOf="@+id/fichaTipoX" />
+
+        <TextView
+            android:id="@+id/fichaTamanio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:text="To grande"
+            android:textColor="@color/hint"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/fichaTamanioX"
+            app:layout_constraintStart_toEndOf="@+id/fichaTamanioX"
+            app:layout_constraintTop_toTopOf="@+id/fichaTamanioX" />
+
+        <TextView
+            android:id="@+id/fichaSentidosX"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Sentidos:"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/fichaTamanioX"
+            app:layout_constraintTop_toBottomOf="@+id/fichaTamanioX" />
+
+        <TextView
+            android:id="@+id/fichaHabilidadesX"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Habilidades:"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/fichaSentidosX"
+            app:layout_constraintTop_toBottomOf="@+id/fichaSentidos" />
+
+        <TextView
+            android:id="@+id/fichaSentidos"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="16dp"
+            android:text="No ve"
+            android:textColor="@color/hint"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/fichaSentidosX"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/fichaSentidosX"
+            app:layout_constraintTop_toTopOf="@+id/fichaSentidosX"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/fichaHabilidades"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="16dp"
+            android:text="No ve"
+            android:textColor="@color/hint"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/fichaHabilidadesX"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/fichaHabilidadesX"
+            app:layout_constraintTop_toTopOf="@+id/fichaHabilidadesX"
+            app:layout_constraintVertical_bias="0.0" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@color/fondoTarjeta"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/imagenFichaEnemigo"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:id="@+id/fichaINTX"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:fontFamily="monospace"
+            android:text="INT:"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/fichaCON"
+            app:layout_constraintStart_toEndOf="@+id/fichaCON"
+            app:layout_constraintTop_toTopOf="@+id/fichaCON"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/fichaINT"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:fontFamily="monospace"
+            android:text="12"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/fichaINTX"
+            app:layout_constraintStart_toEndOf="@+id/fichaINTX"
+            app:layout_constraintTop_toTopOf="@+id/fichaINTX"
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/fichaHP"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
+            android:layout_marginStart="2dp"
+            android:fontFamily="monospace"
             android:text="12"
             android:textColor="@color/verdeCriatura"
-            android:textSize="16sp"
+            android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="@+id/fichaHPX"
             app:layout_constraintStart_toEndOf="@+id/fichaHPX"
             app:layout_constraintTop_toTopOf="@+id/fichaHPX" />
@@ -47,11 +253,13 @@
             android:id="@+id/nombreFichaEnemigo"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="4dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
             android:text="Nombre criatura"
+            android:textAlignment="viewStart"
             android:textSize="20sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -60,10 +268,11 @@
             android:id="@+id/fichaACX"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
+            android:fontFamily="monospace"
             android:text="AC:"
-            android:textSize="16sp"
+            android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/nombreFichaEnemigo" />
 
@@ -71,10 +280,11 @@
             android:id="@+id/fichaAC"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
+            android:layout_marginStart="2dp"
+            android:fontFamily="monospace"
             android:text="12"
             android:textColor="@color/verdeCriatura"
-            android:textSize="16sp"
+            android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="@+id/fichaACX"
             app:layout_constraintStart_toEndOf="@+id/fichaACX"
             app:layout_constraintTop_toTopOf="@+id/fichaACX" />
@@ -84,11 +294,137 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+            android:fontFamily="monospace"
             android:text="HP:"
-            android:textSize="16sp"
+            android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="@+id/fichaAC"
             app:layout_constraintStart_toEndOf="@+id/fichaAC"
             app:layout_constraintTop_toTopOf="@+id/fichaAC"
             app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/fichaFUEX"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:fontFamily="monospace"
+            android:text="FUE:"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fichaACX" />
+
+        <TextView
+            android:id="@+id/fichaCONX"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="monospace"
+            android:text="CON:"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/fichaFUEX"
+            app:layout_constraintStart_toStartOf="@+id/fichaFUEX"
+            app:layout_constraintTop_toBottomOf="@+id/fichaFUEX" />
+
+        <TextView
+            android:id="@+id/fichaSABX"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="monospace"
+            android:text="SAB:"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/fichaCONX"
+            app:layout_constraintStart_toStartOf="@+id/fichaCONX"
+            app:layout_constraintTop_toBottomOf="@+id/fichaCONX" />
+
+        <TextView
+            android:id="@+id/fichaCARX"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:fontFamily="monospace"
+            android:text="CAR:"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/fichaSAB"
+            app:layout_constraintStart_toEndOf="@+id/fichaSAB"
+            app:layout_constraintTop_toTopOf="@+id/fichaSAB" />
+
+        <TextView
+            android:id="@+id/fichaCON"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:fontFamily="monospace"
+            android:text="12"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/fichaCONX"
+            app:layout_constraintStart_toEndOf="@+id/fichaCONX"
+            app:layout_constraintTop_toTopOf="@+id/fichaCONX" />
+
+        <TextView
+            android:id="@+id/fichaSAB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:fontFamily="monospace"
+            android:text="12"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/fichaSABX"
+            app:layout_constraintStart_toEndOf="@+id/fichaSABX"
+            app:layout_constraintTop_toTopOf="@+id/fichaSABX"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/fichaCAR"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:fontFamily="monospace"
+            android:text="12"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/fichaCARX"
+            app:layout_constraintStart_toEndOf="@+id/fichaCARX"
+            app:layout_constraintTop_toTopOf="@+id/fichaCARX"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/fichaDESX"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:fontFamily="monospace"
+            android:text="DEX:"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/fichaFUE"
+            app:layout_constraintStart_toEndOf="@+id/fichaFUE"
+            app:layout_constraintTop_toTopOf="@+id/fichaFUE" />
+
+        <TextView
+            android:id="@+id/fichaFUE"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:fontFamily="monospace"
+            android:text="12"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/fichaFUEX"
+            app:layout_constraintStart_toEndOf="@+id/fichaFUEX"
+            app:layout_constraintTop_toTopOf="@+id/fichaFUEX" />
+
+        <TextView
+            android:id="@+id/fichaDES"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:fontFamily="monospace"
+            android:text="12"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/fichaDESX"
+            app:layout_constraintStart_toEndOf="@+id/fichaDESX"
+            app:layout_constraintTop_toTopOf="@+id/fichaDESX" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

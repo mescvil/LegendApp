@@ -16,9 +16,9 @@ public class Enemigo implements OrdenablePorNombre, Parcelable {
     private String urlImagen;
     @SerializedName("alineamiento")
     private String alineamiento;
-    @SerializedName("tamanio")
-    private String tipo;
     @SerializedName("tipo")
+    private String tipo;
+    @SerializedName("tamanio")
     private String tamanio;
     @SerializedName("idiomas")
     private String idiomas;
