@@ -11,6 +11,7 @@ import static com.hyperion.dndapiapp.utilidades.Constantes.POSICION_EQUIPAMIENTO
 import static com.hyperion.dndapiapp.utilidades.Constantes.POSICION_HECHIZOS;
 import static com.hyperion.dndapiapp.utilidades.Constantes.POSICION_RAZAS;
 import static com.hyperion.dndapiapp.utilidades.Constantes.POSICION_TRASFONDOS;
+import static com.hyperion.dndapiapp.utilidades.Constantes.RAZA_BUNDLE;
 import static com.hyperion.dndapiapp.utilidades.Constantes.TRASFONDO_COMPETENCIAS_BUNDLE;
 import static com.hyperion.dndapiapp.utilidades.Constantes.filtros;
 
@@ -38,6 +39,7 @@ import com.hyperion.dndapiapp.actividades.fichas.FichaArmaActivity;
 import com.hyperion.dndapiapp.actividades.fichas.FichaArmaduraActivity;
 import com.hyperion.dndapiapp.actividades.fichas.FichaEnemigoActivity;
 import com.hyperion.dndapiapp.actividades.fichas.FichaHechizoActivity;
+import com.hyperion.dndapiapp.actividades.fichas.FichaRazaActivity;
 import com.hyperion.dndapiapp.actividades.fichas.FichaTrasfondoActivity;
 import com.hyperion.dndapiapp.adaptadores.recyclerView.AdaptadorMixClick;
 import com.hyperion.dndapiapp.adaptadores.recyclerView.adaptadores.AdaptadorMix;
@@ -516,6 +518,11 @@ public class BibliotecaFragment extends Fragment implements AdaptadorMixClick {
         } else if (objeto instanceof Armadura) {
             Intent intent = new Intent(getContext(), FichaArmaduraActivity.class);
             intent.putExtra(ARMADURA_BUNDLE, (Armadura) objeto);
+            startActivity(intent);
+
+        } else if (objeto instanceof Raza) {
+            Intent intent = new Intent(getContext(), FichaRazaActivity.class);
+            intent.putExtra(RAZA_BUNDLE, (Raza) objeto);
             startActivity(intent);
         }
     }

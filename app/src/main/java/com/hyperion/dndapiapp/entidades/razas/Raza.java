@@ -1,10 +1,15 @@
 package com.hyperion.dndapiapp.entidades.razas;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
 import com.hyperion.dndapiapp.utilidades.OrdenablePorNombre;
 
+import java.util.List;
+
 @SuppressWarnings("unused")
-public class Raza implements OrdenablePorNombre {
+public class Raza implements OrdenablePorNombre, Parcelable {
 
     @SerializedName("nombre")
     private String nombre;
@@ -16,10 +21,56 @@ public class Raza implements OrdenablePorNombre {
     private float alturaMaxima;
     @SerializedName("velocidad")
     private int velocidad;
+    @SerializedName("imagenVaron")
+    private String imagenVaron;
+    @SerializedName("imagenHembra")
+    private String imagenHembra;
+    @SerializedName("rasgosRaza")
+    private List<RasgoRaza> rasgosRaza;
 
     /* =============== CONSTRUCTORES =============== */
 
     /* =============== METODOS =============== */
+
+    protected Raza(Parcel in) {
+        nombre = in.readString();
+        edadMaxima = in.readInt();
+        alturaMinima = in.readFloat();
+        alturaMaxima = in.readFloat();
+        velocidad = in.readInt();
+        imagenVaron = in.readString();
+        imagenHembra = in.readString();
+        rasgosRaza = in.createTypedArrayList(RasgoRaza.CREATOR);
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(nombre);
+        dest.writeInt(edadMaxima);
+        dest.writeFloat(alturaMinima);
+        dest.writeFloat(alturaMaxima);
+        dest.writeInt(velocidad);
+        dest.writeString(imagenVaron);
+        dest.writeString(imagenHembra);
+        dest.writeTypedList(rasgosRaza);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<Raza> CREATOR = new Creator<Raza>() {
+        @Override
+        public Raza createFromParcel(Parcel in) {
+            return new Raza(in);
+        }
+
+        @Override
+        public Raza[] newArray(int size) {
+            return new Raza[size];
+        }
+    };
 
     /* =============== GETTERS & SETTERS =============== */
 
@@ -62,5 +113,29 @@ public class Raza implements OrdenablePorNombre {
 
     public void setVelocidad(int velocidad) {
         this.velocidad = velocidad;
+    }
+
+    public String getImagenVaron() {
+        return imagenVaron;
+    }
+
+    public void setImagenVaron(String imagenVaron) {
+        this.imagenVaron = imagenVaron;
+    }
+
+    public String getImagenHembra() {
+        return imagenHembra;
+    }
+
+    public void setImagenHembra(String imagenHembra) {
+        this.imagenHembra = imagenHembra;
+    }
+
+    public List<RasgoRaza> getRasgosRaza() {
+        return rasgosRaza;
+    }
+
+    public void setRasgosRaza(List<RasgoRaza> rasgosRaza) {
+        this.rasgosRaza = rasgosRaza;
     }
 }

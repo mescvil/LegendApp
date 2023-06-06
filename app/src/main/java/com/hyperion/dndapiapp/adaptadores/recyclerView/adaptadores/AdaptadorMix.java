@@ -80,7 +80,7 @@ public class AdaptadorMix extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
         if (viewType == ITEM_RAZA) {
             View view = layoutInflater.inflate(R.layout.item_lista_raza, parent, false);
-            return new RazaHolder(view);
+            return new RazaHolder(view, context, adaptadorMixClick);
         }
 
         if (viewType == ITEM_TRASFONDO) {

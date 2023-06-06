@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragmentos.fichas.enemigos.GeneralEnemigosFragment">
+
+    <ImageView
+        android:id="@+id/imagenFichaRaza"
+        android:layout_width="160dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:background="@color/fondoTarjeta"
+        android:scaleType="fitXY"
+        android:src="@drawable/icono_raza"
+        app:layout_constraintBottom_toBottomOf="@+id/constraintLayout3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/constraintLayout3" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="32dp"
+        android:background="@color/fondoClaro"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3">
+
+        <TextView
+            android:id="@+id/fichaEdadMaxX"
+            android:layout_width="135dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Esperanza de vida:"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/fichaEdadMax"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:text="Bestia"
+            android:textColor="@color/hint"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/fichaEdadMaxX"
+            app:layout_constraintStart_toEndOf="@+id/fichaEdadMaxX"
+            app:layout_constraintTop_toTopOf="@+id/fichaEdadMaxX" />
+
+        <TextView
+            android:id="@+id/fichaAlturaMinX"
+            android:layout_width="135dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Altura mínima:"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/fichaEdadMaxX"
+            app:layout_constraintTop_toBottomOf="@+id/fichaEdadMaxX" />
+
+        <TextView
+            android:id="@+id/fichaAlturaMin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:text="To grande"
+            android:textColor="@color/hint"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/fichaAlturaMinX"
+            app:layout_constraintStart_toEndOf="@+id/fichaAlturaMinX"
+            app:layout_constraintTop_toTopOf="@+id/fichaAlturaMinX" />
+
+        <TextView
+            android:id="@+id/fichaAlturaMaxX"
+            android:layout_width="135dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Altura máxima:"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/fichaAlturaMinX"
+            app:layout_constraintTop_toBottomOf="@+id/fichaAlturaMinX" />
+
+        <TextView
+            android:id="@+id/fichaVelocidadX"
+            android:layout_width="135dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Velocidad:"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/fichaAlturaMaxX"
+            app:layout_constraintTop_toBottomOf="@+id/fichaAlturaMax" />
+
+        <TextView
+            android:id="@+id/fichaAlturaMax"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="16dp"
+            android:text="No ve"
+            android:textColor="@color/hint"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/fichaAlturaMaxX"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/fichaAlturaMaxX"
+            app:layout_constraintTop_toTopOf="@+id/fichaAlturaMaxX"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/fichaVelocidad"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="16dp"
+            android:text="No ve"
+            android:textColor="@color/hint"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/fichaVelocidadX"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/fichaVelocidadX"
+            app:layout_constraintTop_toTopOf="@+id/fichaVelocidadX"
+            app:layout_constraintVertical_bias="0.0" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout3"
+        android:layout_width="0dp"
+        android:layout_height="250dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@color/fondoTarjeta"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/imagenFichaRaza"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:id="@+id/textoCambio"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="sans-serif"
+            android:text="Toca la imagen para alternar entre Masculino y Femenino"
+            android:textColor="@color/hint"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

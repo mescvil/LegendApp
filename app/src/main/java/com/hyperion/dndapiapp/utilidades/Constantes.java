@@ -16,6 +16,8 @@ public abstract class Constantes {
     public static final String TRASFONDO_COMPETENCIAS_BUNDLE = "trasfondosComp";
     public static final String ARMA_BUNDLE = "arma";
     public static final String ARMADURA_BUNDLE = "armadura";
+    public static final String RAZA_BUNDLE = "raza";
+    public static final String RASGOS_RAZA_BUNDLE = "rasgosRaza";
 
     /* ================= Actividades  ================= */
     public final static int ACTIVIDAD_LOGIN = 1;
@@ -34,6 +36,8 @@ public abstract class Constantes {
 
     /* ============== Url imagenes ============== */
     public static final String URL_BASE_IMAGEN_CRIATURAS = "https://raw.githubusercontent.com/mescvil/api-dnd/master/api/criaturas/";
+    public static final String URL_BASE_IMAGEN_RAZAS = "https://raw.githubusercontent.com/mescvil/api-dnd/master/api/razas/";
+    public static final String URL_BASE_IMAGEN_CLASES = "https://raw.githubusercontent.com/mescvil/api-dnd/master/api/clases/";
 
     /* ============== Tipo de item lista ============== */
     public static final int ITEM_ENEMIGO = 0;
