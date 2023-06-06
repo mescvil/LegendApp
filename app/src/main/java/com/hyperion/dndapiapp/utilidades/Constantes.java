@@ -14,6 +14,7 @@ public abstract class Constantes {
     public static final String HECHIZOS_BUNDLE = "hechizos";
     public static final String TRASFONDO_BUNDLE = "trasfondos";
     public static final String TRASFONDO_COMPETENCIAS_BUNDLE = "trasfondosComp";
+    public static final String ARMA_BUNDLE = "arma";
 
     /* ================= Actividades  ================= */
     public final static int ACTIVIDAD_LOGIN = 1;

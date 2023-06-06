@@ -75,7 +75,7 @@ public class AdaptadorMix extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
         if (viewType == ITEM_EQUIPAMIENTO) {
             View view = layoutInflater.inflate(R.layout.item_lista_equipamiento, parent, false);
-            return new EquipamientoHolder(view);
+            return new EquipamientoHolder(view, adaptadorMixClick);
         }
 
         if (viewType == ITEM_RAZA) {

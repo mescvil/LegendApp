@@ -1,9 +1,12 @@
 package com.hyperion.dndapiapp.entidades.equipamiento;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
 
 @SuppressWarnings("unused")
-public class Arma implements Equipamiento {
+public class Arma implements Equipamiento, Parcelable {
 
     @SerializedName("nombre")
     private String nombre;
@@ -21,6 +24,42 @@ public class Arma implements Equipamiento {
     /* =============== CONSTRUCTORES =============== */
 
     /* =============== METODOS =============== */
+
+    protected Arma(Parcel in) {
+        nombre = in.readString();
+        danio = in.readString();
+        dosManos = in.readByte() != 0;
+        arrojadiza = in.readByte() != 0;
+        propiedad = in.readString();
+        precio = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(nombre);
+        dest.writeString(danio);
+        dest.writeByte((byte) (dosManos ? 1 : 0));
+        dest.writeByte((byte) (arrojadiza ? 1 : 0));
+        dest.writeString(propiedad);
+        dest.writeString(precio);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<Arma> CREATOR = new Creator<Arma>() {
+        @Override
+        public Arma createFromParcel(Parcel in) {
+            return new Arma(in);
+        }
+
+        @Override
+        public Arma[] newArray(int size) {
+            return new Arma[size];
+        }
+    };
 
     /* =============== GETTERS & SETTERS =============== */
 
