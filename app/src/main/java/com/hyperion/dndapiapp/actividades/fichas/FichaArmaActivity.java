@@ -34,8 +34,8 @@ public class FichaArmaActivity extends AppCompatActivity {
     private void iniciaActividad() {
         binding.fichaArmaTitulo.setText(arma.getNombre());
         binding.fichaDanioArma.setText(arma.getDanio());
-        binding.fichaDosArmas.setText((arma.isDosManos()) ? "Si" : "No");
-        binding.fichaArrojadiza.setText((arma.isArrojadiza()) ? "Si" : "No");
+        binding.checkDosManos.setChecked(arma.isDosManos());
+        binding.checkArrojadiza.setChecked(arma.isArrojadiza());
         binding.fichaPrecioArma.setText(arma.getPrecio());
         binding.fichaPropiedadesArma.setText(arma.getPropiedad());
 

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:focusable="false"
     tools:context=".actividades.fichas.FichaHechizoActivity">
 
 
@@ -21,103 +22,125 @@
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout3">
 
         <TextView
-            android:id="@+id/fichaPropiedadesArma"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginEnd="16dp"
-            android:justificationMode="inter_word"
-            android:text="TextView"
-            android:textColor="@color/hint"
-            android:textColorHint="@color/hint"
-            app:layout_constraintBottom_toBottomOf="@+id/fichaPropieadesArmaX"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/fichaPropieadesArmaX"
-            app:layout_constraintTop_toTopOf="@+id/fichaPropieadesArmaX" />
-
-        <TextView
-            android:id="@+id/fichaPropieadesArmaX"
-            android:layout_width="90dp"
+            android:id="@+id/fichaDesventaja"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Propiedades:"
-            app:layout_constraintStart_toStartOf="@+id/fichaPrecioArmaX"
-            app:layout_constraintTop_toBottomOf="@+id/fichaPrecioArmaX" />
-
-        <TextView
-            android:id="@+id/fichaDosManosX"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:text="Dos manos:"
+            android:text="Desventaja en sigilo:"
             android:textSize="14sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toStartOf="@+id/fichaFuerzaReqX"
+            app:layout_constraintTop_toBottomOf="@+id/fichaFuerzaReqX" />
 
         <TextView
-            android:id="@+id/fichaArrojadizaX"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Arrojadiza:"
-            android:textSize="14sp"
-            app:layout_constraintStart_toStartOf="@+id/fichaDosManosX"
-            app:layout_constraintTop_toBottomOf="@+id/fichaDosManosX" />
-
-        <TextView
-            android:id="@+id/fichaPrecioArmaX"
-            android:layout_width="90dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Precio:"
-            android:textSize="14sp"
-            app:layout_constraintStart_toStartOf="@+id/fichaArrojadizaX"
-            app:layout_constraintTop_toBottomOf="@+id/fichaArrojadizaX" />
-
-        <TextView
-            android:id="@+id/fichaPrecioArma"
+            android:id="@+id/fichaFuerzaReq"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:text="100000"
             android:textColor="@color/hint"
             android:textSize="14sp"
-            app:layout_constraintBottom_toBottomOf="@+id/fichaPrecioArmaX"
-            app:layout_constraintStart_toEndOf="@+id/fichaPrecioArmaX"
-            app:layout_constraintTop_toTopOf="@+id/fichaPrecioArmaX" />
+            app:layout_constraintBottom_toBottomOf="@+id/fichaFuerzaReqX"
+            app:layout_constraintStart_toEndOf="@+id/fichaFuerzaReqX"
+            app:layout_constraintTop_toTopOf="@+id/fichaFuerzaReqX" />
+
+        <TextView
+            android:id="@+id/fichaPesoArmaduraX"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Peso:"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/fichaPesoArmadura"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:text="100000"
+            android:textColor="@color/hint"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/fichaPesoArmaduraX"
+            app:layout_constraintStart_toEndOf="@+id/fichaPesoArmaduraX"
+            app:layout_constraintTop_toTopOf="@+id/fichaPesoArmaduraX" />
+
+        <TextView
+            android:id="@+id/fichaTipoArmaduraX"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Tipo:"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/fichaPesoArmaduraX"
+            app:layout_constraintTop_toBottomOf="@+id/fichaPesoArmaduraX" />
+
+        <TextView
+            android:id="@+id/fichaTipoArmadura"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:text="100000"
+            android:textColor="@color/hint"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/fichaTipoArmaduraX"
+            app:layout_constraintStart_toEndOf="@+id/fichaTipoArmaduraX"
+            app:layout_constraintTop_toTopOf="@+id/fichaTipoArmaduraX" />
+
+        <TextView
+            android:id="@+id/fichaPrecioArmadura"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:text="100000"
+            android:textColor="@color/hint"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/fichaPrecioArmaduraX"
+            app:layout_constraintStart_toEndOf="@+id/fichaPrecioArmaduraX"
+            app:layout_constraintTop_toTopOf="@+id/fichaPrecioArmaduraX" />
+
+        <TextView
+            android:id="@+id/fichaPrecioArmaduraX"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Precio:"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/fichaTipoArmaduraX"
+            app:layout_constraintTop_toBottomOf="@+id/fichaTipoArmaduraX" />
+
+        <TextView
+            android:id="@+id/fichaFuerzaReqX"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Fuerza requerida:"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/fichaTipoArmaduraX"
+            app:layout_constraintTop_toBottomOf="@+id/fichaPrecioArmaduraX" />
 
         <CheckBox
-            android:id="@+id/checkDosManos"
+            android:id="@+id/checkSigilo"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:clickable="false"
             android:focusable="false"
+            android:textColorHighlight="@color/white"
             app:buttonIconTint="@color/white"
-            app:layout_constraintBottom_toBottomOf="@+id/fichaDosManosX"
-            app:layout_constraintStart_toEndOf="@+id/fichaDosManosX"
-            app:layout_constraintTop_toTopOf="@+id/fichaDosManosX" />
-
-        <CheckBox
-            android:id="@+id/checkArrojadiza"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:clickable="false"
-            android:focusable="false"
-            app:buttonIconTint="@color/white"
-            app:layout_constraintBottom_toBottomOf="@+id/fichaArrojadizaX"
-            app:layout_constraintStart_toEndOf="@+id/fichaArrojadizaX"
-            app:layout_constraintTop_toTopOf="@+id/fichaArrojadizaX" />
+            app:layout_constraintBottom_toBottomOf="@+id/fichaDesventaja"
+            app:layout_constraintStart_toEndOf="@+id/fichaDesventaja"
+            app:layout_constraintTop_toTopOf="@+id/fichaDesventaja" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageView
-        android:id="@+id/imagenFichaArma"
+        android:id="@+id/imagenFichaArmadura"
         android:layout_width="150dp"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
         android:background="@color/fondoTarjeta"
         android:scaleType="fitCenter"
-        android:src="@drawable/icono_equipamiento"
+        android:src="@drawable/icono_armadura"
         app:layout_constraintBottom_toBottomOf="@+id/constraintLayout3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/constraintLayout3"
@@ -132,23 +155,23 @@
         android:background="@color/fondoTarjeta"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/imagenFichaArma"
+        app:layout_constraintStart_toEndOf="@+id/imagenFichaArmadura"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout4">
 
         <TextView
-            android:id="@+id/fichaDanioArmaX"
+            android:id="@+id/fichaCAX"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:fontFamily="sans-serif"
-            android:text="Daño:"
+            android:text="CA:"
             android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/fichaDanioArma"
+            android:id="@+id/fichaCA"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
@@ -156,11 +179,11 @@
             android:fontFamily="sans-serif"
             android:text="12"
             android:textColor="@color/hint"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="@+id/fichaDanioArmaX"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/fichaCAX"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/fichaDanioArmaX"
-            app:layout_constraintTop_toTopOf="@+id/fichaDanioArmaX" />
+            app:layout_constraintStart_toEndOf="@+id/fichaCAX"
+            app:layout_constraintTop_toTopOf="@+id/fichaCAX" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -174,7 +197,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageButton
-            android:id="@+id/botonAtrasFichaArma"
+            android:id="@+id/botonAtrasFichaArmadura"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="16dp"
@@ -191,10 +214,10 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/fichaArmaTitulo"
+            android:id="@+id/fichaArmaduraTitulo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nombre arma"
+            android:text="Nombre armadura"
             android:textColor="@color/white"
             android:textSize="16sp"
             android:textStyle="bold"

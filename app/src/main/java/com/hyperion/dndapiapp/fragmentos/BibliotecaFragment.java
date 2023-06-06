@@ -1,5 +1,6 @@
 package com.hyperion.dndapiapp.fragmentos;
 
+import static com.hyperion.dndapiapp.utilidades.Constantes.ARMADURA_BUNDLE;
 import static com.hyperion.dndapiapp.utilidades.Constantes.ARMA_BUNDLE;
 import static com.hyperion.dndapiapp.utilidades.Constantes.ENEMIGO_BUNDLE;
 import static com.hyperion.dndapiapp.utilidades.Constantes.HECHIZOS_BUNDLE;
@@ -34,6 +35,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.hyperion.dndapiapp.R;
 import com.hyperion.dndapiapp.actividades.fichas.FichaArmaActivity;
+import com.hyperion.dndapiapp.actividades.fichas.FichaArmaduraActivity;
 import com.hyperion.dndapiapp.actividades.fichas.FichaEnemigoActivity;
 import com.hyperion.dndapiapp.actividades.fichas.FichaHechizoActivity;
 import com.hyperion.dndapiapp.actividades.fichas.FichaTrasfondoActivity;
@@ -509,6 +511,11 @@ public class BibliotecaFragment extends Fragment implements AdaptadorMixClick {
         } else if (objeto instanceof Arma) {
             Intent intent = new Intent(getContext(), FichaArmaActivity.class);
             intent.putExtra(ARMA_BUNDLE, (Arma) objeto);
+            startActivity(intent);
+
+        } else if (objeto instanceof Armadura) {
+            Intent intent = new Intent(getContext(), FichaArmaduraActivity.class);
+            intent.putExtra(ARMADURA_BUNDLE, (Armadura) objeto);
             startActivity(intent);
         }
     }
