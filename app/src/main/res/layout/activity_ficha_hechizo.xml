@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".actividades.fichas.FichaHechizoActivity">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="32dp"
+        android:background="@color/fondoClaro"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3">
+
+        <TextView
+            android:id="@+id/fichaSalvacionX"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Tirada de salvación:"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/fichaDescX"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Descripción"
+            app:layout_constraintStart_toStartOf="@+id/fichaSalvacionX"
+            app:layout_constraintTop_toBottomOf="@+id/fichaSalvacionX" />
+
+        <TextView
+            android:id="@+id/fichaSalvacion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:text="TextView"
+            android:textColor="@color/hint"
+            app:layout_constraintBottom_toBottomOf="@+id/fichaSalvacionX"
+            app:layout_constraintStart_toEndOf="@+id/fichaSalvacionX"
+            app:layout_constraintTop_toTopOf="@+id/fichaSalvacionX" />
+
+        <TextView
+            android:id="@+id/fichaDesc"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:justificationMode="inter_word"
+            android:text="TextView"
+            android:textColor="@color/hint"
+            android:textColorHint="@color/hint"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fichaDescX" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/imagenFichaHechizo"
+        android:layout_width="150dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:background="@color/fondoTarjeta"
+        android:scaleType="fitCenter"
+        android:src="@drawable/icono_hechizos"
+        app:layout_constraintBottom_toBottomOf="@+id/constraintLayout3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/constraintLayout3"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@color/fondoTarjeta"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/imagenFichaHechizo"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout4">
+
+        <TextView
+            android:id="@+id/fichaLanzamiento"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:text="100000"
+            android:textColor="@color/hint"
+            app:layout_constraintBottom_toBottomOf="@+id/fichaLanzamientoX"
+            app:layout_constraintStart_toEndOf="@+id/fichaLanzamientoX"
+            app:layout_constraintTop_toTopOf="@+id/fichaLanzamientoX" />
+
+        <TextView
+            android:id="@+id/fichaLanzamientoX"
+            android:layout_width="77dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            android:text="Lazamiento:"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/fichaDuracionX"
+            app:layout_constraintTop_toBottomOf="@+id/fichaDuracion" />
+
+        <TextView
+            android:id="@+id/fichaDuracion"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="16dp"
+            android:text="100000"
+            android:textColor="@color/hint"
+            app:layout_constraintBottom_toBottomOf="@+id/fichaDuracionX"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/fichaDuracionX"
+            app:layout_constraintTop_toTopOf="@+id/fichaDuracionX"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/fichaAlcanceX"
+            android:layout_width="77dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Alcance:"
+            app:layout_constraintStart_toStartOf="@+id/fichaNivelX"
+            app:layout_constraintTop_toBottomOf="@+id/fichaNivelX" />
+
+        <TextView
+            android:id="@+id/fichaDuracionX"
+            android:layout_width="77dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Duración:"
+            app:layout_constraintStart_toStartOf="@+id/fichaAlcanceX"
+            app:layout_constraintTop_toBottomOf="@+id/fichaAlcanceX" />
+
+        <TextView
+            android:id="@+id/fichaNivelX"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="sans-serif"
+            android:text="Nivel:"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/fichaNivel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:fontFamily="sans-serif"
+            android:text="12"
+            android:textColor="@color/azulHechizo"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/fichaNivelX"
+            app:layout_constraintStart_toEndOf="@+id/fichaNivelX"
+            app:layout_constraintTop_toTopOf="@+id/fichaNivelX" />
+
+        <TextView
+            android:id="@+id/fichaAlcance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:text="100000"
+            android:textColor="@color/hint"
+            app:layout_constraintBottom_toBottomOf="@+id/fichaAlcanceX"
+            app:layout_constraintStart_toEndOf="@+id/fichaAlcanceX"
+            app:layout_constraintTop_toTopOf="@+id/fichaAlcanceX" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:text="pies"
+            android:textColor="@color/hint"
+            app:layout_constraintBottom_toBottomOf="@+id/fichaAlcance"
+            app:layout_constraintStart_toEndOf="@+id/fichaAlcance"
+            app:layout_constraintTop_toTopOf="@+id/fichaAlcance" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/fondoClaro"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/botonAtrasFichaHehizo"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/flecha_atras"
+            android:backgroundTint="#FFFFFF"
+            android:contentDescription=" "
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/fichaHechizoTitulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nombre hezhizo"
+            android:textColor="@color/azulHechizo"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

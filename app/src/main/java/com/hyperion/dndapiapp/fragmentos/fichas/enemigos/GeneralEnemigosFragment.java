@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -55,7 +54,6 @@ public class GeneralEnemigosFragment extends Fragment {
                 .load(URL_BASE_IMAGEN_CRIATURAS + enemigo.getUrlImagen())
                 .into(binding.imagenFichaEnemigo);
 
-        binding.nombreFichaEnemigo.setText(enemigo.getNombre());
         binding.fichaAC.setText(String.valueOf(enemigo.getClaseArmadura()));
         binding.fichaHP.setText(String.valueOf(enemigo.getPuntosGolpe()));
 

@@ -1,6 +1,7 @@
 package com.hyperion.dndapiapp.fragmentos;
 
 import static com.hyperion.dndapiapp.utilidades.Constantes.ENEMIGO_BUNDLE;
+import static com.hyperion.dndapiapp.utilidades.Constantes.HECHIZOS_BUNDLE;
 import static com.hyperion.dndapiapp.utilidades.Constantes.POSICION_CLASES;
 import static com.hyperion.dndapiapp.utilidades.Constantes.POSICION_COMPETENCIAS;
 import static com.hyperion.dndapiapp.utilidades.Constantes.POSICION_ENEMIGOS;
@@ -31,6 +32,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.hyperion.dndapiapp.R;
 import com.hyperion.dndapiapp.actividades.fichas.FichaEnemigoActivity;
+import com.hyperion.dndapiapp.actividades.fichas.FichaHechizoActivity;
 import com.hyperion.dndapiapp.adaptadores.recyclerView.AdaptadorMixClick;
 import com.hyperion.dndapiapp.adaptadores.recyclerView.adaptadores.AdaptadorMix;
 import com.hyperion.dndapiapp.databinding.FragmentBibliotecaBinding;
@@ -479,14 +481,22 @@ public class BibliotecaFragment extends Fragment implements AdaptadorMixClick {
 
     @Override
     public void onCosaCliked(int posicion) {
-        Intent intent = new Intent(getContext(), FichaEnemigoActivity.class);
         OrdenablePorNombre objeto = adaptadorMix.getObjeto(posicion);
 
         if (objeto instanceof Enemigo) {
+            Intent intent = new Intent(getContext(), FichaEnemigoActivity.class);
             intent.putExtra(ENEMIGO_BUNDLE, (Enemigo) objeto);
+            startActivity(intent);
+
+        } else if (objeto instanceof Competencia) {
+            Toast.makeText(getContext(), "Es autoexplicativo =)", Toast.LENGTH_SHORT).show();
+
+        } else if (objeto instanceof Hechizo) {
+            Intent intent = new Intent(getContext(), FichaHechizoActivity.class);
+            intent.putExtra(HECHIZOS_BUNDLE, (Hechizo) objeto);
+            startActivity(intent);
         }
 
-        startActivity(intent);
     }
 
     private class OurTextWatcher implements TextWatcher {

@@ -7,16 +7,24 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.hyperion.dndapiapp.R;
+import com.hyperion.dndapiapp.adaptadores.recyclerView.AdaptadorMixClick;
 import com.hyperion.dndapiapp.entidades.competencias.Competencia;
 
 public class CompetenciaHolder extends RecyclerView.ViewHolder {
 
     private TextView nombre;
 
-    public CompetenciaHolder(@NonNull View itemView) {
+    public CompetenciaHolder(@NonNull View itemView, AdaptadorMixClick adaptadorMixClick) {
         super(itemView);
 
         nombre = itemView.findViewById(R.id.textViewNombreCompetencia);
+
+        itemView.setOnClickListener(v -> {
+            int posicion = getAdapterPosition();
+            if (posicion != RecyclerView.NO_POSITION) {
+                adaptadorMixClick.onCosaCliked(posicion);
+            }
+        });
     }
 
     public void bindItem(Competencia competencia) {

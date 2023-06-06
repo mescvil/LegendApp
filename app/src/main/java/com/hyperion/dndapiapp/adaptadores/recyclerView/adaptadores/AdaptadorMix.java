@@ -65,7 +65,7 @@ public class AdaptadorMix extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
         if (viewType == ITEM_HECHIZO) {
             View view = layoutInflater.inflate(R.layout.item_lista_hechizo, parent, false);
-            return new HechizoHolder(view);
+            return new HechizoHolder(view, adaptadorMixClick);
         }
 
         if (viewType == ITEM_CLASE) {
@@ -90,11 +90,11 @@ public class AdaptadorMix extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
         if (viewType == ITEM_COMPENTENCIA) {
             View view = layoutInflater.inflate(R.layout.item_lista_competencia, parent, false);
-            return new CompetenciaHolder(view);
+            return new CompetenciaHolder(view, adaptadorMixClick);
         }
 
         View view = layoutInflater.inflate(R.layout.item_lista_null, parent, false);
-        return new HechizoHolder(view);
+        return new HechizoHolder(view, adaptadorMixClick);
     }
 
     @Override

@@ -1,10 +1,13 @@
 package com.hyperion.dndapiapp.entidades.equipamiento;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
 import com.hyperion.dndapiapp.utilidades.OrdenablePorNombre;
 
 @SuppressWarnings("unused")
-public class Hechizo implements OrdenablePorNombre {
+public class Hechizo implements OrdenablePorNombre, Parcelable {
 
     @SerializedName("nombre")
     private String nombre;
@@ -24,6 +27,44 @@ public class Hechizo implements OrdenablePorNombre {
     /* =============== CONSTRUCTORES =============== */
 
     /* =============== METODOS =============== */
+
+    protected Hechizo(Parcel in) {
+        nombre = in.readString();
+        descripcion = in.readString();
+        nivel = in.readInt();
+        tiempoLanzamiento = in.readString();
+        alcance = in.readInt();
+        duracion = in.readString();
+        tiradaSalvacion = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(nombre);
+        dest.writeString(descripcion);
+        dest.writeInt(nivel);
+        dest.writeString(tiempoLanzamiento);
+        dest.writeInt(alcance);
+        dest.writeString(duracion);
+        dest.writeString(tiradaSalvacion);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<Hechizo> CREATOR = new Creator<Hechizo>() {
+        @Override
+        public Hechizo createFromParcel(Parcel in) {
+            return new Hechizo(in);
+        }
+
+        @Override
+        public Hechizo[] newArray(int size) {
+            return new Hechizo[size];
+        }
+    };
 
     /* =============== GETTERS & SETTERS =============== */
 

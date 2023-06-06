@@ -11,6 +11,7 @@ public abstract class Constantes {
     public static final String ENEMIGO_BUNDLE = "enemigo";
     public static final String RASGOS_ENEMIGOS_BUNDLE = "ragosEnemigos";
     public static final String ACCIONES_ENEMIGOS_BUNDLE = "accionesEnemigos";
+    public static final String HECHIZOS_BUNDLE = "hechizos";
 
     /* ================= Actividades  ================= */
     public final static int ACTIVIDAD_LOGIN = 1;
