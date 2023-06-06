@@ -1,5 +1,6 @@
 package com.hyperion.dndapiapp.fragmentos;
 
+import static com.hyperion.dndapiapp.utilidades.Constantes.ENEMIGO_BUNDLE;
 import static com.hyperion.dndapiapp.utilidades.Constantes.POSICION_CLASES;
 import static com.hyperion.dndapiapp.utilidades.Constantes.POSICION_COMPETENCIAS;
 import static com.hyperion.dndapiapp.utilidades.Constantes.POSICION_ENEMIGOS;
@@ -11,6 +12,7 @@ import static com.hyperion.dndapiapp.utilidades.Constantes.filtros;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -28,7 +30,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.hyperion.dndapiapp.R;
-import com.hyperion.dndapiapp.adaptadores.AdaptadorMix;
+import com.hyperion.dndapiapp.actividades.fichas.FichaEnemigoActivity;
+import com.hyperion.dndapiapp.adaptadores.recyclerView.AdaptadorMixClick;
+import com.hyperion.dndapiapp.adaptadores.recyclerView.adaptadores.AdaptadorMix;
 import com.hyperion.dndapiapp.databinding.FragmentBibliotecaBinding;
 import com.hyperion.dndapiapp.dialogos.LoadingDialog;
 import com.hyperion.dndapiapp.entidades.clases.Clase;
@@ -55,7 +59,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class BibliotecaFragment extends Fragment {
+public class BibliotecaFragment extends Fragment implements AdaptadorMixClick {
 
     /* Utiles */
     private final boolean[] filtrosSeleccionados;
@@ -185,7 +189,7 @@ public class BibliotecaFragment extends Fragment {
         this.loadingDialog = new LoadingDialog(getContext());
         this.titulo = binding.tituloBusqueda;
 
-        adaptadorMix = new AdaptadorMix(getContext());
+        adaptadorMix = new AdaptadorMix(getContext(), this);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
 
         recyclerView = binding.listaBiblioteca;
@@ -471,6 +475,18 @@ public class BibliotecaFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+    @Override
+    public void onCosaCliked(int posicion) {
+        Intent intent = new Intent(getContext(), FichaEnemigoActivity.class);
+        OrdenablePorNombre objeto = adaptadorMix.getObjeto(posicion);
+
+        if (objeto instanceof Enemigo) {
+            intent.putExtra(ENEMIGO_BUNDLE, (Enemigo) objeto);
+        }
+
+        startActivity(intent);
     }
 
     private class OurTextWatcher implements TextWatcher {

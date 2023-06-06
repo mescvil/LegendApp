@@ -1,4 +1,4 @@
-package com.hyperion.dndapiapp.adaptadores;
+package com.hyperion.dndapiapp.adaptadores.recyclerView.holders;
 
 import android.annotation.SuppressLint;
 import android.view.View;

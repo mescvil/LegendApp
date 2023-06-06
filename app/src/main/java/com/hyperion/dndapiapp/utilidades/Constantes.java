@@ -8,6 +8,9 @@ public abstract class Constantes {
     public static final String PASS_USUARIO_BUNDLE = "pass";
     public static final String CIERRA_SESION_BUNDLE = "cierraSesion";
     public static final String USUARIO_BUNDLE = "usuario";
+    public static final String ENEMIGO_BUNDLE = "enemigo";
+    public static final String RASGOS_ENEMIGOS_BUNDLE = "ragosEnemigos";
+    public static final String ACCIONES_ENEMIGOS_BUNDLE = "accionesEnemigos";
 
     /* ================= Actividades  ================= */
     public final static int ACTIVIDAD_LOGIN = 1;

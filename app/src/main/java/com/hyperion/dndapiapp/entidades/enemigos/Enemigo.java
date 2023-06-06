@@ -1,13 +1,15 @@
 package com.hyperion.dndapiapp.entidades.enemigos;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
 import com.hyperion.dndapiapp.utilidades.OrdenablePorNombre;
 
 import java.util.List;
 
 @SuppressWarnings("unused")
-public class Enemigo implements OrdenablePorNombre {
-
+public class Enemigo implements OrdenablePorNombre, Parcelable {
     @SerializedName("nombre")
     private String nombre;
     @SerializedName("imagen")
@@ -50,6 +52,68 @@ public class Enemigo implements OrdenablePorNombre {
     /* =============== CONSTRUCTORES =============== */
 
     /* =============== METODOS =============== */
+
+    protected Enemigo(Parcel in) {
+        nombre = in.readString();
+        urlImagen = in.readString();
+        alineamiento = in.readString();
+        tipo = in.readString();
+        tamanio = in.readString();
+        idiomas = in.readString();
+        sentidos = in.readString();
+        habilidades = in.readString();
+        rasgoEnemigos = in.createTypedArrayList(RasgoEnemigo.CREATOR);
+        acciones = in.createTypedArrayList(Accion.CREATOR);
+        desafio = in.readFloat();
+        claseArmadura = in.readInt();
+        puntosGolpe = in.readInt();
+        fuerza = in.readInt();
+        destreza = in.readInt();
+        constitucion = in.readInt();
+        inteligencia = in.readInt();
+        sabiduria = in.readInt();
+        carisma = in.readInt();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(nombre);
+        dest.writeString(urlImagen);
+        dest.writeString(alineamiento);
+        dest.writeString(tipo);
+        dest.writeString(tamanio);
+        dest.writeString(idiomas);
+        dest.writeString(sentidos);
+        dest.writeString(habilidades);
+        dest.writeTypedList(rasgoEnemigos);
+        dest.writeTypedList(acciones);
+        dest.writeFloat(desafio);
+        dest.writeInt(claseArmadura);
+        dest.writeInt(puntosGolpe);
+        dest.writeInt(fuerza);
+        dest.writeInt(destreza);
+        dest.writeInt(constitucion);
+        dest.writeInt(inteligencia);
+        dest.writeInt(sabiduria);
+        dest.writeInt(carisma);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<Enemigo> CREATOR = new Creator<Enemigo>() {
+        @Override
+        public Enemigo createFromParcel(Parcel in) {
+            return new Enemigo(in);
+        }
+
+        @Override
+        public Enemigo[] newArray(int size) {
+            return new Enemigo[size];
+        }
+    };
 
     /* =============== GETTERS & SETTERS =============== */
 
@@ -204,4 +268,5 @@ public class Enemigo implements OrdenablePorNombre {
     public void setCarisma(int carisma) {
         this.carisma = carisma;
     }
+
 }

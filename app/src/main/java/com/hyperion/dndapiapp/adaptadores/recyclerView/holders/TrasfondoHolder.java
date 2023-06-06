@@ -1,4 +1,4 @@
-package com.hyperion.dndapiapp.adaptadores;
+package com.hyperion.dndapiapp.adaptadores.recyclerView.holders;
 
 import android.view.View;
 import android.widget.TextView;

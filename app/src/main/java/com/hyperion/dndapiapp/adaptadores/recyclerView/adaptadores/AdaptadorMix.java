@@ -1,4 +1,4 @@
-package com.hyperion.dndapiapp.adaptadores;
+package com.hyperion.dndapiapp.adaptadores.recyclerView.adaptadores;
 
 import static com.hyperion.dndapiapp.utilidades.Constantes.ITEM_CLASE;
 import static com.hyperion.dndapiapp.utilidades.Constantes.ITEM_COMPENTENCIA;
@@ -19,6 +19,14 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.hyperion.dndapiapp.R;
+import com.hyperion.dndapiapp.adaptadores.recyclerView.AdaptadorMixClick;
+import com.hyperion.dndapiapp.adaptadores.recyclerView.holders.ClaseHolder;
+import com.hyperion.dndapiapp.adaptadores.recyclerView.holders.CompetenciaHolder;
+import com.hyperion.dndapiapp.adaptadores.recyclerView.holders.EnemigoHolder;
+import com.hyperion.dndapiapp.adaptadores.recyclerView.holders.EquipamientoHolder;
+import com.hyperion.dndapiapp.adaptadores.recyclerView.holders.HechizoHolder;
+import com.hyperion.dndapiapp.adaptadores.recyclerView.holders.RazaHolder;
+import com.hyperion.dndapiapp.adaptadores.recyclerView.holders.TrasfondoHolder;
 import com.hyperion.dndapiapp.entidades.clases.Clase;
 import com.hyperion.dndapiapp.entidades.competencias.Competencia;
 import com.hyperion.dndapiapp.entidades.enemigos.Enemigo;
@@ -34,13 +42,15 @@ import java.util.List;
 @SuppressLint("NotifyDataSetChanged")
 public class AdaptadorMix extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private final Context context;
+    private final AdaptadorMixClick adaptadorMixClick;
     private List<OrdenablePorNombre> elementos;
     private List<OrdenablePorNombre> elementosBackup;
 
-    public AdaptadorMix(Context context) {
+    public AdaptadorMix(Context context, AdaptadorMixClick adaptadorMixClick) {
         this.elementos = new ArrayList<>();
         elementosBackup = new ArrayList<>();
         this.context = context;
+        this.adaptadorMixClick = adaptadorMixClick;
     }
 
     @NonNull
@@ -50,7 +60,7 @@ public class AdaptadorMix extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
         if (viewType == ITEM_ENEMIGO) {
             View view = layoutInflater.inflate(R.layout.item_lista_enemigo, parent, false);
-            return new EnemigoHolder(view);
+            return new EnemigoHolder(view, adaptadorMixClick);
         }
 
         if (viewType == ITEM_HECHIZO) {
@@ -134,6 +144,10 @@ public class AdaptadorMix extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     @Override
     public int getItemCount() {
         return elementos.size();
+    }
+
+    public OrdenablePorNombre getObjeto(int posicion) {
+        return elementos.get(posicion);
     }
 
     @Override
