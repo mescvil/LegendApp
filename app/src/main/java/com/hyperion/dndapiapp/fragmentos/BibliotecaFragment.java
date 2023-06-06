@@ -9,6 +9,7 @@ import static com.hyperion.dndapiapp.utilidades.Constantes.POSICION_EQUIPAMIENTO
 import static com.hyperion.dndapiapp.utilidades.Constantes.POSICION_HECHIZOS;
 import static com.hyperion.dndapiapp.utilidades.Constantes.POSICION_RAZAS;
 import static com.hyperion.dndapiapp.utilidades.Constantes.POSICION_TRASFONDOS;
+import static com.hyperion.dndapiapp.utilidades.Constantes.TRASFONDO_COMPETENCIAS_BUNDLE;
 import static com.hyperion.dndapiapp.utilidades.Constantes.filtros;
 
 import android.annotation.SuppressLint;
@@ -33,6 +34,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.hyperion.dndapiapp.R;
 import com.hyperion.dndapiapp.actividades.fichas.FichaEnemigoActivity;
 import com.hyperion.dndapiapp.actividades.fichas.FichaHechizoActivity;
+import com.hyperion.dndapiapp.actividades.fichas.FichaTrasfondoActivity;
 import com.hyperion.dndapiapp.adaptadores.recyclerView.AdaptadorMixClick;
 import com.hyperion.dndapiapp.adaptadores.recyclerView.adaptadores.AdaptadorMix;
 import com.hyperion.dndapiapp.databinding.FragmentBibliotecaBinding;
@@ -61,6 +63,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+@SuppressWarnings("deprecation")
 public class BibliotecaFragment extends Fragment implements AdaptadorMixClick {
 
     /* Utiles */
@@ -490,6 +493,12 @@ public class BibliotecaFragment extends Fragment implements AdaptadorMixClick {
 
         } else if (objeto instanceof Competencia) {
             Toast.makeText(getContext(), "Es autoexplicativo =)", Toast.LENGTH_SHORT).show();
+
+        } else if (objeto instanceof Trasfondo) {
+            Intent intent = new Intent(getContext(), FichaTrasfondoActivity.class);
+            intent.putExtra(TRASFONDO_COMPETENCIAS_BUNDLE, (Trasfondo) objeto);
+            startActivity(intent);
+
 
         } else if (objeto instanceof Hechizo) {
             Intent intent = new Intent(getContext(), FichaHechizoActivity.class);

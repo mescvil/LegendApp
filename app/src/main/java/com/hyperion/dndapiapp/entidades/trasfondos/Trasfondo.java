@@ -1,12 +1,15 @@
 package com.hyperion.dndapiapp.entidades.trasfondos;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
 import com.hyperion.dndapiapp.entidades.competencias.Competencia;
 import com.hyperion.dndapiapp.utilidades.OrdenablePorNombre;
 
 import java.util.List;
 
-public class Trasfondo implements OrdenablePorNombre {
+public class Trasfondo implements OrdenablePorNombre, Parcelable {
 
     @SerializedName("nombre")
     private String nombre;
@@ -18,6 +21,36 @@ public class Trasfondo implements OrdenablePorNombre {
     /* =============== CONSTRUCTORES =============== */
 
     /* =============== METODOS =============== */
+
+    protected Trasfondo(Parcel in) {
+        nombre = in.readString();
+        descripcion = in.readString();
+        competencias = in.createTypedArrayList(Competencia.CREATOR);
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(nombre);
+        dest.writeString(descripcion);
+        dest.writeTypedList(competencias);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<Trasfondo> CREATOR = new Creator<Trasfondo>() {
+        @Override
+        public Trasfondo createFromParcel(Parcel in) {
+            return new Trasfondo(in);
+        }
+
+        @Override
+        public Trasfondo[] newArray(int size) {
+            return new Trasfondo[size];
+        }
+    };
 
     /* =============== GETTERS & SETTERS =============== */
 

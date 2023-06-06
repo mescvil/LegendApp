@@ -85,7 +85,7 @@ public class AdaptadorMix extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
         if (viewType == ITEM_TRASFONDO) {
             View view = layoutInflater.inflate(R.layout.item_lista_trasfondo, parent, false);
-            return new TrasfondoHolder(view);
+            return new TrasfondoHolder(view, adaptadorMixClick);
         }
 
         if (viewType == ITEM_COMPENTENCIA) {
