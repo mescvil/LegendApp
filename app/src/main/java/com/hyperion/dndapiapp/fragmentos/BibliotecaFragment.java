@@ -2,6 +2,7 @@ package com.hyperion.dndapiapp.fragmentos;
 
 import static com.hyperion.dndapiapp.utilidades.Constantes.ARMADURA_BUNDLE;
 import static com.hyperion.dndapiapp.utilidades.Constantes.ARMA_BUNDLE;
+import static com.hyperion.dndapiapp.utilidades.Constantes.CLASE_BUNDLE;
 import static com.hyperion.dndapiapp.utilidades.Constantes.ENEMIGO_BUNDLE;
 import static com.hyperion.dndapiapp.utilidades.Constantes.HECHIZOS_BUNDLE;
 import static com.hyperion.dndapiapp.utilidades.Constantes.POSICION_CLASES;
@@ -37,6 +38,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.hyperion.dndapiapp.R;
 import com.hyperion.dndapiapp.actividades.fichas.FichaArmaActivity;
 import com.hyperion.dndapiapp.actividades.fichas.FichaArmaduraActivity;
+import com.hyperion.dndapiapp.actividades.fichas.FichaClaseAcitivity;
 import com.hyperion.dndapiapp.actividades.fichas.FichaEnemigoActivity;
 import com.hyperion.dndapiapp.actividades.fichas.FichaHechizoActivity;
 import com.hyperion.dndapiapp.actividades.fichas.FichaRazaActivity;
@@ -523,6 +525,11 @@ public class BibliotecaFragment extends Fragment implements AdaptadorMixClick {
         } else if (objeto instanceof Raza) {
             Intent intent = new Intent(getContext(), FichaRazaActivity.class);
             intent.putExtra(RAZA_BUNDLE, (Raza) objeto);
+            startActivity(intent);
+
+        } else if (objeto instanceof Clase) {
+            Intent intent = new Intent(getContext(), FichaClaseAcitivity.class);
+            intent.putExtra(CLASE_BUNDLE, (Clase) objeto);
             startActivity(intent);
         }
     }

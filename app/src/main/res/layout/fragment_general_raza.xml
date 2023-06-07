@@ -46,7 +46,7 @@
             android:id="@+id/fichaEdadMax"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
+            android:layout_marginStart="6dp"
             android:text="Bestia"
             android:textColor="@color/hint"
             android:textSize="16sp"
@@ -68,7 +68,7 @@
             android:id="@+id/fichaAlturaMin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
+            android:layout_marginStart="6dp"
             android:text="To grande"
             android:textColor="@color/hint"
             android:textSize="16sp"
@@ -87,20 +87,10 @@
             app:layout_constraintTop_toBottomOf="@+id/fichaAlturaMinX" />
 
         <TextView
-            android:id="@+id/fichaVelocidadX"
-            android:layout_width="135dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Velocidad:"
-            android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="@+id/fichaAlturaMaxX"
-            app:layout_constraintTop_toBottomOf="@+id/fichaAlturaMax" />
-
-        <TextView
             android:id="@+id/fichaAlturaMax"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
+            android:layout_marginStart="6dp"
             android:layout_marginEnd="16dp"
             android:text="No ve"
             android:textColor="@color/hint"
@@ -112,20 +102,6 @@
             app:layout_constraintTop_toTopOf="@+id/fichaAlturaMaxX"
             app:layout_constraintVertical_bias="0.0" />
 
-        <TextView
-            android:id="@+id/fichaVelocidad"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginEnd="16dp"
-            android:text="No ve"
-            android:textColor="@color/hint"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="@+id/fichaVelocidadX"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/fichaVelocidadX"
-            app:layout_constraintTop_toTopOf="@+id/fichaVelocidadX"
-            app:layout_constraintVertical_bias="0.0" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -147,15 +123,38 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
             android:fontFamily="sans-serif"
             android:text="Toca la imagen para alternar entre Masculino y Femenino"
             android:textColor="@color/hint"
             android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/fichaVelocidadX"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Velocidad"
+            android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/fichaVelocidad"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="No ve"
+            android:textColor="@color/amarilloDebug"
+            android:textSize="18dp"
+            app:layout_constraintStart_toStartOf="@+id/fichaVelocidadX"
+            app:layout_constraintTop_toBottomOf="@+id/fichaVelocidadX" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

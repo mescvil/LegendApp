@@ -4,9 +4,10 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import com.google.gson.annotations.SerializedName;
+import com.hyperion.dndapiapp.adaptadores.recyclerView.GenericoRecyclerView;
 
 @SuppressWarnings("unused")
-public class Armadura implements Equipamiento, Parcelable {
+public class Armadura implements Equipamiento, Parcelable, GenericoRecyclerView {
 
     @SerializedName("nombre")
     private String nombre;
@@ -71,6 +72,11 @@ public class Armadura implements Equipamiento, Parcelable {
     @Override
     public String getNombre() {
         return nombre;
+    }
+
+    @Override
+    public String getDescripcion() {
+        return "Clase de armadura: " + claseArmadura;
     }
 
     public void setNombre(String nombre) {

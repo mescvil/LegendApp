@@ -1,5 +1,8 @@
 package com.hyperion.dndapiapp.entidades.clases;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
 import com.hyperion.dndapiapp.entidades.competencias.Competencia;
 import com.hyperion.dndapiapp.entidades.equipamiento.Arma;
@@ -10,10 +13,12 @@ import com.hyperion.dndapiapp.utilidades.OrdenablePorNombre;
 import java.util.List;
 
 @SuppressWarnings("unused")
-public class Clase implements OrdenablePorNombre {
+public class Clase implements OrdenablePorNombre, Parcelable {
 
     @SerializedName("nombre")
     private String nombre;
+    @SerializedName("imagen")
+    private String imagen;
     @SerializedName("dadosGolpe")
     private String dadosGolpe;
     @SerializedName("descripcion")
@@ -38,6 +43,52 @@ public class Clase implements OrdenablePorNombre {
     /* =============== CONSTRUCTORES =============== */
 
     /* =============== METODOS =============== */
+
+    protected Clase(Parcel in) {
+        nombre = in.readString();
+        imagen = in.readString();
+        dadosGolpe = in.readString();
+        descripcion = in.readString();
+        caracteristicaPrincipal = in.readString();
+        tiradasSalvacion = in.readString();
+        rasgosClase = in.createTypedArrayList(RasgoClase.CREATOR);
+        armas = in.createTypedArrayList(Arma.CREATOR);
+        armaduras = in.createTypedArrayList(Armadura.CREATOR);
+        hechizos = in.createTypedArrayList(Hechizo.CREATOR);
+        competencias = in.createTypedArrayList(Competencia.CREATOR);
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(nombre);
+        dest.writeString(imagen);
+        dest.writeString(dadosGolpe);
+        dest.writeString(descripcion);
+        dest.writeString(caracteristicaPrincipal);
+        dest.writeString(tiradasSalvacion);
+        dest.writeTypedList(rasgosClase);
+        dest.writeTypedList(armas);
+        dest.writeTypedList(armaduras);
+        dest.writeTypedList(hechizos);
+        dest.writeTypedList(competencias);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<Clase> CREATOR = new Creator<Clase>() {
+        @Override
+        public Clase createFromParcel(Parcel in) {
+            return new Clase(in);
+        }
+
+        @Override
+        public Clase[] newArray(int size) {
+            return new Clase[size];
+        }
+    };
 
     /* =============== GETTERS & SETTERS =============== */
 
@@ -127,5 +178,13 @@ public class Clase implements OrdenablePorNombre {
 
     public void setCompetencias(List<Competencia> competencias) {
         this.competencias = competencias;
+    }
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
     }
 }

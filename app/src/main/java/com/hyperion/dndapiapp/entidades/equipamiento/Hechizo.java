@@ -4,10 +4,11 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import com.google.gson.annotations.SerializedName;
+import com.hyperion.dndapiapp.adaptadores.recyclerView.GenericoRecyclerView;
 import com.hyperion.dndapiapp.utilidades.OrdenablePorNombre;
 
 @SuppressWarnings("unused")
-public class Hechizo implements OrdenablePorNombre, Parcelable {
+public class Hechizo implements OrdenablePorNombre, Parcelable, GenericoRecyclerView {
 
     @SerializedName("nombre")
     private String nombre;

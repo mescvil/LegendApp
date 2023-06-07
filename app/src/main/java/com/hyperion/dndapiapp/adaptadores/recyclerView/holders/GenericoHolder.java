@@ -1,13 +1,18 @@
 package com.hyperion.dndapiapp.adaptadores.recyclerView.holders;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.graphics.Color;
 import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.hyperion.dndapiapp.R;
 import com.hyperion.dndapiapp.adaptadores.recyclerView.GenericoRecyclerView;
+import com.hyperion.dndapiapp.entidades.equipamiento.Hechizo;
 
 public class GenericoHolder extends RecyclerView.ViewHolder {
 
@@ -24,5 +29,11 @@ public class GenericoHolder extends RecyclerView.ViewHolder {
     public void bindItem(GenericoRecyclerView item) {
         tituloItem.setText(item.getNombre());
         descripcionItem.setText(item.getDescripcion());
+
+        if (item instanceof Hechizo) {
+            tituloItem.setTextColor(Color.parseColor("#64B5F6"));
+        } else {
+            tituloItem.setTextColor(Color.parseColor("#FFFFFFFF"));
+        }
     }
 }
