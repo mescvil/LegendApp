@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.hyperion.dndapiapp.R;
-import com.hyperion.dndapiapp.adaptadores.recyclerView.AdaptadorMixClick;
+import com.hyperion.dndapiapp.adaptadores.recyclerView.RecyclerViewClick;
 import com.hyperion.dndapiapp.entidades.enemigos.Enemigo;
 
 public class EnemigoHolder extends RecyclerView.ViewHolder {
@@ -23,7 +23,7 @@ public class EnemigoHolder extends RecyclerView.ViewHolder {
     private final TextView desafio;
     private final ImageView imagen;
 
-    public EnemigoHolder(@NonNull View itemView, AdaptadorMixClick adaptadorMixClick) {
+    public EnemigoHolder(@NonNull View itemView, RecyclerViewClick recyclerViewClick) {
         super(itemView);
 
         nombre = itemView.findViewById(R.id.textViewNombre);
@@ -35,7 +35,7 @@ public class EnemigoHolder extends RecyclerView.ViewHolder {
         itemView.setOnClickListener(v -> {
             int posicion = getAdapterPosition();
             if (posicion != RecyclerView.NO_POSITION) {
-                adaptadorMixClick.onCosaCliked(posicion);
+                recyclerViewClick.onCosaCliked(posicion);
             }
         });
     }

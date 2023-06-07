@@ -1,7 +1,6 @@
 package com.hyperion.dndapiapp.adaptadores.recyclerView.holders;
 
 import static com.hyperion.dndapiapp.utilidades.Constantes.URL_BASE_IMAGEN_CLASES;
-import static com.hyperion.dndapiapp.utilidades.Constantes.URL_BASE_IMAGEN_CRIATURAS;
 
 import android.content.Context;
 import android.view.View;
@@ -13,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.hyperion.dndapiapp.R;
-import com.hyperion.dndapiapp.adaptadores.recyclerView.AdaptadorMixClick;
+import com.hyperion.dndapiapp.adaptadores.recyclerView.RecyclerViewClick;
 import com.hyperion.dndapiapp.entidades.clases.Clase;
 
 public class ClaseHolder extends RecyclerView.ViewHolder {
@@ -23,7 +22,7 @@ public class ClaseHolder extends RecyclerView.ViewHolder {
     private TextView caracteristica;
     private ImageView imageView;
 
-    public ClaseHolder(@NonNull View itemView, AdaptadorMixClick adaptadorMixClick, Context context) {
+    public ClaseHolder(@NonNull View itemView, RecyclerViewClick recyclerViewClick, Context context) {
         super(itemView);
 
         this.context = context;
@@ -34,7 +33,7 @@ public class ClaseHolder extends RecyclerView.ViewHolder {
         itemView.setOnClickListener(v -> {
             int posicion = getAdapterPosition();
             if (posicion != RecyclerView.NO_POSITION) {
-                adaptadorMixClick.onCosaCliked(posicion);
+                recyclerViewClick.onCosaCliked(posicion);
             }
         });
     }

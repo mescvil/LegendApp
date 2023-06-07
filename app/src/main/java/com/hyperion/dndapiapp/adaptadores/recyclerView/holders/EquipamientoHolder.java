@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.hyperion.dndapiapp.R;
-import com.hyperion.dndapiapp.adaptadores.recyclerView.AdaptadorMixClick;
+import com.hyperion.dndapiapp.adaptadores.recyclerView.RecyclerViewClick;
 import com.hyperion.dndapiapp.entidades.equipamiento.Armadura;
 import com.hyperion.dndapiapp.entidades.equipamiento.Equipamiento;
 
@@ -17,7 +17,7 @@ public class EquipamientoHolder extends RecyclerView.ViewHolder {
     private TextView nombre;
     private TextView precio;
 
-    public EquipamientoHolder(@NonNull View itemView, AdaptadorMixClick adaptadorMixClick) {
+    public EquipamientoHolder(@NonNull View itemView, RecyclerViewClick recyclerViewClick) {
         super(itemView);
 
         nombre = itemView.findViewById(R.id.textViewNombreEquipamiento);
@@ -27,7 +27,7 @@ public class EquipamientoHolder extends RecyclerView.ViewHolder {
         itemView.setOnClickListener(v -> {
             int posicion = getAdapterPosition();
             if (posicion != RecyclerView.NO_POSITION) {
-                adaptadorMixClick.onCosaCliked(posicion);
+                recyclerViewClick.onCosaCliked(posicion);
             }
         });
     }

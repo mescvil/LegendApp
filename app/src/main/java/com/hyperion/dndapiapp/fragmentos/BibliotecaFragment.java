@@ -43,7 +43,7 @@ import com.hyperion.dndapiapp.actividades.fichas.FichaEnemigoActivity;
 import com.hyperion.dndapiapp.actividades.fichas.FichaHechizoActivity;
 import com.hyperion.dndapiapp.actividades.fichas.FichaRazaActivity;
 import com.hyperion.dndapiapp.actividades.fichas.FichaTrasfondoActivity;
-import com.hyperion.dndapiapp.adaptadores.recyclerView.AdaptadorMixClick;
+import com.hyperion.dndapiapp.adaptadores.recyclerView.RecyclerViewClick;
 import com.hyperion.dndapiapp.adaptadores.recyclerView.adaptadores.AdaptadorMix;
 import com.hyperion.dndapiapp.databinding.FragmentBibliotecaBinding;
 import com.hyperion.dndapiapp.dialogos.LoadingDialog;
@@ -72,7 +72,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @SuppressWarnings("deprecation")
-public class BibliotecaFragment extends Fragment implements AdaptadorMixClick {
+public class BibliotecaFragment extends Fragment implements RecyclerViewClick {
 
     /* Utiles */
     private final boolean[] filtrosSeleccionados;

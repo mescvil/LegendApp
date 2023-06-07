@@ -19,7 +19,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.hyperion.dndapiapp.R;
-import com.hyperion.dndapiapp.adaptadores.recyclerView.AdaptadorMixClick;
+import com.hyperion.dndapiapp.adaptadores.recyclerView.RecyclerViewClick;
 import com.hyperion.dndapiapp.adaptadores.recyclerView.holders.ClaseHolder;
 import com.hyperion.dndapiapp.adaptadores.recyclerView.holders.CompetenciaHolder;
 import com.hyperion.dndapiapp.adaptadores.recyclerView.holders.EnemigoHolder;
@@ -42,15 +42,15 @@ import java.util.List;
 @SuppressLint("NotifyDataSetChanged")
 public class AdaptadorMix extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private final Context context;
-    private final AdaptadorMixClick adaptadorMixClick;
+    private final RecyclerViewClick recyclerViewClick;
     private List<OrdenablePorNombre> elementos;
     private List<OrdenablePorNombre> elementosBackup;
 
-    public AdaptadorMix(Context context, AdaptadorMixClick adaptadorMixClick) {
+    public AdaptadorMix(Context context, RecyclerViewClick recyclerViewClick) {
         this.elementos = new ArrayList<>();
         elementosBackup = new ArrayList<>();
         this.context = context;
-        this.adaptadorMixClick = adaptadorMixClick;
+        this.recyclerViewClick = recyclerViewClick;
     }
 
     @NonNull
@@ -60,41 +60,41 @@ public class AdaptadorMix extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
         if (viewType == ITEM_ENEMIGO) {
             View view = layoutInflater.inflate(R.layout.item_lista_enemigo, parent, false);
-            return new EnemigoHolder(view, adaptadorMixClick);
+            return new EnemigoHolder(view, recyclerViewClick);
         }
 
         if (viewType == ITEM_HECHIZO) {
             View view = layoutInflater.inflate(R.layout.item_lista_hechizo, parent, false);
-            return new HechizoHolder(view, adaptadorMixClick);
+            return new HechizoHolder(view, recyclerViewClick);
         }
 
         if (viewType == ITEM_CLASE) {
             View view = layoutInflater.inflate(R.layout.item_lista_clase, parent, false);
-            return new ClaseHolder(view, adaptadorMixClick, context);
+            return new ClaseHolder(view, recyclerViewClick, context);
         }
 
         if (viewType == ITEM_EQUIPAMIENTO) {
             View view = layoutInflater.inflate(R.layout.item_lista_equipamiento, parent, false);
-            return new EquipamientoHolder(view, adaptadorMixClick);
+            return new EquipamientoHolder(view, recyclerViewClick);
         }
 
         if (viewType == ITEM_RAZA) {
             View view = layoutInflater.inflate(R.layout.item_lista_raza, parent, false);
-            return new RazaHolder(view, context, adaptadorMixClick);
+            return new RazaHolder(view, context, recyclerViewClick);
         }
 
         if (viewType == ITEM_TRASFONDO) {
             View view = layoutInflater.inflate(R.layout.item_lista_trasfondo, parent, false);
-            return new TrasfondoHolder(view, adaptadorMixClick);
+            return new TrasfondoHolder(view, recyclerViewClick);
         }
 
         if (viewType == ITEM_COMPENTENCIA) {
             View view = layoutInflater.inflate(R.layout.item_lista_competencia, parent, false);
-            return new CompetenciaHolder(view, adaptadorMixClick);
+            return new CompetenciaHolder(view, recyclerViewClick);
         }
 
         View view = layoutInflater.inflate(R.layout.item_lista_null, parent, false);
-        return new HechizoHolder(view, adaptadorMixClick);
+        return new HechizoHolder(view, recyclerViewClick);
     }
 
     @Override

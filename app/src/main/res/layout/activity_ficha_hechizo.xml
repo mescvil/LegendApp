@@ -135,7 +135,7 @@
             android:layout_marginTop="8dp"
             android:text="Alcance:"
             app:layout_constraintStart_toStartOf="@+id/fichaNivelX"
-            app:layout_constraintTop_toBottomOf="@+id/fichaNivelX" />
+            app:layout_constraintTop_toBottomOf="@+id/fichaNivel" />
 
         <TextView
             android:id="@+id/fichaDuracionX"
@@ -153,8 +153,8 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:fontFamily="sans-serif"
-            android:text="Nivel:"
-            android:textSize="24sp"
+            android:text="Nivel"
+            android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -162,14 +162,12 @@
             android:id="@+id/fichaNivel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="2dp"
             android:fontFamily="sans-serif"
             android:text="12"
             android:textColor="@color/azulHechizo"
-            android:textSize="24sp"
-            app:layout_constraintBottom_toBottomOf="@+id/fichaNivelX"
-            app:layout_constraintStart_toEndOf="@+id/fichaNivelX"
-            app:layout_constraintTop_toTopOf="@+id/fichaNivelX" />
+            android:textSize="18dp"
+            app:layout_constraintStart_toStartOf="@+id/fichaNivelX"
+            app:layout_constraintTop_toBottomOf="@+id/fichaNivelX" />
 
         <TextView
             android:id="@+id/fichaAlcance"

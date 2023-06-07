@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.hyperion.dndapiapp.R;
-import com.hyperion.dndapiapp.adaptadores.recyclerView.AdaptadorMixClick;
+import com.hyperion.dndapiapp.adaptadores.recyclerView.RecyclerViewClick;
 import com.hyperion.dndapiapp.entidades.razas.Raza;
 
 public class RazaHolder extends RecyclerView.ViewHolder {
@@ -24,7 +24,7 @@ public class RazaHolder extends RecyclerView.ViewHolder {
     private final TextView edad;
     private final ImageView imageView;
 
-    public RazaHolder(@NonNull View itemView, Context context, AdaptadorMixClick adaptadorMixClick) {
+    public RazaHolder(@NonNull View itemView, Context context, RecyclerViewClick recyclerViewClick) {
         super(itemView);
 
         nombre = itemView.findViewById(R.id.textViewNombreRaza);
@@ -36,7 +36,7 @@ public class RazaHolder extends RecyclerView.ViewHolder {
         itemView.setOnClickListener(v -> {
             int posicion = getAdapterPosition();
             if (posicion != RecyclerView.NO_POSITION) {
-                adaptadorMixClick.onCosaCliked(posicion);
+                recyclerViewClick.onCosaCliked(posicion);
             }
         });
     }

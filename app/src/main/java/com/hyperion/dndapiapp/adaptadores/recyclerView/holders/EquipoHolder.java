@@ -1,5 +1,6 @@
 package com.hyperion.dndapiapp.adaptadores.recyclerView.holders;
 
+import android.graphics.Color;
 import android.view.View;
 import android.widget.TextView;
 
@@ -9,19 +10,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.hyperion.dndapiapp.R;
 import com.hyperion.dndapiapp.adaptadores.recyclerView.RecyclerViewClick;
 import com.hyperion.dndapiapp.entidades.equipamiento.Hechizo;
+import com.hyperion.dndapiapp.utilidades.OrdenablePorNombre;
 
-public class HechizoHolder extends RecyclerView.ViewHolder {
+public class EquipoHolder extends RecyclerView.ViewHolder {
 
-    private TextView nombre;
-    private TextView nivel;
-    private TextView alcance;
+    private final TextView textView;
 
-    public HechizoHolder(@NonNull View itemView, RecyclerViewClick recyclerViewClick) {
+    public EquipoHolder(@NonNull View itemView, RecyclerViewClick recyclerViewClick) {
         super(itemView);
 
-        nombre = itemView.findViewById(R.id.textViewNombreHechizo);
-        nivel = itemView.findViewById(R.id.textViewNivel);
-        alcance = itemView.findViewById(R.id.textViewAlcance);
+        textView = itemView.findViewById(R.id.tituloItemEquipo);
 
         itemView.setOnClickListener(v -> {
             int posicion = getAdapterPosition();
@@ -31,9 +29,13 @@ public class HechizoHolder extends RecyclerView.ViewHolder {
         });
     }
 
-    public void bindItem(Hechizo hechizo) {
-        nombre.setText(hechizo.getNombre());
-        nivel.setText(String.valueOf(hechizo.getNivel()));
-        alcance.setText(String.valueOf(hechizo.getAlcance()));
+    public void bindItem(OrdenablePorNombre item) {
+        textView.setText(item.getNombre());
+
+        if (item instanceof Hechizo) {
+            textView.setTextColor(Color.parseColor("#64B5F6"));
+        } else {
+            textView.setTextColor(Color.parseColor("#FFFFFFFF"));
+        }
     }
 }

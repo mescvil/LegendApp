@@ -142,25 +142,22 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:fontFamily="sans-serif"
-            android:text="Daño:"
-            android:textSize="24sp"
+            android:text="Daño"
+            android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/fichaDanioArma"
-            android:layout_width="0dp"
+            android:layout_width="146dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginTop="8dp"
             android:fontFamily="sans-serif"
             android:text="12"
             android:textColor="@color/hint"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="@+id/fichaDanioArmaX"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/fichaDanioArmaX"
-            app:layout_constraintTop_toTopOf="@+id/fichaDanioArmaX" />
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/fichaDanioArmaX"
+            app:layout_constraintTop_toBottomOf="@+id/fichaDanioArmaX" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
