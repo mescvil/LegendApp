@@ -13,7 +13,7 @@
         android:layout_marginStart="16dp"
         android:background="@color/fondoTarjeta"
         android:scaleType="fitXY"
-        android:src="@drawable/icono_raza"
+        android:src="@drawable/imagen_perfil_humano"
         app:layout_constraintBottom_toBottomOf="@+id/constraintLayout3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/constraintLayout3" />

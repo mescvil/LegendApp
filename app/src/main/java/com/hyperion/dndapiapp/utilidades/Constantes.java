@@ -4,6 +4,7 @@ package com.hyperion.dndapiapp.utilidades;
 public abstract class Constantes {
 
     /* ================= Bundles  ================= */
+    public static final String IMAGEN_USUARIO_BUNDLE = "imagenUsuario";
     public static final String CORREO_USUARIO_BUNDLE = "correo";
     public static final String PASS_USUARIO_BUNDLE = "pass";
     public static final String CIERRA_SESION_BUNDLE = "cierraSesion";
@@ -23,6 +24,7 @@ public abstract class Constantes {
     public final static int ACTIVIDAD_LOGIN = 1;
     public final static int ACTIVIDAD_MAIN = 2;
     public final static int ACTIVIDAD_REGISTER = 3;
+    public final static int ACTIVIDAD_IMAGEN = 3;
 
     /* ============== Filtros busquedas ============== */
     public static final String[] filtros = new String[]{"Enemigos", "Clases", "Razas", "Hechizos", "Equipamiento", "Trasfondos", "Competencias"};
@@ -38,6 +40,7 @@ public abstract class Constantes {
     public static final String URL_BASE_IMAGEN_CRIATURAS = "https://raw.githubusercontent.com/mescvil/api-dnd/master/api/criaturas/";
     public static final String URL_BASE_IMAGEN_RAZAS = "https://raw.githubusercontent.com/mescvil/api-dnd/master/api/razas/";
     public static final String URL_BASE_IMAGEN_CLASES = "https://raw.githubusercontent.com/mescvil/api-dnd/master/api/clases/";
+    public static final String URL_BASE_IMAGEN_USUARIO = "@draw";
 
     /* ============== Tipo de item lista ============== */
     public static final int ITEM_ENEMIGO = 0;

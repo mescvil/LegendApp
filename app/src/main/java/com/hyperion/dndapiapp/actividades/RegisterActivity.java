@@ -1,11 +1,18 @@
 package com.hyperion.dndapiapp.actividades;
 
+import static com.hyperion.dndapiapp.utilidades.Constantes.ACTIVIDAD_IMAGEN;
+import static com.hyperion.dndapiapp.utilidades.Constantes.ACTIVIDAD_LOGIN;
+import static com.hyperion.dndapiapp.utilidades.Constantes.IMAGEN_USUARIO_BUNDLE;
 import static com.hyperion.dndapiapp.utilidades.Utils.verifcaContrasenia;
 import static com.hyperion.dndapiapp.utilidades.Utils.verificaCorreo;
 
+import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.hyperion.dndapiapp.R;
@@ -18,6 +25,8 @@ public class RegisterActivity extends AppCompatActivity {
 
     private ActivityRegisterBinding binding;
     private ServicioUsuario servicio;
+    private boolean imagenDefecto = true;
+    private String imagenPerfil;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +41,12 @@ public class RegisterActivity extends AppCompatActivity {
     private void setListeners() {
         binding.botonAtras.setOnClickListener(v -> finish());
         binding.botonRegistrador.setOnClickListener(v -> registraUsuario());
+        binding.imagenRegistroUsuario.setOnClickListener(v -> abrirSelectorImagen());
+    }
+
+    private void abrirSelectorImagen() {
+        Intent intent = new Intent(this, ImageSelectorActivity.class);
+        startActivityForResult(intent, ACTIVIDAD_IMAGEN);
     }
 
     private void registraUsuario() {
@@ -74,11 +89,32 @@ public class RegisterActivity extends AppCompatActivity {
             Toast.makeText(this, "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show();
             return null;
         }
+        if (imagenDefecto) {
+            Toast.makeText(this, "Selecciona una imagen de pefil", Toast.LENGTH_SHORT).show();
+            return null;
+        }
         if (!check) {
             Toast.makeText(this, "Acepta los terminos y condiciones", Toast.LENGTH_SHORT).show();
             return null;
         }
 
-        return new Usuario(nombreUsuario, email, contrasenia1);
+        return new Usuario(nombreUsuario, email, contrasenia1, imagenPerfil);
+    }
+
+    @Override
+    @SuppressLint("DiscouragedApi")
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == ACTIVIDAD_IMAGEN) {
+            if (resultCode == Activity.RESULT_OK) {
+                if (data != null) {
+                    imagenPerfil = data.getStringExtra(IMAGEN_USUARIO_BUNDLE);
+                    int resImage = getResources().getIdentifier(imagenPerfil, "drawable", getPackageName());
+                    binding.imagenRegistroUsuario.setImageResource(resImage);
+                    imagenDefecto = false;
+                }
+            }
+        }
     }
 }

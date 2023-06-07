@@ -3,8 +3,6 @@ package com.hyperion.dndapiapp.entidades.usuario;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import androidx.annotation.NonNull;
-
 import com.google.gson.annotations.SerializedName;
 
 @SuppressWarnings("unused")
@@ -16,6 +14,8 @@ public class Usuario implements Parcelable {
     private String correo;
     @SerializedName("contrasenia")
     private String contrasenia;
+    @SerializedName("imagenPerfil")
+    private String imagenPerfil;
 
     /* =============== CONSTRUCTORES =============== */
 
@@ -30,12 +30,34 @@ public class Usuario implements Parcelable {
         this.contrasenia = contrasenia;
     }
 
+    public Usuario(String nombre, String correo, String contrasenia, String imagenPerfil) {
+        this.nombre = nombre;
+        this.correo = correo;
+        this.contrasenia = contrasenia;
+        this.imagenPerfil = imagenPerfil;
+    }
+
+
     /* =============== METODOS  Parcelable =============== */
 
     protected Usuario(Parcel in) {
         nombre = in.readString();
         correo = in.readString();
         contrasenia = in.readString();
+        imagenPerfil = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(nombre);
+        dest.writeString(correo);
+        dest.writeString(contrasenia);
+        dest.writeString(imagenPerfil);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
     }
 
     public static final Creator<Usuario> CREATOR = new Creator<Usuario>() {
@@ -50,17 +72,6 @@ public class Usuario implements Parcelable {
         }
     };
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(@NonNull Parcel parcel, int i) {
-        parcel.writeString(nombre);
-        parcel.writeString(correo);
-        parcel.writeString(contrasenia);
-    }
     /* =============== GETTERS & SETTERS =============== */
 
     public String getNombre() {
@@ -85,5 +96,13 @@ public class Usuario implements Parcelable {
 
     public void setContrasenia(String contrasenia) {
         this.contrasenia = contrasenia;
+    }
+
+    public String getImagenPerfil() {
+        return imagenPerfil;
+    }
+
+    public void setImagenPerfil(String imagenPerfil) {
+        this.imagenPerfil = imagenPerfil;
     }
 }

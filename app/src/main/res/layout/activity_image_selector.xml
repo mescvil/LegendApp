@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".actividades.ImageSelectorActivity">
+
+    <TextView
+        android:id="@+id/tituloSelectorImagen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Selecciona tu imagen de perfil"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imagePerfilMascara"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/borde_redondeado_imagen"
+            app:layout_constraintStart_toStartOf="@+id/imagenPerfilMarrana"
+            app:layout_constraintTop_toBottomOf="@+id/imagenPerfilMarrana"
+            app:srcCompat="@drawable/imagen_perfil_mascara" />
+
+        <ImageView
+            android:id="@+id/imagenPerfilDraconido"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/borde_redondeado_imagen"
+            app:layout_constraintStart_toStartOf="@+id/imagePerfilMascara"
+            app:layout_constraintTop_toBottomOf="@+id/imagePerfilMascara"
+            app:srcCompat="@drawable/imagen_perfil_draconido" />
+
+        <ImageView
+            android:id="@+id/imagenPerfilCaco"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:background="@drawable/borde_redondeado_imagen"
+            app:layout_constraintBottom_toBottomOf="@+id/imagePerfilMascara"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imagePerfilMascara"
+            app:srcCompat="@drawable/imagen_perfil_caco" />
+
+        <ImageView
+            android:id="@+id/imagenPerfilDnd"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:background="@drawable/borde_redondeado_imagen"
+            app:layout_constraintBottom_toBottomOf="@+id/imagenPerfilDraconido"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imagenPerfilDraconido"
+            app:srcCompat="@drawable/imagen_perfil_dnd" />
+
+        <ImageView
+            android:id="@+id/imagenPerfilHombre"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:background="@drawable/borde_redondeado_imagen"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imagenPerfilMarrana"
+            app:srcCompat="@drawable/imagen_perfil_humano" />
+
+        <ImageView
+            android:id="@+id/imagenPerfilMarrana"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/borde_redondeado_imagen"
+            app:layout_constraintEnd_toStartOf="@+id/imagenPerfilHombre"
+            app:layout_constraintHorizontal_bias="0.9"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/imagen_perfil_fresca" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

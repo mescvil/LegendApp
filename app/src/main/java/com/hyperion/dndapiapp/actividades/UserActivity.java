@@ -3,6 +3,7 @@ package com.hyperion.dndapiapp.actividades;
 import static com.hyperion.dndapiapp.utilidades.Constantes.CIERRA_SESION_BUNDLE;
 import static com.hyperion.dndapiapp.utilidades.Constantes.USUARIO_BUNDLE;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
@@ -36,6 +37,7 @@ public class UserActivity extends AppCompatActivity {
         iniciaListenersBotones();
     }
 
+    @SuppressLint("DiscouragedApi")
     private void iniciaActividad() {
         binding.campoNombreUsuario.setText(usuario.getNombre());
         binding.campoCorreoUsuario.setText(usuario.getCorreo());
@@ -45,6 +47,9 @@ public class UserActivity extends AppCompatActivity {
         } catch (Exception e) {
             Toast.makeText(this, "No es posible desencriptar la contraseña", Toast.LENGTH_SHORT).show();
         }
+
+        int resImage = getResources().getIdentifier(usuario.getImagenPerfil(), "drawable", getPackageName());
+        binding.imagenPerfil.setImageResource(resImage);
     }
 
     private void iniciaListenersBotones() {

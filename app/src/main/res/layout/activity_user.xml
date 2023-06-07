@@ -85,7 +85,7 @@
                     android:cursorVisible="true"
                     android:focusable="false"
                     android:inputType="textPassword"
-                    android:maxLength="10"
+                    android:maxLength="20"
                     android:maxLines="1"
                     android:text="contraseña" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -185,6 +185,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tituloActividadUser"
-        app:srcCompat="@drawable/imagen_fresca" />
+        app:srcCompat="@drawable/imagen_perfil_fresca" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
