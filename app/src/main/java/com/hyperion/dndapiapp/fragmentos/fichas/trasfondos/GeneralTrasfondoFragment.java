@@ -3,16 +3,13 @@ package com.hyperion.dndapiapp.fragmentos.fichas.trasfondos;
 import static com.hyperion.dndapiapp.utilidades.Constantes.TRASFONDO_BUNDLE;
 
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.hyperion.dndapiapp.R;
-import com.hyperion.dndapiapp.databinding.FragmentGeneralEnemigosBinding;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+
 import com.hyperion.dndapiapp.databinding.FragmentGeneralTrasfondoBinding;
 import com.hyperion.dndapiapp.entidades.trasfondos.Trasfondo;
 

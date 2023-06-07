@@ -1,15 +1,12 @@
 package com.hyperion.dndapiapp.actividades.fichas;
 
 import static com.hyperion.dndapiapp.utilidades.Constantes.ARMA_BUNDLE;
-import static com.hyperion.dndapiapp.utilidades.Constantes.HECHIZOS_BUNDLE;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-import com.hyperion.dndapiapp.R;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.hyperion.dndapiapp.databinding.ActivityFichaArmaBinding;
-import com.hyperion.dndapiapp.databinding.ActivityFichaHechizoBinding;
 import com.hyperion.dndapiapp.entidades.equipamiento.Arma;
 
 public class FichaArmaActivity extends AppCompatActivity {

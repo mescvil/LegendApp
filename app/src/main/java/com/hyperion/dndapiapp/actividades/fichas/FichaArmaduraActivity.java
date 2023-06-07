@@ -4,7 +4,6 @@ import static com.hyperion.dndapiapp.utilidades.Constantes.ARMADURA_BUNDLE;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
