@@ -3,7 +3,6 @@ package com.hyperion.dndapiapp.fragmentos.fichas.clases;
 import static com.hyperion.dndapiapp.utilidades.Constantes.ARMADURA_BUNDLE;
 import static com.hyperion.dndapiapp.utilidades.Constantes.ARMA_BUNDLE;
 import static com.hyperion.dndapiapp.utilidades.Constantes.HECHIZOS_BUNDLE;
-import static com.hyperion.dndapiapp.utilidades.Constantes.RASGOS_CLASE_BUNDLE;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,23 +15,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
-import com.hyperion.dndapiapp.R;
 import com.hyperion.dndapiapp.actividades.fichas.FichaArmaActivity;
 import com.hyperion.dndapiapp.actividades.fichas.FichaArmaduraActivity;
 import com.hyperion.dndapiapp.actividades.fichas.FichaHechizoActivity;
-import com.hyperion.dndapiapp.adaptadores.recyclerView.GenericoRecyclerView;
 import com.hyperion.dndapiapp.adaptadores.recyclerView.RecyclerViewClick;
-import com.hyperion.dndapiapp.adaptadores.recyclerView.adaptadores.AdaptadorEquipamiento;
-import com.hyperion.dndapiapp.adaptadores.recyclerView.adaptadores.AdaptadorGenerico;
+import com.hyperion.dndapiapp.adaptadores.recyclerView.adaptadores.AdaptadorEquipoEspecialidades;
 import com.hyperion.dndapiapp.databinding.FragmentEquipamientoClaseBinding;
-import com.hyperion.dndapiapp.databinding.FragmentRasgosClaseBinding;
 import com.hyperion.dndapiapp.entidades.equipamiento.Arma;
 import com.hyperion.dndapiapp.entidades.equipamiento.Armadura;
-import com.hyperion.dndapiapp.entidades.equipamiento.Equipamiento;
 import com.hyperion.dndapiapp.entidades.equipamiento.Hechizo;
-import com.hyperion.dndapiapp.utilidades.OrdenablePorNombre;
+import com.hyperion.dndapiapp.utilidades.GetNombreInterface;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -44,7 +37,7 @@ public class EquipamientoClaseFragment extends Fragment implements RecyclerViewC
     private Armadura[] armaduras;
     private Arma[] armas;
     private Hechizo[] hechizos;
-    private List<OrdenablePorNombre> listaTotal;
+    private List<GetNombreInterface> listaTotal;
     private FragmentEquipamientoClaseBinding binding;
 
     public EquipamientoClaseFragment() {
@@ -86,7 +79,7 @@ public class EquipamientoClaseFragment extends Fragment implements RecyclerViewC
         listaTotal.addAll(Arrays.asList(armaduras));
 
         RecyclerView recyclerView = binding.listaEquipamientoClase;
-        AdaptadorEquipamiento adaptadorGenerico = new AdaptadorEquipamiento(listaTotal, this);
+        AdaptadorEquipoEspecialidades adaptadorGenerico = new AdaptadorEquipoEspecialidades(listaTotal, this);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -96,7 +89,7 @@ public class EquipamientoClaseFragment extends Fragment implements RecyclerViewC
 
     @Override
     public void onCosaCliked(int posicion) {
-        OrdenablePorNombre objeto = listaTotal.get(posicion);
+        GetNombreInterface objeto = listaTotal.get(posicion);
 
         if (objeto instanceof Hechizo) {
             Intent intent = new Intent(getContext(), FichaHechizoActivity.class);

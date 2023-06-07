@@ -5,9 +5,9 @@ import android.os.Parcelable;
 
 import com.google.gson.annotations.SerializedName;
 import com.hyperion.dndapiapp.adaptadores.recyclerView.GenericoRecyclerView;
-import com.hyperion.dndapiapp.utilidades.OrdenablePorNombre;
+import com.hyperion.dndapiapp.utilidades.GetNombreInterface;
 
-public class Competencia implements OrdenablePorNombre, GenericoRecyclerView, Parcelable {
+public class Competencia implements GetNombreInterface, GenericoRecyclerView, Parcelable {
 
     @SerializedName("nombre")
     private String nombre;

@@ -5,11 +5,11 @@ import android.os.Parcelable;
 
 import com.google.gson.annotations.SerializedName;
 import com.hyperion.dndapiapp.entidades.competencias.Competencia;
-import com.hyperion.dndapiapp.utilidades.OrdenablePorNombre;
+import com.hyperion.dndapiapp.utilidades.GetNombreInterface;
 
 import java.util.List;
 
-public class Trasfondo implements OrdenablePorNombre, Parcelable {
+public class Trasfondo implements GetNombreInterface, Parcelable {
 
     @SerializedName("nombre")
     private String nombre;

@@ -21,6 +21,7 @@ public abstract class Constantes {
     public static final String RASGOS_RAZA_BUNDLE = "rasgosRaza";
     public static final String RASGOS_CLASE_BUNDLE = "rasgosClase";
     public static final String CLASE_BUNDLE = "clase";
+    public static final String ESPECIALIDADES_BUNDLE = "especialidades";
 
     /* ================= Actividades  ================= */
     public final static int ACTIVIDAD_LOGIN = 1;

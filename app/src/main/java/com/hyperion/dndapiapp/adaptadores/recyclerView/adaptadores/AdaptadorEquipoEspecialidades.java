@@ -9,32 +9,32 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.hyperion.dndapiapp.R;
 import com.hyperion.dndapiapp.adaptadores.recyclerView.RecyclerViewClick;
-import com.hyperion.dndapiapp.adaptadores.recyclerView.holders.EquipoHolder;
-import com.hyperion.dndapiapp.utilidades.OrdenablePorNombre;
+import com.hyperion.dndapiapp.adaptadores.recyclerView.holders.EquipoEspecialidadHolder;
+import com.hyperion.dndapiapp.utilidades.GetNombreInterface;
 
 import java.util.List;
 
-public class AdaptadorEquipamiento extends RecyclerView.Adapter<EquipoHolder> {
+public class AdaptadorEquipoEspecialidades extends RecyclerView.Adapter<EquipoEspecialidadHolder> {
 
-    private final List<OrdenablePorNombre> listaElementos;
+    private final List<GetNombreInterface> listaElementos;
     private final RecyclerViewClick recyclerViewClick;
 
-    public AdaptadorEquipamiento(List<OrdenablePorNombre> listaElementos, RecyclerViewClick recyclerViewClick) {
+    public AdaptadorEquipoEspecialidades(List<GetNombreInterface> listaElementos, RecyclerViewClick recyclerViewClick) {
         this.listaElementos = listaElementos;
         this.recyclerViewClick = recyclerViewClick;
     }
 
     @NonNull
     @Override
-    public EquipoHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public EquipoEspecialidadHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View vistaItem = LayoutInflater
                 .from(parent.getContext())
-                .inflate(R.layout.item_lista_equipo, parent, false);
-        return new EquipoHolder(vistaItem, recyclerViewClick);
+                .inflate(R.layout.item_lista_equipo_especialidad, parent, false);
+        return new EquipoEspecialidadHolder(vistaItem, recyclerViewClick);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull EquipoHolder holder, int position) {
+    public void onBindViewHolder(@NonNull EquipoEspecialidadHolder holder, int position) {
         holder.bindItem(listaElementos.get(position));
     }
 

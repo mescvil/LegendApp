@@ -63,7 +63,7 @@ import com.hyperion.dndapiapp.servicioRest.servicios.ServicioEnemigos;
 import com.hyperion.dndapiapp.servicioRest.servicios.ServicioEquipamiento;
 import com.hyperion.dndapiapp.servicioRest.servicios.ServicioRazas;
 import com.hyperion.dndapiapp.servicioRest.servicios.ServicioTrasfondos;
-import com.hyperion.dndapiapp.utilidades.OrdenablePorNombre;
+import com.hyperion.dndapiapp.utilidades.GetNombreInterface;
 
 import org.jetbrains.annotations.Contract;
 
@@ -233,7 +233,7 @@ public class BibliotecaFragment extends Fragment implements RecyclerViewClick {
     }
 
     private void realizaPeticionFiltrada() {
-        List<OrdenablePorNombre> listaFiltrada = new ArrayList<>();
+        List<GetNombreInterface> listaFiltrada = new ArrayList<>();
         adaptadorMix.clearElementos();
         binding.campoBusqueda.setText("");
 
@@ -337,7 +337,7 @@ public class BibliotecaFragment extends Fragment implements RecyclerViewClick {
             @Override
             public void exito(List<Competencia> listaResultado) {
                 listaCompentencias.addAll(listaResultado);
-                List<OrdenablePorNombre> lista = new ArrayList<>(listaResultado);
+                List<GetNombreInterface> lista = new ArrayList<>(listaResultado);
                 adaptadorMix.addElementos(lista);
                 cambiaTituloBusqueda();
                 loadingDialog.dismiss();
@@ -356,7 +356,7 @@ public class BibliotecaFragment extends Fragment implements RecyclerViewClick {
             @Override
             public void exito(List<Trasfondo> listaResultado) {
                 listaTrasfondos.addAll(listaResultado);
-                List<OrdenablePorNombre> lista = new ArrayList<>(listaResultado);
+                List<GetNombreInterface> lista = new ArrayList<>(listaResultado);
                 adaptadorMix.addElementos(lista);
                 cambiaTituloBusqueda();
                 loadingDialog.dismiss();
@@ -375,7 +375,7 @@ public class BibliotecaFragment extends Fragment implements RecyclerViewClick {
             @Override
             public void exito(List<Raza> listaResultado) {
                 listaRazas.addAll(listaResultado);
-                List<OrdenablePorNombre> lista = new ArrayList<>(listaResultado);
+                List<GetNombreInterface> lista = new ArrayList<>(listaResultado);
                 adaptadorMix.addElementos(lista);
                 cambiaTituloBusqueda();
                 loadingDialog.dismiss();
@@ -394,7 +394,7 @@ public class BibliotecaFragment extends Fragment implements RecyclerViewClick {
             @Override
             public void exito(List<Arma> listaResultado) {
                 listaEquipamiento.addAll(listaResultado);
-                List<OrdenablePorNombre> lista = new ArrayList<>(listaResultado);
+                List<GetNombreInterface> lista = new ArrayList<>(listaResultado);
                 adaptadorMix.addElementos(lista);
                 cambiaTituloBusqueda();
                 loadingDialog.dismiss();
@@ -411,7 +411,7 @@ public class BibliotecaFragment extends Fragment implements RecyclerViewClick {
             @Override
             public void exito(List<Armadura> listaResultado) {
                 listaEquipamiento.addAll(listaResultado);
-                List<OrdenablePorNombre> lista = new ArrayList<>(listaResultado);
+                List<GetNombreInterface> lista = new ArrayList<>(listaResultado);
                 adaptadorMix.addElementos(lista);
                 cambiaTituloBusqueda();
                 loadingDialog.dismiss();
@@ -431,7 +431,7 @@ public class BibliotecaFragment extends Fragment implements RecyclerViewClick {
             @Override
             public void exito(List<Enemigo> listaResultado) {
                 listaEnemigos = listaResultado;
-                List<OrdenablePorNombre> lista = new ArrayList<>(listaResultado);
+                List<GetNombreInterface> lista = new ArrayList<>(listaResultado);
                 adaptadorMix.addElementos(lista);
                 cambiaTituloBusqueda();
                 loadingDialog.dismiss();
@@ -451,7 +451,7 @@ public class BibliotecaFragment extends Fragment implements RecyclerViewClick {
             @Override
             public void exito(List<Hechizo> listaResultado) {
                 listaHechizos = listaResultado;
-                List<OrdenablePorNombre> lista = new ArrayList<>(listaResultado);
+                List<GetNombreInterface> lista = new ArrayList<>(listaResultado);
                 adaptadorMix.addElementos(lista);
                 cambiaTituloBusqueda();
                 loadingDialog.dismiss();
@@ -470,7 +470,7 @@ public class BibliotecaFragment extends Fragment implements RecyclerViewClick {
             @Override
             public void exito(List<Clase> listaResultado) {
                 listaClases = listaResultado;
-                List<OrdenablePorNombre> lista = new ArrayList<>(listaResultado);
+                List<GetNombreInterface> lista = new ArrayList<>(listaResultado);
                 adaptadorMix.addElementos(lista);
                 cambiaTituloBusqueda();
                 loadingDialog.dismiss();
@@ -492,7 +492,7 @@ public class BibliotecaFragment extends Fragment implements RecyclerViewClick {
 
     @Override
     public void onCosaCliked(int posicion) {
-        OrdenablePorNombre objeto = adaptadorMix.getObjeto(posicion);
+        GetNombreInterface objeto = adaptadorMix.getObjeto(posicion);
 
         if (objeto instanceof Enemigo) {
             Intent intent = new Intent(getContext(), FichaEnemigoActivity.class);

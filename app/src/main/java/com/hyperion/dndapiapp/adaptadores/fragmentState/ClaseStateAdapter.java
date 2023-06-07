@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import com.hyperion.dndapiapp.entidades.clases.Clase;
+import com.hyperion.dndapiapp.entidades.clases.Especialidad;
 import com.hyperion.dndapiapp.entidades.clases.RasgoClase;
 import com.hyperion.dndapiapp.entidades.competencias.Competencia;
 import com.hyperion.dndapiapp.entidades.equipamiento.Arma;
@@ -31,7 +32,7 @@ public class ClaseStateAdapter extends FragmentStateAdapter {
     public Fragment createFragment(int position) {
         switch (position) {
             case 1:
-                return new EspecialidadClaseFragment();
+                return EspecialidadClaseFragment.newInstance(clase.getEspecialidades().toArray(new Especialidad[0]));
             case 2:
                 return RasgosClaseFragment.newInstance(clase.getRasgosClase().toArray(new RasgoClase[0]));
             case 3:

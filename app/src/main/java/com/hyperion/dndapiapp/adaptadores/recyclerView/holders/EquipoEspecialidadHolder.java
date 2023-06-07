@@ -10,13 +10,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.hyperion.dndapiapp.R;
 import com.hyperion.dndapiapp.adaptadores.recyclerView.RecyclerViewClick;
 import com.hyperion.dndapiapp.entidades.equipamiento.Hechizo;
-import com.hyperion.dndapiapp.utilidades.OrdenablePorNombre;
+import com.hyperion.dndapiapp.utilidades.GetNombreInterface;
 
-public class EquipoHolder extends RecyclerView.ViewHolder {
+public class EquipoEspecialidadHolder extends RecyclerView.ViewHolder {
 
     private final TextView textView;
 
-    public EquipoHolder(@NonNull View itemView, RecyclerViewClick recyclerViewClick) {
+    public EquipoEspecialidadHolder(@NonNull View itemView, RecyclerViewClick recyclerViewClick) {
         super(itemView);
 
         textView = itemView.findViewById(R.id.tituloItemEquipo);
@@ -29,7 +29,7 @@ public class EquipoHolder extends RecyclerView.ViewHolder {
         });
     }
 
-    public void bindItem(OrdenablePorNombre item) {
+    public void bindItem(GetNombreInterface item) {
         textView.setText(item.getNombre());
 
         if (item instanceof Hechizo) {

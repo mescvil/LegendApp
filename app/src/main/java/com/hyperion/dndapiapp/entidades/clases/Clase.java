@@ -8,12 +8,12 @@ import com.hyperion.dndapiapp.entidades.competencias.Competencia;
 import com.hyperion.dndapiapp.entidades.equipamiento.Arma;
 import com.hyperion.dndapiapp.entidades.equipamiento.Armadura;
 import com.hyperion.dndapiapp.entidades.equipamiento.Hechizo;
-import com.hyperion.dndapiapp.utilidades.OrdenablePorNombre;
+import com.hyperion.dndapiapp.utilidades.GetNombreInterface;
 
 import java.util.List;
 
 @SuppressWarnings("unused")
-public class Clase implements OrdenablePorNombre, Parcelable {
+public class Clase implements GetNombreInterface, Parcelable {
 
     @SerializedName("nombre")
     private String nombre;
@@ -56,6 +56,7 @@ public class Clase implements OrdenablePorNombre, Parcelable {
         armaduras = in.createTypedArrayList(Armadura.CREATOR);
         hechizos = in.createTypedArrayList(Hechizo.CREATOR);
         competencias = in.createTypedArrayList(Competencia.CREATOR);
+        especialidades = in.createTypedArrayList(Especialidad.CREATOR);
     }
 
     @Override
@@ -71,6 +72,7 @@ public class Clase implements OrdenablePorNombre, Parcelable {
         dest.writeTypedList(armaduras);
         dest.writeTypedList(hechizos);
         dest.writeTypedList(competencias);
+        dest.writeTypedList(especialidades);
     }
 
     @Override

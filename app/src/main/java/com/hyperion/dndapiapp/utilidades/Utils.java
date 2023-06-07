@@ -17,8 +17,8 @@ public class Utils {
         return correo.matches(EXPRESION_CORREO);
     }
 
-    public static List<OrdenablePorNombre> ordenaListaPorNombre(List<OrdenablePorNombre> listaRecibida) {
-        List<OrdenablePorNombre> listaOrdenada = new ArrayList<>(listaRecibida);
+    public static List<GetNombreInterface> ordenaListaPorNombre(List<GetNombreInterface> listaRecibida) {
+        List<GetNombreInterface> listaOrdenada = new ArrayList<>(listaRecibida);
         listaOrdenada.sort((ordenablePorNombre, t1) -> ordenablePorNombre.getNombre().compareToIgnoreCase(t1.getNombre()));
         return listaOrdenada;
     }

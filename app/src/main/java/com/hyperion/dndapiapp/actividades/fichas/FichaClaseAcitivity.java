@@ -30,6 +30,8 @@ public class FichaClaseAcitivity extends AppCompatActivity {
             clase = bundle.getParcelable(CLASE_BUNDLE);
         }
 
+        System.out.println(clase.getEspecialidades().get(0).getHabilidades().size());
+
         iniciaActividad();
     }
 

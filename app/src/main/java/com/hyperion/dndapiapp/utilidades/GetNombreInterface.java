@@ -1,6 +1,6 @@
 package com.hyperion.dndapiapp.utilidades;
 
-public interface OrdenablePorNombre {
+public interface GetNombreInterface {
 
     String getNombre();
 }

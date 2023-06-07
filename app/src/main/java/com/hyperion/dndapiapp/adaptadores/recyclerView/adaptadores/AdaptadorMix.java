@@ -34,7 +34,7 @@ import com.hyperion.dndapiapp.entidades.equipamiento.Equipamiento;
 import com.hyperion.dndapiapp.entidades.equipamiento.Hechizo;
 import com.hyperion.dndapiapp.entidades.razas.Raza;
 import com.hyperion.dndapiapp.entidades.trasfondos.Trasfondo;
-import com.hyperion.dndapiapp.utilidades.OrdenablePorNombre;
+import com.hyperion.dndapiapp.utilidades.GetNombreInterface;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,8 +43,8 @@ import java.util.List;
 public class AdaptadorMix extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private final Context context;
     private final RecyclerViewClick recyclerViewClick;
-    private List<OrdenablePorNombre> elementos;
-    private List<OrdenablePorNombre> elementosBackup;
+    private List<GetNombreInterface> elementos;
+    private List<GetNombreInterface> elementosBackup;
 
     public AdaptadorMix(Context context, RecyclerViewClick recyclerViewClick) {
         this.elementos = new ArrayList<>();
@@ -146,7 +146,7 @@ public class AdaptadorMix extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         return elementos.size();
     }
 
-    public OrdenablePorNombre getObjeto(int posicion) {
+    public GetNombreInterface getObjeto(int posicion) {
         return elementos.get(posicion);
     }
 
@@ -181,14 +181,14 @@ public class AdaptadorMix extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         this.elementosBackup.clear();
     }
 
-    public void setElementos(List<OrdenablePorNombre> elementos) {
+    public void setElementos(List<GetNombreInterface> elementos) {
         this.elementos = elementos;
         elementosBackup.clear();
         elementosBackup.addAll(this.elementos);
         notifyDataSetChanged();
     }
 
-    public void addElementos(List<OrdenablePorNombre> elementos) {
+    public void addElementos(List<GetNombreInterface> elementos) {
         this.elementos.addAll(elementos);
         this.elementos = ordenaListaPorNombre(this.elementos);
         elementosBackup.clear();
@@ -202,7 +202,7 @@ public class AdaptadorMix extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         if (texto.isEmpty()) {
             elementos.addAll(elementosBackup);
         } else {
-            for (OrdenablePorNombre objeto : elementosBackup) {
+            for (GetNombreInterface objeto : elementosBackup) {
                 if (objeto instanceof Enemigo) {
                     if (((Enemigo) objeto).getNombre().toLowerCase().contains(texto.toLowerCase()))
                         elementos.add(objeto);

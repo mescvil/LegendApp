@@ -4,12 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import com.google.gson.annotations.SerializedName;
-import com.hyperion.dndapiapp.utilidades.OrdenablePorNombre;
+import com.hyperion.dndapiapp.utilidades.GetNombreInterface;
 
 import java.util.List;
 
 @SuppressWarnings("unused")
-public class Raza implements OrdenablePorNombre, Parcelable {
+public class Raza implements GetNombreInterface, Parcelable {
 
     @SerializedName("nombre")
     private String nombre;
