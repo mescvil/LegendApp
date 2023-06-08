@@ -102,13 +102,13 @@ public class BibliotecaFragment extends Fragment implements RecyclerViewClick {
     private TextView titulo;
 
     /* Listas de objetos */
-    private List<Enemigo> listaEnemigos;
-    private List<Clase> listaClases;
-    private List<Raza> listaRazas;
-    private List<Hechizo> listaHechizos;
-    private List<Equipamiento> listaEquipamiento;
-    private List<Trasfondo> listaTrasfondos;
-    private List<Competencia> listaCompentencias;
+    private final List<Enemigo> listaEnemigos;
+    private final List<Clase> listaClases;
+    private final List<Raza> listaRazas;
+    private final List<Hechizo> listaHechizos;
+    private final List<Equipamiento> listaEquipamiento;
+    private final List<Trasfondo> listaTrasfondos;
+    private final List<Competencia> listaCompentencias;
 
     public BibliotecaFragment() {
         servicioEnemigos = ServicioEnemigos.getInstance();
@@ -189,7 +189,9 @@ public class BibliotecaFragment extends Fragment implements RecyclerViewClick {
         binding.campoBusqueda.setText("");
         cambiaTituloBusqueda();
 
-        editor.clear();
+        for (int i = 0; i < filtrosSeleccionados.length; i++) {
+            editor.putBoolean(filtros[i], filtrosSeleccionados[i]);
+        }
         editor.commit();
     }
 
@@ -437,7 +439,7 @@ public class BibliotecaFragment extends Fragment implements RecyclerViewClick {
         servicioEnemigos.getAllEnemigos(new CallbackLista<Enemigo>() {
             @Override
             public void exito(List<Enemigo> listaResultado) {
-                listaEnemigos = listaResultado;
+                listaEnemigos.addAll(listaResultado);
                 List<GetNombreInterface> lista = new ArrayList<>(listaResultado);
                 adaptadorMix.addElementos(lista);
                 cambiaTituloBusqueda();
@@ -457,7 +459,7 @@ public class BibliotecaFragment extends Fragment implements RecyclerViewClick {
         servicioEquipamiento.getAllHechizos(new CallbackLista<Hechizo>() {
             @Override
             public void exito(List<Hechizo> listaResultado) {
-                listaHechizos = listaResultado;
+                listaHechizos.addAll(listaResultado);
                 List<GetNombreInterface> lista = new ArrayList<>(listaResultado);
                 adaptadorMix.addElementos(lista);
                 cambiaTituloBusqueda();
@@ -476,7 +478,7 @@ public class BibliotecaFragment extends Fragment implements RecyclerViewClick {
         servicioClases.getAllClases(new CallbackLista<Clase>() {
             @Override
             public void exito(List<Clase> listaResultado) {
-                listaClases = listaResultado;
+                listaClases.addAll(listaResultado);
                 List<GetNombreInterface> lista = new ArrayList<>(listaResultado);
                 adaptadorMix.addElementos(lista);
                 cambiaTituloBusqueda();
@@ -498,6 +500,7 @@ public class BibliotecaFragment extends Fragment implements RecyclerViewClick {
     }
 
     @Override
+    @SuppressWarnings("ConstantConditions")
     public void onCosaCliked(int posicion) {
         GetNombreInterface objeto = adaptadorMix.getObjeto(posicion);
         boolean isFavorito = ((MainActivity) getActivity()).checkFavorito(objeto.getNombre());
