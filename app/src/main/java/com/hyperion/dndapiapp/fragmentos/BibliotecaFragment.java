@@ -1,10 +1,14 @@
 package com.hyperion.dndapiapp.fragmentos;
 
+import static com.hyperion.dndapiapp.utilidades.Constantes.ACTIVIDAD_FAVORITO;
 import static com.hyperion.dndapiapp.utilidades.Constantes.ARMADURA_BUNDLE;
 import static com.hyperion.dndapiapp.utilidades.Constantes.ARMA_BUNDLE;
 import static com.hyperion.dndapiapp.utilidades.Constantes.CLASE_BUNDLE;
 import static com.hyperion.dndapiapp.utilidades.Constantes.ENEMIGO_BUNDLE;
+import static com.hyperion.dndapiapp.utilidades.Constantes.FAVORITO_BUNDLE;
 import static com.hyperion.dndapiapp.utilidades.Constantes.HECHIZOS_BUNDLE;
+import static com.hyperion.dndapiapp.utilidades.Constantes.IS_FAVORITO;
+import static com.hyperion.dndapiapp.utilidades.Constantes.IS_FAVORITO_RESULT;
 import static com.hyperion.dndapiapp.utilidades.Constantes.POSICION_CLASES;
 import static com.hyperion.dndapiapp.utilidades.Constantes.POSICION_COMPETENCIAS;
 import static com.hyperion.dndapiapp.utilidades.Constantes.POSICION_ENEMIGOS;
@@ -17,6 +21,7 @@ import static com.hyperion.dndapiapp.utilidades.Constantes.TRASFONDO_COMPETENCIA
 import static com.hyperion.dndapiapp.utilidades.Constantes.filtros;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -31,11 +36,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.hyperion.dndapiapp.R;
+import com.hyperion.dndapiapp.actividades.MainActivity;
 import com.hyperion.dndapiapp.actividades.fichas.FichaArmaActivity;
 import com.hyperion.dndapiapp.actividades.fichas.FichaArmaduraActivity;
 import com.hyperion.dndapiapp.actividades.fichas.FichaClaseAcitivity;
@@ -63,6 +70,7 @@ import com.hyperion.dndapiapp.servicioRest.servicios.ServicioEnemigos;
 import com.hyperion.dndapiapp.servicioRest.servicios.ServicioEquipamiento;
 import com.hyperion.dndapiapp.servicioRest.servicios.ServicioRazas;
 import com.hyperion.dndapiapp.servicioRest.servicios.ServicioTrasfondos;
+import com.hyperion.dndapiapp.sqlite.Favorito;
 import com.hyperion.dndapiapp.utilidades.GetNombreInterface;
 
 import org.jetbrains.annotations.Contract;
@@ -121,8 +129,6 @@ public class BibliotecaFragment extends Fragment implements RecyclerViewClick {
         filtrosSeleccionados = new boolean[filtros.length];
     }
 
-    @NonNull
-    @Contract(" -> new")
     public static BibliotecaFragment newInstance() {
         return new BibliotecaFragment();
     }
@@ -137,6 +143,7 @@ public class BibliotecaFragment extends Fragment implements RecyclerViewClick {
         for (int i = 0; i < filtros.length; i++) {
             filtrosSeleccionados[i] = sharedPreferences.getBoolean(filtros[i], true);
         }
+
     }
 
     @Override
@@ -493,10 +500,12 @@ public class BibliotecaFragment extends Fragment implements RecyclerViewClick {
     @Override
     public void onCosaCliked(int posicion) {
         GetNombreInterface objeto = adaptadorMix.getObjeto(posicion);
+        boolean isFavorito = ((MainActivity) getActivity()).checkFavorito(objeto.getNombre());
 
         if (objeto instanceof Enemigo) {
             Intent intent = new Intent(getContext(), FichaEnemigoActivity.class);
             intent.putExtra(ENEMIGO_BUNDLE, (Enemigo) objeto);
+            intent.putExtra(IS_FAVORITO, isFavorito);
             startActivity(intent);
 
         } else if (objeto instanceof Competencia) {
@@ -505,31 +514,37 @@ public class BibliotecaFragment extends Fragment implements RecyclerViewClick {
         } else if (objeto instanceof Trasfondo) {
             Intent intent = new Intent(getContext(), FichaTrasfondoActivity.class);
             intent.putExtra(TRASFONDO_COMPETENCIAS_BUNDLE, (Trasfondo) objeto);
+            intent.putExtra(IS_FAVORITO, isFavorito);
             startActivity(intent);
 
-        } else if (objeto instanceof Hechizo) {
+        } else if (objeto instanceof Hechizo) { // Compìar para el resto fijarse en los hechizos
             Intent intent = new Intent(getContext(), FichaHechizoActivity.class);
             intent.putExtra(HECHIZOS_BUNDLE, (Hechizo) objeto);
-            startActivity(intent);
+            intent.putExtra(IS_FAVORITO, isFavorito);
+            startActivityForResult(intent, ACTIVIDAD_FAVORITO);
 
         } else if (objeto instanceof Arma) {
             Intent intent = new Intent(getContext(), FichaArmaActivity.class);
             intent.putExtra(ARMA_BUNDLE, (Arma) objeto);
+            intent.putExtra(IS_FAVORITO, isFavorito);
             startActivity(intent);
 
         } else if (objeto instanceof Armadura) {
             Intent intent = new Intent(getContext(), FichaArmaduraActivity.class);
             intent.putExtra(ARMADURA_BUNDLE, (Armadura) objeto);
+            intent.putExtra(IS_FAVORITO, isFavorito);
             startActivity(intent);
 
         } else if (objeto instanceof Raza) {
             Intent intent = new Intent(getContext(), FichaRazaActivity.class);
             intent.putExtra(RAZA_BUNDLE, (Raza) objeto);
+            intent.putExtra(IS_FAVORITO, isFavorito);
             startActivity(intent);
 
         } else if (objeto instanceof Clase) {
             Intent intent = new Intent(getContext(), FichaClaseAcitivity.class);
             intent.putExtra(CLASE_BUNDLE, (Clase) objeto);
+            intent.putExtra(IS_FAVORITO, isFavorito);
             startActivity(intent);
         }
     }
@@ -549,6 +564,26 @@ public class BibliotecaFragment extends Fragment implements RecyclerViewClick {
         @Override
         public void afterTextChanged(Editable editable) {
 
+        }
+    }
+
+    @Override
+    @SuppressWarnings("ConstantConditions")
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == ACTIVIDAD_FAVORITO) {
+            if (resultCode == Activity.RESULT_OK) {
+                if (data != null) {
+                    boolean isFavorito = data.getBooleanExtra(IS_FAVORITO_RESULT, false);
+                    Favorito favorito = data.getParcelableExtra(FAVORITO_BUNDLE);
+
+                    if (isFavorito)
+                        ((MainActivity) getActivity()).guardaFavorito(favorito);
+                    else
+                        ((MainActivity) getActivity()).eliminaFavorito(favorito);
+                }
+            }
         }
     }
 }

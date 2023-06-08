@@ -1,7 +1,6 @@
 package com.hyperion.dndapiapp.actividades;
 
 import static com.hyperion.dndapiapp.utilidades.Constantes.ACTIVIDAD_IMAGEN;
-import static com.hyperion.dndapiapp.utilidades.Constantes.ACTIVIDAD_LOGIN;
 import static com.hyperion.dndapiapp.utilidades.Constantes.IMAGEN_USUARIO_BUNDLE;
 import static com.hyperion.dndapiapp.utilidades.Utils.verifcaContrasenia;
 import static com.hyperion.dndapiapp.utilidades.Utils.verificaCorreo;

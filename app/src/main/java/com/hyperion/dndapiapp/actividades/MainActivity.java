@@ -1,10 +1,14 @@
 package com.hyperion.dndapiapp.actividades;
 
+import static com.hyperion.dndapiapp.utilidades.Constantes.DB_NAME;
+import static com.hyperion.dndapiapp.utilidades.Constantes.FAVORITO_BUNDLE;
 import static com.hyperion.dndapiapp.utilidades.Constantes.USUARIO_BUNDLE;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -16,6 +20,10 @@ import com.hyperion.dndapiapp.entidades.usuario.Usuario;
 import com.hyperion.dndapiapp.fragmentos.BibliotecaFragment;
 import com.hyperion.dndapiapp.fragmentos.FavoritosFragment;
 import com.hyperion.dndapiapp.fragmentos.FichasFragment;
+import com.hyperion.dndapiapp.sqlite.Favorito;
+import com.hyperion.dndapiapp.sqlite.SQLiteHelper;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
     /* Utils */
     private ActivityMainBinding binding;
     private FragmentManager fragmentManager;
+    private SQLiteHelper sqLiteHelper;
+    private List<Favorito> favoritos;
 
     /* Fragmentos */
     private BibliotecaFragment bibliotecaFragment;
@@ -36,12 +46,15 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         fragmentManager = getSupportFragmentManager();
+        sqLiteHelper = SQLiteHelper.getInstance(this, DB_NAME, null, 1);
+
 
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             usuario = bundle.getParcelable(USUARIO_BUNDLE);
         }
 
+        actualizaFavoritos();
         iniciaActividad();
         inicializaFragmentos();
         aniadeListenerNavBar();
@@ -89,4 +102,29 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.commit();
     }
 
+    public void guardaFavorito(Favorito favorito) {
+        sqLiteHelper.iniciaConexion();
+        sqLiteHelper.insert(favorito);
+        favoritos.add(favorito);
+        sqLiteHelper.stop();
+    }
+
+    public void eliminaFavorito(Favorito favorito) {
+        if (checkFavorito(favorito.getNombre())) {
+            favoritos.remove(favorito);
+            sqLiteHelper.iniciaConexion();
+            sqLiteHelper.delete(favorito.getNombre());
+            sqLiteHelper.stop();
+        }
+    }
+
+    private void actualizaFavoritos() {
+        sqLiteHelper.iniciaConexion();
+        favoritos = sqLiteHelper.selectAll();
+        sqLiteHelper.stop();
+    }
+
+    public boolean checkFavorito(String nombre) {
+        return favoritos.contains(new Favorito(nombre, ""));
+    }
 }

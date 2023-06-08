@@ -1,25 +1,19 @@
 package com.hyperion.dndapiapp.actividades.fichas;
 
-import static com.hyperion.dndapiapp.utilidades.Constantes.ENEMIGO_BUNDLE;
 import static com.hyperion.dndapiapp.utilidades.Constantes.ESPECIALIDADES_BUNDLE;
+
+import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Bundle;
-
-import com.hyperion.dndapiapp.R;
 import com.hyperion.dndapiapp.adaptadores.recyclerView.GenericoRecyclerView;
-import com.hyperion.dndapiapp.adaptadores.recyclerView.adaptadores.AdaptadorEquipoEspecialidades;
 import com.hyperion.dndapiapp.adaptadores.recyclerView.adaptadores.AdaptadorGenerico;
-import com.hyperion.dndapiapp.databinding.ActivityFichaEnemigoBinding;
 import com.hyperion.dndapiapp.databinding.ActivityFichaEspecialidadBinding;
 import com.hyperion.dndapiapp.entidades.clases.Especialidad;
-import com.hyperion.dndapiapp.entidades.clases.HabilidadEspecialidad;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class FichaEspecialidadActivity extends AppCompatActivity {

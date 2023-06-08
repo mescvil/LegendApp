@@ -2,21 +2,17 @@ package com.hyperion.dndapiapp.fragmentos.fichas.clases;
 
 import static com.hyperion.dndapiapp.utilidades.Constantes.CLASE_BUNDLE;
 import static com.hyperion.dndapiapp.utilidades.Constantes.URL_BASE_IMAGEN_CLASES;
-import static com.hyperion.dndapiapp.utilidades.Constantes.URL_BASE_IMAGEN_CRIATURAS;
 
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+
 import com.bumptech.glide.Glide;
-import com.hyperion.dndapiapp.R;
 import com.hyperion.dndapiapp.databinding.FragmentGeneralClasesBinding;
-import com.hyperion.dndapiapp.databinding.FragmentGeneralEnemigosBinding;
 import com.hyperion.dndapiapp.entidades.clases.Clase;
 
 public class GeneralClasesFragment extends Fragment {
