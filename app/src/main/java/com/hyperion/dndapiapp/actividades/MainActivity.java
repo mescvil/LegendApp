@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void inicializaFragmentos() {
         bibliotecaFragment = BibliotecaFragment.newInstance();
-        favoritosFragment = new FavoritosFragment();
+        favoritosFragment = FavoritosFragment.newInstance();
         fichasFragment = new FichasFragment();
     }
 
@@ -105,6 +105,10 @@ public class MainActivity extends AppCompatActivity {
         sqLiteHelper.insert(favorito);
         favoritos.add(favorito);
         sqLiteHelper.stop();
+    }
+
+    public List<Favorito> getFavoritos() {
+        return favoritos;
     }
 
     public void eliminaFavorito(Favorito favorito) {

@@ -149,12 +149,12 @@ public class BibliotecaFragment extends Fragment implements RecyclerViewClick {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         binding = FragmentBibliotecaBinding.inflate(inflater, container, false);
         iniciarFragmento();
         binding.botonFiltro.setOnClickListener(view -> listenerFiltro());
         binding.campoBusqueda.addTextChangedListener(new OurTextWatcher());
         return binding.getRoot();
+
     }
 
     private void listenerFiltro() {

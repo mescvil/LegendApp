@@ -218,8 +218,8 @@
 
         <ImageButton
             android:id="@+id/botonFavHechizo"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/icono_bookmark_no"
             android:backgroundTint="#B33B3B"

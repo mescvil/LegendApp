@@ -1,65 +1,128 @@
 package com.hyperion.dndapiapp.fragmentos;
 
+import static com.hyperion.dndapiapp.utilidades.Constantes.ACTIVIDAD_FAVORITO;
+import static com.hyperion.dndapiapp.utilidades.Constantes.FAVORITO_BUNDLE;
+import static com.hyperion.dndapiapp.utilidades.Constantes.HECHIZOS_BUNDLE;
+import static com.hyperion.dndapiapp.utilidades.Constantes.IS_FAVORITO;
+import static com.hyperion.dndapiapp.utilidades.Constantes.IS_FAVORITO_RESULT;
+
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import com.hyperion.dndapiapp.R;
+import com.hyperion.dndapiapp.actividades.MainActivity;
+import com.hyperion.dndapiapp.actividades.fichas.FichaHechizoActivity;
+import com.hyperion.dndapiapp.adaptadores.recyclerView.RecyclerViewClick;
+import com.hyperion.dndapiapp.adaptadores.recyclerView.adaptadores.AdaptadorFavoritos;
+import com.hyperion.dndapiapp.databinding.FragmentFavoritosBinding;
+import com.hyperion.dndapiapp.dialogos.LoadingDialog;
+import com.hyperion.dndapiapp.entidades.equipamiento.Hechizo;
+import com.hyperion.dndapiapp.servicioRest.callbacks.CallbackCustom;
+import com.hyperion.dndapiapp.servicioRest.servicios.ServicioClases;
+import com.hyperion.dndapiapp.servicioRest.servicios.ServicioCompetencias;
+import com.hyperion.dndapiapp.servicioRest.servicios.ServicioEnemigos;
+import com.hyperion.dndapiapp.servicioRest.servicios.ServicioEquipamiento;
+import com.hyperion.dndapiapp.servicioRest.servicios.ServicioRazas;
+import com.hyperion.dndapiapp.servicioRest.servicios.ServicioTrasfondos;
+import com.hyperion.dndapiapp.sqlite.Favorito;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link FavoritosFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class FavoritosFragment extends Fragment {
+import java.util.List;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+@SuppressWarnings("ConstantConditions")
+public class FavoritosFragment extends Fragment implements RecyclerViewClick {
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private FragmentFavoritosBinding binding;
+    private AdaptadorFavoritos adaptador;
+    private List<Favorito> favoritos;
 
     public FavoritosFragment() {
-        // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment FavoritosFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static FavoritosFragment newInstance(String param1, String param2) {
-        FavoritosFragment fragment = new FavoritosFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
+    public static FavoritosFragment newInstance() {
+        return new FavoritosFragment();
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+        favoritos = ((MainActivity) getActivity()).getFavoritos();
+    }
+
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+
+        binding = FragmentFavoritosBinding.inflate(inflater, container, false);
+        iniciarFragmento();
+        return binding.getRoot();
+    }
+
+    private void iniciarFragmento() {
+        RecyclerView recyclerView = binding.listaFavoritos;
+        adaptador = new AdaptadorFavoritos(favoritos, this);
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(adaptador);
+    }
+
+    @Override
+    public void onCosaCliked(int posicion) {
+        LoadingDialog dialog = new LoadingDialog(getContext());
+        Favorito favorito = adaptador.getFavorito(posicion);
+
+        dialog.show("Obteniendo favorito");
+
+        switch (favorito.getTipo()) {
+            case "Hechizo":
+                ServicioEquipamiento.getInstance().getAllHechizo(new CallbackCustom<Hechizo>() {
+                    @Override
+                    public void exito(Hechizo resultado) {
+                        dialog.dismiss();
+
+                        Intent intent = new Intent(getContext(), FichaHechizoActivity.class);
+                        intent.putExtra(HECHIZOS_BUNDLE, resultado);
+                        intent.putExtra(IS_FAVORITO, true);
+                        startActivityForResult(intent, ACTIVIDAD_FAVORITO);
+                    }
+
+                    @Override
+                    public void fallo(String mensaje) {
+                        dialog.dismiss();
+                    }
+
+                }, favorito.getNombre());
         }
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_favoritos, container, false);
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == ACTIVIDAD_FAVORITO) {
+            if (resultCode == Activity.RESULT_OK) {
+                if (data != null) {
+                    boolean isFavorito = data.getBooleanExtra(IS_FAVORITO_RESULT, false);
+                    Favorito favorito = data.getParcelableExtra(FAVORITO_BUNDLE);
+
+                    if (isFavorito)
+                        ((MainActivity) getActivity()).guardaFavorito(favorito);
+                    else {
+                        ((MainActivity) getActivity()).eliminaFavorito(favorito);
+                        adaptador.removeItem(favorito);
+                    }
+                }
+            }
+        }
     }
 }

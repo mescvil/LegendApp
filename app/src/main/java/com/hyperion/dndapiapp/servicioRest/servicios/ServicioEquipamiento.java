@@ -9,6 +9,7 @@ import com.hyperion.dndapiapp.entidades.equipamiento.Armadura;
 import com.hyperion.dndapiapp.entidades.equipamiento.Hechizo;
 import com.hyperion.dndapiapp.servicioRest.RespuestaApi;
 import com.hyperion.dndapiapp.servicioRest.RetrofitHelper;
+import com.hyperion.dndapiapp.servicioRest.callbacks.CallbackCustom;
 import com.hyperion.dndapiapp.servicioRest.callbacks.CallbackLista;
 
 import retrofit2.Call;
@@ -47,6 +48,30 @@ public class ServicioEquipamiento {
 
                 Log.d("API-ERROR", "No es posible obtener los Hechizos :" + t);
                 callback.fallo();
+            }
+        });
+    }
+
+    public void getAllHechizo(CallbackCustom<Hechizo> callback, String nombreHechizo) {
+        RetrofitHelper retrofitHelper = RetrofitHelper.getInstance();
+        Call<Hechizo> call = retrofitHelper.getCallsEquipamiento().getHechizo(nombreHechizo);
+
+        call.enqueue(new Callback<Hechizo>() {
+            @Override
+            public void onResponse(@NonNull Call<Hechizo> call,
+                                   @NonNull Response<Hechizo> response) {
+
+                if (response.body() != null) {
+                    Log.d("API", String.format("Hechizo obtenido con exito [%s]", nombreHechizo));
+                    callback.exito(response.body());
+                }
+            }
+            @Override
+            public void onFailure(@NonNull Call<Hechizo> call,
+                                  @NonNull Throwable t) {
+
+                Log.d("API-ERROR", "No es posible obtener el hechizo");
+                callback.fallo("Error al obtener el hechizo");
             }
         });
     }
