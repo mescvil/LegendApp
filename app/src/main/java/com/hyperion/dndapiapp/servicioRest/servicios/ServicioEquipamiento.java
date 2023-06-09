@@ -52,7 +52,7 @@ public class ServicioEquipamiento {
         });
     }
 
-    public void getAllHechizo(CallbackCustom<Hechizo> callback, String nombreHechizo) {
+    public void getHechizo(CallbackCustom<Hechizo> callback, String nombreHechizo) {
         RetrofitHelper retrofitHelper = RetrofitHelper.getInstance();
         Call<Hechizo> call = retrofitHelper.getCallsEquipamiento().getHechizo(nombreHechizo);
 
@@ -66,6 +66,7 @@ public class ServicioEquipamiento {
                     callback.exito(response.body());
                 }
             }
+
             @Override
             public void onFailure(@NonNull Call<Hechizo> call,
                                   @NonNull Throwable t) {
@@ -101,6 +102,31 @@ public class ServicioEquipamiento {
         });
     }
 
+    public void getArma(CallbackCustom<Arma> callback, String nombreArma) {
+        RetrofitHelper retrofitHelper = RetrofitHelper.getInstance();
+        Call<Arma> call = retrofitHelper.getCallsEquipamiento().getArma(nombreArma);
+
+        call.enqueue(new Callback<Arma>() {
+            @Override
+            public void onResponse(@NonNull Call<Arma> call,
+                                   @NonNull Response<Arma> response) {
+
+                if (response.body() != null) {
+                    Log.d("API", String.format("Arma obtenida con exito [%s]", nombreArma));
+                    callback.exito(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<Arma> call,
+                                  @NonNull Throwable t) {
+
+                Log.d("API-ERROR", "No es posible obtener el arma");
+                callback.fallo("Error al obtener el hechizo");
+            }
+        });
+    }
+
     public void getAllArmaduras(CallbackLista<Armadura> callback) {
         RetrofitHelper retrofitHelper = RetrofitHelper.getInstance();
         Call<RespuestaApi<Armadura>> call = retrofitHelper.getCallsEquipamiento().getArmaduras();
@@ -122,6 +148,31 @@ public class ServicioEquipamiento {
 
                 Log.d("API-ERROR", "No es posible obtener las Armaduras :" + t);
                 callback.fallo();
+            }
+        });
+    }
+
+    public void getArmadura(CallbackCustom<Armadura> callback, String nombreArmadura) {
+        RetrofitHelper retrofitHelper = RetrofitHelper.getInstance();
+        Call<Armadura> call = retrofitHelper.getCallsEquipamiento().getArmadura(nombreArmadura);
+
+        call.enqueue(new Callback<Armadura>() {
+            @Override
+            public void onResponse(@NonNull Call<Armadura> call,
+                                   @NonNull Response<Armadura> response) {
+
+                if (response.body() != null) {
+                    Log.d("API", String.format("Armadura obtenida con exito [%s]", nombreArmadura));
+                    callback.exito(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<Armadura> call,
+                                  @NonNull Throwable t) {
+
+                Log.d("API-ERROR", "No es posible obtener la armadura");
+                callback.fallo("Error al obtener el hechizo");
             }
         });
     }

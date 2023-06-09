@@ -5,6 +5,7 @@ import static com.hyperion.dndapiapp.utilidades.Constantes.USUARIO_BUNDLE;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -101,10 +102,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void guardaFavorito(Favorito favorito) {
-        sqLiteHelper.iniciaConexion();
-        sqLiteHelper.insert(favorito);
-        favoritos.add(favorito);
-        sqLiteHelper.stop();
+        if (!favoritos.contains(favorito)) {
+            sqLiteHelper.iniciaConexion();
+            sqLiteHelper.insert(favorito);
+            favoritos.add(favorito);
+            sqLiteHelper.stop();
+        }
     }
 
     public List<Favorito> getFavoritos() {

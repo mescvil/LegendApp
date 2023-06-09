@@ -21,8 +21,14 @@ public interface CallsEquipamiento {
     @GET("equipamiento/armas")
     Call<RespuestaApi<Arma>> getArmas();
 
+    @GET("equipamiento/armas/{arma}")
+    Call<Arma> getArma(@Path("arma") String nombre);
+
     @GET("equipamiento/armaduras")
     Call<RespuestaApi<Armadura>> getArmaduras();
+
+    @GET("equipamiento/armaduras/{armadura}")
+    Call<Armadura> getArmadura(@Path("armadura") String nombre);
 
     @GET("equipamiento/hechizos/")
     Call<RespuestaApi<Hechizo>> getHechizosPaginacion(@Query("size") int tamanioPagina,

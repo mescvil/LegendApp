@@ -509,7 +509,7 @@ public class BibliotecaFragment extends Fragment implements RecyclerViewClick {
             Intent intent = new Intent(getContext(), FichaEnemigoActivity.class);
             intent.putExtra(ENEMIGO_BUNDLE, (Enemigo) objeto);
             intent.putExtra(IS_FAVORITO, isFavorito);
-            startActivity(intent);
+            startActivityForResult(intent, ACTIVIDAD_FAVORITO);
 
         } else if (objeto instanceof Competencia) {
             Toast.makeText(getContext(), "Es autoexplicativo =)", Toast.LENGTH_SHORT).show();
@@ -518,7 +518,7 @@ public class BibliotecaFragment extends Fragment implements RecyclerViewClick {
             Intent intent = new Intent(getContext(), FichaTrasfondoActivity.class);
             intent.putExtra(TRASFONDO_COMPETENCIAS_BUNDLE, (Trasfondo) objeto);
             intent.putExtra(IS_FAVORITO, isFavorito);
-            startActivity(intent);
+            startActivityForResult(intent, ACTIVIDAD_FAVORITO);
 
         } else if (objeto instanceof Hechizo) { // Compìar para el resto fijarse en los hechizos
             Intent intent = new Intent(getContext(), FichaHechizoActivity.class);
@@ -530,25 +530,25 @@ public class BibliotecaFragment extends Fragment implements RecyclerViewClick {
             Intent intent = new Intent(getContext(), FichaArmaActivity.class);
             intent.putExtra(ARMA_BUNDLE, (Arma) objeto);
             intent.putExtra(IS_FAVORITO, isFavorito);
-            startActivity(intent);
+            startActivityForResult(intent, ACTIVIDAD_FAVORITO);
 
         } else if (objeto instanceof Armadura) {
             Intent intent = new Intent(getContext(), FichaArmaduraActivity.class);
             intent.putExtra(ARMADURA_BUNDLE, (Armadura) objeto);
             intent.putExtra(IS_FAVORITO, isFavorito);
-            startActivity(intent);
+            startActivityForResult(intent, ACTIVIDAD_FAVORITO);
 
         } else if (objeto instanceof Raza) {
             Intent intent = new Intent(getContext(), FichaRazaActivity.class);
             intent.putExtra(RAZA_BUNDLE, (Raza) objeto);
             intent.putExtra(IS_FAVORITO, isFavorito);
-            startActivity(intent);
+            startActivityForResult(intent, ACTIVIDAD_FAVORITO);
 
         } else if (objeto instanceof Clase) {
             Intent intent = new Intent(getContext(), FichaClaseAcitivity.class);
             intent.putExtra(CLASE_BUNDLE, (Clase) objeto);
             intent.putExtra(IS_FAVORITO, isFavorito);
-            startActivity(intent);
+            startActivityForResult(intent, ACTIVIDAD_FAVORITO);
         }
     }
 
