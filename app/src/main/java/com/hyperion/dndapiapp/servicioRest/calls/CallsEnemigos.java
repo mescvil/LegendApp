@@ -5,6 +5,7 @@ import com.hyperion.dndapiapp.servicioRest.RespuestaApi;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface CallsEnemigos {
@@ -15,4 +16,7 @@ public interface CallsEnemigos {
     @GET("enemigos/")
     Call<RespuestaApi<Enemigo>> getEnemigosPaginacion(@Query("size") int tamanioPagina,
                                                       @Query("page") int pagina);
+
+    @GET("enemigos/{enemigo}")
+    Call<Enemigo> getEnemigo(@Path("enemigo") String nombre);
 }

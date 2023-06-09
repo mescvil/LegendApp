@@ -4,9 +4,11 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+import com.hyperion.dndapiapp.entidades.clases.Clase;
 import com.hyperion.dndapiapp.entidades.enemigos.Enemigo;
 import com.hyperion.dndapiapp.servicioRest.RespuestaApi;
 import com.hyperion.dndapiapp.servicioRest.RetrofitHelper;
+import com.hyperion.dndapiapp.servicioRest.callbacks.CallbackCustom;
 import com.hyperion.dndapiapp.servicioRest.callbacks.CallbackLista;
 
 import retrofit2.Call;
@@ -45,6 +47,31 @@ public class ServicioEnemigos {
 
                 Log.d("API-ERROR", "No es posible obtener los enemigos :" + t);
                 callback.fallo();
+            }
+        });
+    }
+
+    public void getEnemigo(CallbackCustom<Enemigo> callback, String nombreEnemigo) {
+        RetrofitHelper retrofitHelper = RetrofitHelper.getInstance();
+        Call<Enemigo> call = retrofitHelper.getCallsEnemigos().getEnemigo(nombreEnemigo);
+
+        call.enqueue(new Callback<Enemigo>() {
+            @Override
+            public void onResponse(@NonNull Call<Enemigo> call,
+                                   @NonNull Response<Enemigo> response) {
+
+                if (response.body() != null) {
+                    Log.d("API", String.format("Enemigo obtenido con exito [%s]", nombreEnemigo));
+                    callback.exito(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<Enemigo> call,
+                                  @NonNull Throwable t) {
+
+                Log.d("API-ERROR", "No es posible obtener el enemigo");
+                callback.fallo("Error al obtener el enemigo");
             }
         });
     }

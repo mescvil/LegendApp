@@ -5,6 +5,7 @@ import static com.hyperion.dndapiapp.utilidades.Constantes.ACTIVIDAD_FAVORITO_CL
 import static com.hyperion.dndapiapp.utilidades.Constantes.ARMADURA_BUNDLE;
 import static com.hyperion.dndapiapp.utilidades.Constantes.ARMA_BUNDLE;
 import static com.hyperion.dndapiapp.utilidades.Constantes.CLASE_BUNDLE;
+import static com.hyperion.dndapiapp.utilidades.Constantes.ENEMIGO_BUNDLE;
 import static com.hyperion.dndapiapp.utilidades.Constantes.FAVORITO_BUNDLE;
 import static com.hyperion.dndapiapp.utilidades.Constantes.HECHIZOS_BUNDLE;
 import static com.hyperion.dndapiapp.utilidades.Constantes.IS_FAVORITO;
@@ -31,17 +32,20 @@ import com.hyperion.dndapiapp.actividades.MainActivity;
 import com.hyperion.dndapiapp.actividades.fichas.FichaArmaActivity;
 import com.hyperion.dndapiapp.actividades.fichas.FichaArmaduraActivity;
 import com.hyperion.dndapiapp.actividades.fichas.FichaClaseAcitivity;
+import com.hyperion.dndapiapp.actividades.fichas.FichaEnemigoActivity;
 import com.hyperion.dndapiapp.actividades.fichas.FichaHechizoActivity;
 import com.hyperion.dndapiapp.adaptadores.recyclerView.RecyclerViewClick;
 import com.hyperion.dndapiapp.adaptadores.recyclerView.adaptadores.AdaptadorFavoritos;
 import com.hyperion.dndapiapp.databinding.FragmentFavoritosBinding;
 import com.hyperion.dndapiapp.dialogos.LoadingDialog;
 import com.hyperion.dndapiapp.entidades.clases.Clase;
+import com.hyperion.dndapiapp.entidades.enemigos.Enemigo;
 import com.hyperion.dndapiapp.entidades.equipamiento.Arma;
 import com.hyperion.dndapiapp.entidades.equipamiento.Armadura;
 import com.hyperion.dndapiapp.entidades.equipamiento.Hechizo;
 import com.hyperion.dndapiapp.servicioRest.callbacks.CallbackCustom;
 import com.hyperion.dndapiapp.servicioRest.servicios.ServicioClases;
+import com.hyperion.dndapiapp.servicioRest.servicios.ServicioEnemigos;
 import com.hyperion.dndapiapp.servicioRest.servicios.ServicioEquipamiento;
 import com.hyperion.dndapiapp.sqlite.Favorito;
 import com.hyperion.dndapiapp.sqlite.FavoritoClase;
@@ -152,6 +156,26 @@ public class FavoritosFragment extends Fragment implements RecyclerViewClick {
 
                         Intent intent = new Intent(getContext(), FichaArmaduraActivity.class);
                         intent.putExtra(ARMADURA_BUNDLE, resultado);
+                        intent.putExtra(IS_FAVORITO, true);
+                        startActivityForResult(intent, ACTIVIDAD_FAVORITO);
+                    }
+
+                    @Override
+                    public void fallo(String mensaje) {
+                        dialog.dismiss();
+                    }
+
+                }, favorito.getNombre());
+                break;
+
+            case "Enemigo":
+                ServicioEnemigos.getInstance().getEnemigo(new CallbackCustom<Enemigo>() {
+                    @Override
+                    public void exito(Enemigo resultado) {
+                        dialog.dismiss();
+
+                        Intent intent = new Intent(getContext(), FichaEnemigoActivity.class);
+                        intent.putExtra(ENEMIGO_BUNDLE, resultado);
                         intent.putExtra(IS_FAVORITO, true);
                         startActivityForResult(intent, ACTIVIDAD_FAVORITO);
                     }
