@@ -19,6 +19,7 @@ import com.hyperion.dndapiapp.fragmentos.BibliotecaFragment;
 import com.hyperion.dndapiapp.fragmentos.FavoritosFragment;
 import com.hyperion.dndapiapp.fragmentos.FichasFragment;
 import com.hyperion.dndapiapp.sqlite.Favorito;
+import com.hyperion.dndapiapp.sqlite.FavoritoClase;
 import com.hyperion.dndapiapp.sqlite.SQLiteHelper;
 
 import java.util.List;
@@ -108,6 +109,25 @@ public class MainActivity extends AppCompatActivity {
             favoritos.add(favorito);
             sqLiteHelper.stop();
         }
+    }
+
+    public void gestionaFavoritosClase(List<FavoritoClase> favoritosClase) {
+        new Thread(() -> {
+            sqLiteHelper.iniciaConexion();
+            for (FavoritoClase favoritoClase : favoritosClase) {
+                Favorito favorito = favoritoClase.getFavorito();
+
+                if (favoritoClase.isFavorito() && !favoritos.contains(favorito)) {
+                    sqLiteHelper.insert(favorito);
+                    favoritos.add(favorito);
+
+                } else if (!favoritoClase.isFavorito() && checkFavorito(favorito.getNombre())) {
+                    sqLiteHelper.delete(favorito.getNombre());
+                    favoritos.remove(favorito);
+                }
+            }
+            sqLiteHelper.stop();
+        }).start();
     }
 
     public List<Favorito> getFavoritos() {

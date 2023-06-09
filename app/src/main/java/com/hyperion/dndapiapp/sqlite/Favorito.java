@@ -15,6 +15,11 @@ public class Favorito implements Parcelable {
         this.tipo = tipo;
     }
 
+    public Favorito(String nombre) {
+        this.nombre = nombre;
+        this.tipo = "";
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

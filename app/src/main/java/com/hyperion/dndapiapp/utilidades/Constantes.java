@@ -28,6 +28,9 @@ public abstract class Constantes {
     public static final String FAVORITO_BUNDLE = "favorito";
     public static final String IS_FAVORITO = "isFavorito";
     public static final String IS_FAVORITO_RESULT = "isFavoritoResult";
+    public static final String LISTA_FAVORITOS_BUNDLE = "listaFavoritos";
+    public static final String LISTA_FAVORITOS_CLASE_BUNDLE = "listaFavoritosClase";
+    public static final String LISTA_FAVORITOS_ESTADO_BUNDLE = "listaFavoritosEstado";
 
 
     /* ================= Actividades  ================= */
@@ -36,6 +39,7 @@ public abstract class Constantes {
     public final static int ACTIVIDAD_REGISTER = 3;
     public final static int ACTIVIDAD_IMAGEN = 3;
     public final static int ACTIVIDAD_FAVORITO = 4;
+    public final static int ACTIVIDAD_FAVORITO_CLASE = 5;
 
     /* ============== Filtros busquedas ============== */
     public static final String[] filtros = new String[]{"Enemigos", "Clases", "Razas", "Hechizos", "Equipamiento", "Trasfondos", "Competencias"};

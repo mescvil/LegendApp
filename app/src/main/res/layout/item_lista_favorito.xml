@@ -4,13 +4,14 @@
     android:id="@+id/cartaFavorito"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="5dp"
+    android:layout_margin="8dp"
     android:layout_marginHorizontal="8dp"
     android:layout_marginVertical="4dp"
     android:backgroundTint="@color/fondoTarjeta"
     app:cardCornerRadius="4dp"
-    app:cardMaxElevation="24dp"
-    app:strokeColor="@color/rojoOscuro">
+    app:cardElevation="12dp"
+    app:strokeColor="@color/rojoOscuro"
+    app:strokeWidth="1dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

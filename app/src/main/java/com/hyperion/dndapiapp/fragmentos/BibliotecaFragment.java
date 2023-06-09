@@ -1,6 +1,7 @@
 package com.hyperion.dndapiapp.fragmentos;
 
 import static com.hyperion.dndapiapp.utilidades.Constantes.ACTIVIDAD_FAVORITO;
+import static com.hyperion.dndapiapp.utilidades.Constantes.ACTIVIDAD_FAVORITO_CLASE;
 import static com.hyperion.dndapiapp.utilidades.Constantes.ARMADURA_BUNDLE;
 import static com.hyperion.dndapiapp.utilidades.Constantes.ARMA_BUNDLE;
 import static com.hyperion.dndapiapp.utilidades.Constantes.CLASE_BUNDLE;
@@ -9,6 +10,9 @@ import static com.hyperion.dndapiapp.utilidades.Constantes.FAVORITO_BUNDLE;
 import static com.hyperion.dndapiapp.utilidades.Constantes.HECHIZOS_BUNDLE;
 import static com.hyperion.dndapiapp.utilidades.Constantes.IS_FAVORITO;
 import static com.hyperion.dndapiapp.utilidades.Constantes.IS_FAVORITO_RESULT;
+import static com.hyperion.dndapiapp.utilidades.Constantes.LISTA_FAVORITOS_BUNDLE;
+import static com.hyperion.dndapiapp.utilidades.Constantes.LISTA_FAVORITOS_CLASE_BUNDLE;
+import static com.hyperion.dndapiapp.utilidades.Constantes.LISTA_FAVORITOS_ESTADO_BUNDLE;
 import static com.hyperion.dndapiapp.utilidades.Constantes.POSICION_CLASES;
 import static com.hyperion.dndapiapp.utilidades.Constantes.POSICION_COMPETENCIAS;
 import static com.hyperion.dndapiapp.utilidades.Constantes.POSICION_ENEMIGOS;
@@ -26,6 +30,7 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.preference.PreferenceManager;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -71,6 +76,7 @@ import com.hyperion.dndapiapp.servicioRest.servicios.ServicioEquipamiento;
 import com.hyperion.dndapiapp.servicioRest.servicios.ServicioRazas;
 import com.hyperion.dndapiapp.servicioRest.servicios.ServicioTrasfondos;
 import com.hyperion.dndapiapp.sqlite.Favorito;
+import com.hyperion.dndapiapp.sqlite.FavoritoClase;
 import com.hyperion.dndapiapp.utilidades.GetNombreInterface;
 
 import org.jetbrains.annotations.Contract;
@@ -548,7 +554,11 @@ public class BibliotecaFragment extends Fragment implements RecyclerViewClick {
             Intent intent = new Intent(getContext(), FichaClaseAcitivity.class);
             intent.putExtra(CLASE_BUNDLE, (Clase) objeto);
             intent.putExtra(IS_FAVORITO, isFavorito);
-            startActivityForResult(intent, ACTIVIDAD_FAVORITO);
+            intent.putExtra(LISTA_FAVORITOS_BUNDLE,
+                    ((MainActivity) getActivity())
+                            .getFavoritos()
+                            .toArray(new Favorito[0]));
+            startActivityForResult(intent, ACTIVIDAD_FAVORITO_CLASE);
         }
     }
 
@@ -571,7 +581,7 @@ public class BibliotecaFragment extends Fragment implements RecyclerViewClick {
     }
 
     @Override
-    @SuppressWarnings("ConstantConditions")
+    @SuppressWarnings("all")
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
@@ -585,6 +595,27 @@ public class BibliotecaFragment extends Fragment implements RecyclerViewClick {
                         ((MainActivity) getActivity()).guardaFavorito(favorito);
                     else
                         ((MainActivity) getActivity()).eliminaFavorito(favorito);
+                }
+            }
+        } else if (requestCode == ACTIVIDAD_FAVORITO_CLASE) {
+            if (resultCode == Activity.RESULT_OK) {
+                if (data != null) {
+                    boolean isFavorito = data.getBooleanExtra(IS_FAVORITO_RESULT, false);
+                    Favorito favorito = data.getParcelableExtra(FAVORITO_BUNDLE);
+                    Parcelable[] favoritosClase = data.getParcelableArrayExtra(LISTA_FAVORITOS_CLASE_BUNDLE);
+
+                    if (isFavorito)
+                        ((MainActivity) getActivity()).guardaFavorito(favorito);
+                    else
+                        ((MainActivity) getActivity()).eliminaFavorito(favorito);
+
+                    if (favoritosClase.length > 0) {
+                        List<FavoritoClase> favoritoClaseList = new ArrayList<>();
+                        for (Parcelable parcelable : favoritosClase) {
+                            favoritoClaseList.add((FavoritoClase) parcelable);
+                        }
+                        ((MainActivity) getActivity()).gestionaFavoritosClase(favoritoClaseList);
+                    }
                 }
             }
         }
