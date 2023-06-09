@@ -12,6 +12,7 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.hyperion.dndapiapp.R;
 import com.hyperion.dndapiapp.databinding.ActivityFichaArmaBinding;
 import com.hyperion.dndapiapp.entidades.equipamiento.Arma;
 import com.hyperion.dndapiapp.sqlite.Favorito;
@@ -70,11 +71,10 @@ public class FichaArmaActivity extends AppCompatActivity {
         int resImage;
 
         if (isFavorito) {
-            resImage = getResources().getIdentifier("icono_bookmark", "drawable", getPackageName());
+            resImage = R.drawable.icono_bookmark;
         } else {
-            resImage = getResources().getIdentifier("icono_bookmark_no", "drawable", getPackageName());
+            resImage = R.drawable.icono_bookmark_no;
         }
-
         binding.botonFavArma.setBackgroundResource(resImage);
     }
 

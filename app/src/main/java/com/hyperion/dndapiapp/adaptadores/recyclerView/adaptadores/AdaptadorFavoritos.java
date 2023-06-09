@@ -1,6 +1,7 @@
 package com.hyperion.dndapiapp.adaptadores.recyclerView.adaptadores;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,12 +18,14 @@ import java.util.List;
 
 public class AdaptadorFavoritos extends RecyclerView.Adapter<FavoritosHolder> {
 
+    private Context context;
     private final List<Favorito> favoritos;
     private final RecyclerViewClick recyclerViewClick;
 
-    public AdaptadorFavoritos(List<Favorito> favoritos, RecyclerViewClick recyclerViewClick) {
+    public AdaptadorFavoritos(Context context, List<Favorito> favoritos, RecyclerViewClick recyclerViewClick) {
         this.favoritos = favoritos;
         this.recyclerViewClick = recyclerViewClick;
+        this.context = context;
     }
 
     @NonNull
@@ -31,7 +34,7 @@ public class AdaptadorFavoritos extends RecyclerView.Adapter<FavoritosHolder> {
         View vistaItem = LayoutInflater
                 .from(parent.getContext())
                 .inflate(R.layout.item_lista_favorito, parent, false);
-        return new FavoritosHolder(vistaItem, recyclerViewClick);
+        return new FavoritosHolder(vistaItem, recyclerViewClick, context);
     }
 
     @Override

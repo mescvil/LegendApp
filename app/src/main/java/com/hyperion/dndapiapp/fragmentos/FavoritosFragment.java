@@ -71,7 +71,7 @@ public class FavoritosFragment extends Fragment implements RecyclerViewClick {
 
     private void iniciarFragmento() {
         recyclerView = binding.listaFavoritos;
-        adaptador = new AdaptadorFavoritos(favoritos, this);
+        adaptador = new AdaptadorFavoritos(getContext(), favoritos, this);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
