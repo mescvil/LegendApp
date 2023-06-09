@@ -4,9 +4,11 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+import com.hyperion.dndapiapp.entidades.clases.Clase;
 import com.hyperion.dndapiapp.entidades.trasfondos.Trasfondo;
 import com.hyperion.dndapiapp.servicioRest.RespuestaApi;
 import com.hyperion.dndapiapp.servicioRest.RetrofitHelper;
+import com.hyperion.dndapiapp.servicioRest.callbacks.CallbackCustom;
 import com.hyperion.dndapiapp.servicioRest.callbacks.CallbackLista;
 
 import retrofit2.Call;
@@ -45,6 +47,31 @@ public class ServicioTrasfondos {
 
                 Log.d("API-ERROR", "No es posible obtener los Trasfondos :" + t);
                 callback.fallo();
+            }
+        });
+    }
+
+    public void getTrasfondo(CallbackCustom<Trasfondo> callback, String nombreTrasfondo) {
+        RetrofitHelper retrofitHelper = RetrofitHelper.getInstance();
+        Call<Trasfondo> call = retrofitHelper.getCallTrasfondos().getTrasfondo(nombreTrasfondo);
+
+        call.enqueue(new Callback<Trasfondo>() {
+            @Override
+            public void onResponse(@NonNull Call<Trasfondo> call,
+                                   @NonNull Response<Trasfondo> response) {
+
+                if (response.body() != null) {
+                    Log.d("API", String.format("Trasfondo obtenido con exito [%s]", nombreTrasfondo));
+                    callback.exito(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<Trasfondo> call,
+                                  @NonNull Throwable t) {
+
+                Log.d("API-ERROR", "No es posible obtener el Trasfondo");
+                callback.fallo("Error al obtener la clase");
             }
         });
     }

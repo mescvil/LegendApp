@@ -70,7 +70,7 @@ public class ServicioClases {
             public void onFailure(@NonNull Call<Clase> call,
                                   @NonNull Throwable t) {
 
-                Log.d("API-ERROR", "No es posible obtener la clase");
+                Log.d("API-ERROR", "No es posible obtener la Clase");
                 callback.fallo("Error al obtener la clase");
             }
         });

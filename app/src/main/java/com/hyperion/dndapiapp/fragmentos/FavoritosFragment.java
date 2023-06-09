@@ -12,6 +12,8 @@ import static com.hyperion.dndapiapp.utilidades.Constantes.IS_FAVORITO;
 import static com.hyperion.dndapiapp.utilidades.Constantes.IS_FAVORITO_RESULT;
 import static com.hyperion.dndapiapp.utilidades.Constantes.LISTA_FAVORITOS_BUNDLE;
 import static com.hyperion.dndapiapp.utilidades.Constantes.LISTA_FAVORITOS_CLASE_BUNDLE;
+import static com.hyperion.dndapiapp.utilidades.Constantes.RAZA_BUNDLE;
+import static com.hyperion.dndapiapp.utilidades.Constantes.TRASFONDO_COMPETENCIAS_BUNDLE;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -34,6 +36,8 @@ import com.hyperion.dndapiapp.actividades.fichas.FichaArmaduraActivity;
 import com.hyperion.dndapiapp.actividades.fichas.FichaClaseAcitivity;
 import com.hyperion.dndapiapp.actividades.fichas.FichaEnemigoActivity;
 import com.hyperion.dndapiapp.actividades.fichas.FichaHechizoActivity;
+import com.hyperion.dndapiapp.actividades.fichas.FichaRazaActivity;
+import com.hyperion.dndapiapp.actividades.fichas.FichaTrasfondoActivity;
 import com.hyperion.dndapiapp.adaptadores.recyclerView.RecyclerViewClick;
 import com.hyperion.dndapiapp.adaptadores.recyclerView.adaptadores.AdaptadorFavoritos;
 import com.hyperion.dndapiapp.databinding.FragmentFavoritosBinding;
@@ -43,10 +47,14 @@ import com.hyperion.dndapiapp.entidades.enemigos.Enemigo;
 import com.hyperion.dndapiapp.entidades.equipamiento.Arma;
 import com.hyperion.dndapiapp.entidades.equipamiento.Armadura;
 import com.hyperion.dndapiapp.entidades.equipamiento.Hechizo;
+import com.hyperion.dndapiapp.entidades.razas.Raza;
+import com.hyperion.dndapiapp.entidades.trasfondos.Trasfondo;
 import com.hyperion.dndapiapp.servicioRest.callbacks.CallbackCustom;
 import com.hyperion.dndapiapp.servicioRest.servicios.ServicioClases;
 import com.hyperion.dndapiapp.servicioRest.servicios.ServicioEnemigos;
 import com.hyperion.dndapiapp.servicioRest.servicios.ServicioEquipamiento;
+import com.hyperion.dndapiapp.servicioRest.servicios.ServicioRazas;
+import com.hyperion.dndapiapp.servicioRest.servicios.ServicioTrasfondos;
 import com.hyperion.dndapiapp.sqlite.Favorito;
 import com.hyperion.dndapiapp.sqlite.FavoritoClase;
 
@@ -176,6 +184,46 @@ public class FavoritosFragment extends Fragment implements RecyclerViewClick {
 
                         Intent intent = new Intent(getContext(), FichaEnemigoActivity.class);
                         intent.putExtra(ENEMIGO_BUNDLE, resultado);
+                        intent.putExtra(IS_FAVORITO, true);
+                        startActivityForResult(intent, ACTIVIDAD_FAVORITO);
+                    }
+
+                    @Override
+                    public void fallo(String mensaje) {
+                        dialog.dismiss();
+                    }
+
+                }, favorito.getNombre());
+                break;
+
+            case "Raza":
+                ServicioRazas.getInstance().getRaza(new CallbackCustom<Raza>() {
+                    @Override
+                    public void exito(Raza resultado) {
+                        dialog.dismiss();
+
+                        Intent intent = new Intent(getContext(), FichaRazaActivity.class);
+                        intent.putExtra(RAZA_BUNDLE, resultado);
+                        intent.putExtra(IS_FAVORITO, true);
+                        startActivityForResult(intent, ACTIVIDAD_FAVORITO);
+                    }
+
+                    @Override
+                    public void fallo(String mensaje) {
+                        dialog.dismiss();
+                    }
+
+                }, favorito.getNombre());
+                break;
+
+            case "Trasfondo":
+                ServicioTrasfondos.getInstance().getTrasfondo(new CallbackCustom<Trasfondo>() {
+                    @Override
+                    public void exito(Trasfondo resultado) {
+                        dialog.dismiss();
+
+                        Intent intent = new Intent(getContext(), FichaTrasfondoActivity.class);
+                        intent.putExtra(TRASFONDO_COMPETENCIAS_BUNDLE, resultado);
                         intent.putExtra(IS_FAVORITO, true);
                         startActivityForResult(intent, ACTIVIDAD_FAVORITO);
                     }

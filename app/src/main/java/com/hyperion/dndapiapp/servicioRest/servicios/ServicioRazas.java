@@ -4,9 +4,11 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+import com.hyperion.dndapiapp.entidades.clases.Clase;
 import com.hyperion.dndapiapp.entidades.razas.Raza;
 import com.hyperion.dndapiapp.servicioRest.RespuestaApi;
 import com.hyperion.dndapiapp.servicioRest.RetrofitHelper;
+import com.hyperion.dndapiapp.servicioRest.callbacks.CallbackCustom;
 import com.hyperion.dndapiapp.servicioRest.callbacks.CallbackLista;
 
 import retrofit2.Call;
@@ -45,6 +47,31 @@ public class ServicioRazas {
 
                 Log.d("API-ERROR", "No es posible obtener las Razas :" + t);
                 callback.fallo();
+            }
+        });
+    }
+
+    public void getRaza(CallbackCustom<Raza> callback, String nombreRaza) {
+        RetrofitHelper retrofitHelper = RetrofitHelper.getInstance();
+        Call<Raza> call = retrofitHelper.getCallRazas().getRaza(nombreRaza);
+
+        call.enqueue(new Callback<Raza>() {
+            @Override
+            public void onResponse(@NonNull Call<Raza> call,
+                                   @NonNull Response<Raza> response) {
+
+                if (response.body() != null) {
+                    Log.d("API", String.format("Raza obtenida con exito [%s]", nombreRaza));
+                    callback.exito(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<Raza> call,
+                                  @NonNull Throwable t) {
+
+                Log.d("API-ERROR", "No es posible obtener la Raza");
+                callback.fallo("Error al obtener la clase");
             }
         });
     }
