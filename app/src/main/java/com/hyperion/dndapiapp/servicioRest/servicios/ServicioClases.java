@@ -5,8 +5,10 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 
 import com.hyperion.dndapiapp.entidades.clases.Clase;
+import com.hyperion.dndapiapp.entidades.equipamiento.Arma;
 import com.hyperion.dndapiapp.servicioRest.RespuestaApi;
 import com.hyperion.dndapiapp.servicioRest.RetrofitHelper;
+import com.hyperion.dndapiapp.servicioRest.callbacks.CallbackCustom;
 import com.hyperion.dndapiapp.servicioRest.callbacks.CallbackLista;
 
 import retrofit2.Call;
@@ -45,6 +47,31 @@ public class ServicioClases {
 
                 Log.d("API-ERROR", "No es posible obtener las clases :" + t);
                 callback.fallo();
+            }
+        });
+    }
+
+    public void getClase(CallbackCustom<Clase> callback, String nombreClase) {
+        RetrofitHelper retrofitHelper = RetrofitHelper.getInstance();
+        Call<Clase> call = retrofitHelper.getCallsClases().getClase(nombreClase);
+
+        call.enqueue(new Callback<Clase>() {
+            @Override
+            public void onResponse(@NonNull Call<Clase> call,
+                                   @NonNull Response<Clase> response) {
+
+                if (response.body() != null) {
+                    Log.d("API", String.format("Clase obtenida con exito [%s]", nombreClase));
+                    callback.exito(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<Clase> call,
+                                  @NonNull Throwable t) {
+
+                Log.d("API-ERROR", "No es posible obtener la clase");
+                callback.fallo("Error al obtener la clase");
             }
         });
     }

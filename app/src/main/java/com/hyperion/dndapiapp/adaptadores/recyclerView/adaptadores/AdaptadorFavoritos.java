@@ -16,9 +16,10 @@ import com.hyperion.dndapiapp.sqlite.Favorito;
 
 import java.util.List;
 
+@SuppressLint("NotifyDataSetChanged")
 public class AdaptadorFavoritos extends RecyclerView.Adapter<FavoritosHolder> {
 
-    private Context context;
+    private final Context context;
     private final List<Favorito> favoritos;
     private final RecyclerViewClick recyclerViewClick;
 
@@ -51,7 +52,10 @@ public class AdaptadorFavoritos extends RecyclerView.Adapter<FavoritosHolder> {
         return favoritos.get(position);
     }
 
-    @SuppressLint("NotifyDataSetChanged")
+    public boolean containsItem(Favorito favorito) {
+        return favoritos.contains(favorito);
+    }
+
     public void removeItem(Favorito favorito) {
         favoritos.remove(favorito);
         notifyDataSetChanged();
@@ -59,5 +63,6 @@ public class AdaptadorFavoritos extends RecyclerView.Adapter<FavoritosHolder> {
 
     public void addItem(Favorito favorito) {
         favoritos.add(favorito);
+        notifyDataSetChanged();
     }
 }

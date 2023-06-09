@@ -27,7 +27,7 @@ public class Favorito implements Parcelable {
 
         Favorito favorito = (Favorito) o;
 
-        return Objects.equals(nombre, favorito.nombre);
+        return getNombre().equalsIgnoreCase(favorito.getNombre());
     }
 
     @Override
