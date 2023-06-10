@@ -45,7 +45,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.hyperion.dndapiapp.R;
-import com.hyperion.dndapiapp.actividades.MainActivity;
 import com.hyperion.dndapiapp.actividades.fichas.FichaArmaActivity;
 import com.hyperion.dndapiapp.actividades.fichas.FichaArmaduraActivity;
 import com.hyperion.dndapiapp.actividades.fichas.FichaClaseAcitivity;
@@ -126,14 +125,12 @@ public class BibliotecaFragment extends Fragment implements RecyclerViewClick {
                 filtrosSeleccionados,
                 (dialog, which, isChecked) -> filtrosSeleccionados[which] = isChecked);
 
-        builder.setCancelable(false);
         builder.setPositiveButton("Hecho", (dialog, which) -> actualizaListaFiltros());
         builder.setNegativeButton("Cancelar", (dialog, which) -> {
         });
 
-        /* TODO creo que debeira ser un seleccionar todo */
-        builder.setNeutralButton("Limpiar selección", (dialog, which) -> {
-            Arrays.fill(filtrosSeleccionados, false);
+        builder.setNeutralButton("Seleccionar todo", (dialog, which) -> {
+            Arrays.fill(filtrosSeleccionados, true);
             actualizaListaFiltros();
         });
 
@@ -222,10 +219,9 @@ public class BibliotecaFragment extends Fragment implements RecyclerViewClick {
     }
 
     @Override
-    @SuppressWarnings("ConstantConditions")
     public void onCosaCliked(int posicion) {
         GetNombreInterface objeto = adaptadorMix.getObjeto(posicion);
-        boolean isFavorito = ((MainActivity) getActivity()).checkFavorito(objeto.getNombre());
+        boolean isFavorito = controlador.isFavorito(objeto.getNombre());
 
         if (objeto instanceof Enemigo) {
             Intent intent = new Intent(getContext(), FichaEnemigoActivity.class);
@@ -271,9 +267,7 @@ public class BibliotecaFragment extends Fragment implements RecyclerViewClick {
             intent.putExtra(CLASE_BUNDLE, (Clase) objeto);
             intent.putExtra(IS_FAVORITO, isFavorito);
             intent.putExtra(LISTA_FAVORITOS_BUNDLE,
-                    ((MainActivity) getActivity())
-                            .getFavoritos()
-                            .toArray(new Favorito[0]));
+                    controlador.getFavoritos().toArray(new Favorito[0]));
             startActivityForResult(intent, ACTIVIDAD_FAVORITO_CLASE);
         }
     }
@@ -307,11 +301,12 @@ public class BibliotecaFragment extends Fragment implements RecyclerViewClick {
                     Favorito favorito = data.getParcelableExtra(FAVORITO_BUNDLE);
 
                     if (isFavorito)
-                        ((MainActivity) getActivity()).guardaFavorito(favorito);
+                        controlador.addFavorito(favorito);
                     else
-                        ((MainActivity) getActivity()).eliminaFavorito(favorito);
+                        controlador.removeFavorito(favorito);
                 }
             }
+
         } else if (requestCode == ACTIVIDAD_FAVORITO_CLASE) {
             if (resultCode == Activity.RESULT_OK) {
                 if (data != null) {
@@ -320,16 +315,16 @@ public class BibliotecaFragment extends Fragment implements RecyclerViewClick {
                     Parcelable[] favoritosClase = data.getParcelableArrayExtra(LISTA_FAVORITOS_CLASE_BUNDLE);
 
                     if (isFavorito)
-                        ((MainActivity) getActivity()).guardaFavorito(favorito);
+                        controlador.addFavorito(favorito);
                     else
-                        ((MainActivity) getActivity()).eliminaFavorito(favorito);
+                        controlador.removeFavorito(favorito);
 
                     if (favoritosClase.length > 0) {
                         List<FavoritoClase> favoritoClaseList = new ArrayList<>();
                         for (Parcelable parcelable : favoritosClase) {
                             favoritoClaseList.add((FavoritoClase) parcelable);
                         }
-                        ((MainActivity) getActivity()).gestionaFavoritosClase(favoritoClaseList);
+                        controlador.gestionaFavoritosClase(favoritoClaseList);
                     }
                 }
             }

@@ -40,6 +40,7 @@ import com.hyperion.dndapiapp.actividades.fichas.FichaRazaActivity;
 import com.hyperion.dndapiapp.actividades.fichas.FichaTrasfondoActivity;
 import com.hyperion.dndapiapp.adaptadores.recyclerView.RecyclerViewClick;
 import com.hyperion.dndapiapp.adaptadores.recyclerView.adaptadores.AdaptadorFavoritos;
+import com.hyperion.dndapiapp.controladores.Controlador;
 import com.hyperion.dndapiapp.databinding.FragmentFavoritosBinding;
 import com.hyperion.dndapiapp.dialogos.LoadingDialog;
 import com.hyperion.dndapiapp.entidades.clases.Clase;
@@ -61,15 +62,21 @@ import com.hyperion.dndapiapp.sqlite.FavoritoClase;
 import java.util.ArrayList;
 import java.util.List;
 
-@SuppressWarnings("ConstantConditions")
+@SuppressWarnings({"ConstantConditions", "deprecation"})
 public class FavoritosFragment extends Fragment implements RecyclerViewClick {
 
     private FragmentFavoritosBinding binding;
+
+    /* Componentes */
     private AdaptadorFavoritos adaptador;
     private RecyclerView recyclerView;
+
+    /* Utils */
+    private final Controlador controlador;
     private List<Favorito> favoritos;
 
     public FavoritosFragment() {
+        controlador = Controlador.getInstance();
     }
 
     public static FavoritosFragment newInstance() {
@@ -79,7 +86,7 @@ public class FavoritosFragment extends Fragment implements RecyclerViewClick {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        favoritos = new ArrayList<>(((MainActivity) getActivity()).getFavoritos());
+        favoritos = new ArrayList<>(controlador.getFavoritos());
     }
 
     @Override
@@ -246,9 +253,7 @@ public class FavoritosFragment extends Fragment implements RecyclerViewClick {
                         intent.putExtra(CLASE_BUNDLE, resultado);
                         intent.putExtra(IS_FAVORITO, true);
                         intent.putExtra(LISTA_FAVORITOS_BUNDLE,
-                                ((MainActivity) getActivity())
-                                        .getFavoritos()
-                                        .toArray(new Favorito[0]));
+                                controlador.getFavoritos().toArray(new Favorito[0]));
                         startActivityForResult(intent, ACTIVIDAD_FAVORITO_CLASE);
                     }
 
@@ -273,9 +278,9 @@ public class FavoritosFragment extends Fragment implements RecyclerViewClick {
                     Favorito favorito = data.getParcelableExtra(FAVORITO_BUNDLE);
 
                     if (isFavorito)
-                        ((MainActivity) getActivity()).guardaFavorito(favorito);
+                        controlador.addFavorito(favorito);
                     else {
-                        ((MainActivity) getActivity()).eliminaFavorito(favorito);
+                        controlador.removeFavorito(favorito);
                         adaptador.removeItem(favorito);
                     }
                 }
@@ -289,9 +294,9 @@ public class FavoritosFragment extends Fragment implements RecyclerViewClick {
                     Parcelable[] favoritosClase = data.getParcelableArrayExtra(LISTA_FAVORITOS_CLASE_BUNDLE);
 
                     if (isFavorito)
-                        ((MainActivity) getActivity()).guardaFavorito(favorito);
+                        controlador.addFavorito(favorito);
                     else {
-                        ((MainActivity) getActivity()).eliminaFavorito(favorito);
+                        controlador.removeFavorito(favorito);
                         adaptador.removeItem(favorito);
                     }
 
@@ -310,7 +315,7 @@ public class FavoritosFragment extends Fragment implements RecyclerViewClick {
                             }
                         }
 
-                        ((MainActivity) getActivity()).gestionaFavoritosClase(favoritoClaseList);
+                        controlador.gestionaFavoritosClase(favoritoClaseList);
                     }
                 }
             }

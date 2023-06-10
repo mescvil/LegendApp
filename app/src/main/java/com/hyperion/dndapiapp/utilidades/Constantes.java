@@ -35,9 +35,9 @@ public abstract class Constantes {
 
     /* ================= Actividades  ================= */
     public final static int ACTIVIDAD_LOGIN = 1;
-    public final static int ACTIVIDAD_MAIN = 2;
+    public final static int ACTIVIDAD_USER = 2;
     public final static int ACTIVIDAD_REGISTER = 3;
-    public final static int ACTIVIDAD_IMAGEN = 3;
+    public final static int ACTIVIDAD_IMAGEN = 6;
     public final static int ACTIVIDAD_FAVORITO = 4;
     public final static int ACTIVIDAD_FAVORITO_CLASE = 5;
 

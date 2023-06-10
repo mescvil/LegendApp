@@ -1,5 +1,9 @@
 package com.hyperion.dndapiapp.controladores;
 
+import static com.hyperion.dndapiapp.utilidades.Constantes.DB_NAME;
+
+import android.content.Context;
+
 import com.hyperion.dndapiapp.entidades.clases.Clase;
 import com.hyperion.dndapiapp.entidades.competencias.Competencia;
 import com.hyperion.dndapiapp.entidades.enemigos.Enemigo;
@@ -14,6 +18,7 @@ import com.hyperion.dndapiapp.servicioRest.servicios.ServicioEquipamiento;
 import com.hyperion.dndapiapp.servicioRest.servicios.ServicioRazas;
 import com.hyperion.dndapiapp.servicioRest.servicios.ServicioTrasfondos;
 import com.hyperion.dndapiapp.sqlite.Favorito;
+import com.hyperion.dndapiapp.sqlite.FavoritoClase;
 import com.hyperion.dndapiapp.sqlite.SQLiteHelper;
 
 import java.io.IOException;
@@ -41,7 +46,7 @@ public class Controlador {
     private List<Clase> listaClases;
     private List<Raza> listaRazas;
     private List<Hechizo> listaHechizos;
-    private List<Equipamiento> listaEquipamiento;
+    private final List<Equipamiento> listaEquipamiento;
     private List<Trasfondo> listaTrasfondos;
     private List<Competencia> listaCompentencias;
 
@@ -75,8 +80,8 @@ public class Controlador {
         return controlador;
     }
 
-    public void cargaRecurosApi() {
-        if (primeraCarga)
+    public void cargaRecursos() {
+        if (primeraCarga) {
             new Thread(() -> {
                 try {
                     listaEnemigos = servicioEnemigos.getAllEnemigosSync();
@@ -95,6 +100,63 @@ public class Controlador {
                     notificaError();
                 }
             }).start();
+
+        } else
+            notificaExito();
+    }
+
+    /* ================= Favoritos ================= */
+    public void iniciaFavoritos(Context context) {
+        if (primeraCarga)
+            new Thread(() -> {
+                sqLiteHelper = SQLiteHelper.getInstance(context, DB_NAME, null, 1);
+
+                sqLiteHelper.iniciaConexion();
+                favoritos = sqLiteHelper.selectAll();
+                sqLiteHelper.stop();
+
+            }).start();
+    }
+
+    public boolean isFavorito(String nombre) {
+        return favoritos.contains(new Favorito(nombre));
+    }
+
+    public void removeFavorito(Favorito favorito) {
+        if (isFavorito(favorito.getNombre())) {
+            favoritos.remove(favorito);
+            sqLiteHelper.iniciaConexion();
+            sqLiteHelper.delete(favorito.getNombre());
+            sqLiteHelper.stop();
+        }
+    }
+
+    public void addFavorito(Favorito favorito) {
+        if (!favoritos.contains(favorito)) {
+            sqLiteHelper.iniciaConexion();
+            sqLiteHelper.insert(favorito);
+            favoritos.add(favorito);
+            sqLiteHelper.stop();
+        }
+    }
+
+    public void gestionaFavoritosClase(List<FavoritoClase> favoritosClase) {
+        new Thread(() -> {
+            sqLiteHelper.iniciaConexion();
+            for (FavoritoClase favoritoClase : favoritosClase) {
+                Favorito favorito = favoritoClase.getFavorito();
+
+                if (favoritoClase.isFavorito() && !favoritos.contains(favorito)) {
+                    sqLiteHelper.insert(favorito);
+                    favoritos.add(favorito);
+
+                } else if (!favoritoClase.isFavorito() && isFavorito(favorito.getNombre())) {
+                    sqLiteHelper.delete(favorito.getNombre());
+                    favoritos.remove(favorito);
+                }
+            }
+            sqLiteHelper.stop();
+        }).start();
     }
 
     /* ================= Observadores ================= */
@@ -143,5 +205,9 @@ public class Controlador {
 
     public List<Competencia> getListaCompentencias() {
         return listaCompentencias;
+    }
+
+    public List<Favorito> getFavoritos() {
+        return favoritos;
     }
 }

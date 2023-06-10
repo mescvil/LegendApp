@@ -54,9 +54,7 @@ public class UserActivity extends AppCompatActivity {
 
     private void iniciaListenersBotones() {
         binding.botonCerrarSesion.setOnClickListener(view -> {
-            Intent intent = new Intent(this, EmptyMainActivity.class);
-            intent.putExtra(CIERRA_SESION_BUNDLE, true);
-            startActivity(intent);
+            setResult(RESULT_OK);
             finish();
         });
 
