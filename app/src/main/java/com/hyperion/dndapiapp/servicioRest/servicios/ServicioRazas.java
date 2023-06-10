@@ -11,6 +11,9 @@ import com.hyperion.dndapiapp.servicioRest.RetrofitHelper;
 import com.hyperion.dndapiapp.servicioRest.callbacks.CallbackCustom;
 import com.hyperion.dndapiapp.servicioRest.callbacks.CallbackLista;
 
+import java.io.IOException;
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -49,6 +52,19 @@ public class ServicioRazas {
                 callback.fallo();
             }
         });
+    }
+
+    public List<Raza> getAllRazasSync() throws IOException {
+        RetrofitHelper retrofitHelper = RetrofitHelper.getInstance();
+        Call<RespuestaApi<Raza>> call = retrofitHelper.getCallRazas().getRazas();
+        Response<RespuestaApi<Raza>> response = call.execute();
+
+        if (response.body() != null) {
+            Log.d("API", String.format("Razas obtenidas con exito [%d]", response.body().getnElementos()));
+            return response.body().getResultado();
+        }
+
+        return null;
     }
 
     public void getRaza(CallbackCustom<Raza> callback, String nombreRaza) {

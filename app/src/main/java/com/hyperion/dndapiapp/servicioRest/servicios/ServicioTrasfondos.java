@@ -4,12 +4,14 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
-import com.hyperion.dndapiapp.entidades.clases.Clase;
 import com.hyperion.dndapiapp.entidades.trasfondos.Trasfondo;
 import com.hyperion.dndapiapp.servicioRest.RespuestaApi;
 import com.hyperion.dndapiapp.servicioRest.RetrofitHelper;
 import com.hyperion.dndapiapp.servicioRest.callbacks.CallbackCustom;
 import com.hyperion.dndapiapp.servicioRest.callbacks.CallbackLista;
+
+import java.io.IOException;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -49,6 +51,19 @@ public class ServicioTrasfondos {
                 callback.fallo();
             }
         });
+    }
+
+    public List<Trasfondo> getAllTrasfondosSync() throws IOException {
+        RetrofitHelper retrofitHelper = RetrofitHelper.getInstance();
+        Call<RespuestaApi<Trasfondo>> call = retrofitHelper.getCallTrasfondos().getTrasfondos();
+        Response<RespuestaApi<Trasfondo>> response = call.execute();
+
+        if (response.body() != null) {
+            Log.d("API", String.format("Trasfondos obtenidos con exito [%d]", response.body().getnElementos()));
+            return response.body().getResultado();
+        }
+
+        return null;
     }
 
     public void getTrasfondo(CallbackCustom<Trasfondo> callback, String nombreTrasfondo) {

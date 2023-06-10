@@ -4,10 +4,14 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+import com.hyperion.dndapiapp.entidades.clases.Clase;
 import com.hyperion.dndapiapp.entidades.competencias.Competencia;
 import com.hyperion.dndapiapp.servicioRest.RespuestaApi;
 import com.hyperion.dndapiapp.servicioRest.RetrofitHelper;
 import com.hyperion.dndapiapp.servicioRest.callbacks.CallbackLista;
+
+import java.io.IOException;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -47,5 +51,18 @@ public class ServicioCompetencias {
                 callback.fallo();
             }
         });
+    }
+
+    public List<Competencia> getAllCompetenciasSync() throws IOException {
+        RetrofitHelper retrofitHelper = RetrofitHelper.getInstance();
+        Call<RespuestaApi<Competencia>> call = retrofitHelper.getCallCompetencias().getCompetencias();
+        Response<RespuestaApi<Competencia>> response = call.execute();
+
+        if (response.body() != null) {
+            Log.d("API", String.format("Competencias obtenidas con exito [%d]", response.body().getnElementos()));
+            return response.body().getResultado();
+        }
+
+        return null;
     }
 }

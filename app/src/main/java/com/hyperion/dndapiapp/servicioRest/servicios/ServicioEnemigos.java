@@ -11,6 +11,9 @@ import com.hyperion.dndapiapp.servicioRest.RetrofitHelper;
 import com.hyperion.dndapiapp.servicioRest.callbacks.CallbackCustom;
 import com.hyperion.dndapiapp.servicioRest.callbacks.CallbackLista;
 
+import java.io.IOException;
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -49,6 +52,19 @@ public class ServicioEnemigos {
                 callback.fallo();
             }
         });
+    }
+
+    public List<Enemigo> getAllEnemigosSync() throws IOException {
+        RetrofitHelper retrofitHelper = RetrofitHelper.getInstance();
+        Call<RespuestaApi<Enemigo>> call = retrofitHelper.getCallsEnemigos().getEnemigos();
+        Response<RespuestaApi<Enemigo>> response = call.execute();
+
+        if (response.body() != null) {
+            Log.d("API", String.format("Enemigos obtenidas con exito [%d]", response.body().getnElementos()));
+            return response.body().getResultado();
+        }
+
+        return null;
     }
 
     public void getEnemigo(CallbackCustom<Enemigo> callback, String nombreEnemigo) {

@@ -17,7 +17,7 @@ public class RetrofitHelper {
 
     private RetrofitHelper() {
         retrofit = new Retrofit.Builder()
-                .baseUrl("http://rrr2dam.com/api/")
+                .baseUrl("http://10.0.2.2/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
     }

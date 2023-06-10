@@ -5,11 +5,13 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 
 import com.hyperion.dndapiapp.entidades.clases.Clase;
-import com.hyperion.dndapiapp.entidades.equipamiento.Arma;
 import com.hyperion.dndapiapp.servicioRest.RespuestaApi;
 import com.hyperion.dndapiapp.servicioRest.RetrofitHelper;
 import com.hyperion.dndapiapp.servicioRest.callbacks.CallbackCustom;
 import com.hyperion.dndapiapp.servicioRest.callbacks.CallbackLista;
+
+import java.io.IOException;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -49,6 +51,19 @@ public class ServicioClases {
                 callback.fallo();
             }
         });
+    }
+
+    public List<Clase> getAllClasesSync() throws IOException {
+        RetrofitHelper retrofitHelper = RetrofitHelper.getInstance();
+        Call<RespuestaApi<Clase>> call = retrofitHelper.getCallsClases().getClases();
+        Response<RespuestaApi<Clase>> response = call.execute();
+
+        if (response.body() != null) {
+            Log.d("API", String.format("Clases obtenidas con exito [%d]", response.body().getnElementos()));
+            return response.body().getResultado();
+        }
+
+        return null;
     }
 
     public void getClase(CallbackCustom<Clase> callback, String nombreClase) {

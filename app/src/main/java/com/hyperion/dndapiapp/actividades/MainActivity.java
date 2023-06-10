@@ -5,7 +5,6 @@ import static com.hyperion.dndapiapp.utilidades.Constantes.USUARIO_BUNDLE;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,7 +13,10 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.hyperion.dndapiapp.R;
+import com.hyperion.dndapiapp.controladores.Controlador;
+import com.hyperion.dndapiapp.controladores.ObservadorDatos;
 import com.hyperion.dndapiapp.databinding.ActivityMainBinding;
+import com.hyperion.dndapiapp.dialogos.LoadingDialog;
 import com.hyperion.dndapiapp.entidades.usuario.Usuario;
 import com.hyperion.dndapiapp.fragmentos.BibliotecaFragment;
 import com.hyperion.dndapiapp.fragmentos.FavoritosFragment;
@@ -25,7 +27,7 @@ import com.hyperion.dndapiapp.sqlite.SQLiteHelper;
 
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements ObservadorDatos {
 
     private Usuario usuario;
 
@@ -34,41 +36,49 @@ public class MainActivity extends AppCompatActivity {
     private FragmentManager fragmentManager;
     private SQLiteHelper sqLiteHelper;
     private List<Favorito> favoritos;
+    private Controlador controlador;
 
     /* Fragmentos */
     private BibliotecaFragment bibliotecaFragment;
     private FavoritosFragment favoritosFragment;
     private FichasFragment fichasFragment;
+    private LoadingDialog loadingDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
         fragmentManager = getSupportFragmentManager();
+        controlador = Controlador.getInstance();
         sqLiteHelper = SQLiteHelper.getInstance(this, DB_NAME, null, 1);
 
+        controlador.suscribirse(this);
 
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             usuario = bundle.getParcelable(USUARIO_BUNDLE);
         }
 
-        actualizaFavoritos();
         iniciaActividad();
-        inicializaFragmentos();
-        aniadeListenerNavBar();
-
-        cambiaFragmento(bibliotecaFragment);
-        binding.tituloFragment.setText("Biblioteca");
     }
 
     private void iniciaActividad() {
+        loadingDialog = new LoadingDialog(this);
+        loadingDialog.show("Cargando recursos");
+
+        actualizaFavoritos();
+        inicializaFragmentos();
+        aniadeListenerNavBar();
+
         binding.botonUsuario.setOnClickListener(view -> {
             Intent intent = new Intent(this, UserActivity.class);
             intent.putExtra(USUARIO_BUNDLE, usuario);
             startActivity(intent);
         });
+
+        controlador.cargaRecurosApi();
     }
 
     private void inicializaFragmentos() {
@@ -152,5 +162,16 @@ public class MainActivity extends AppCompatActivity {
 
     public boolean checkFavorito(String nombre) {
         return favoritos.contains(new Favorito(nombre, ""));
+    }
+
+    @Override
+    public void exitoObteniendoDatos() {
+        loadingDialog.dismiss();
+    }
+
+    @Override
+    public void falloObteniendoDatos() {
+        loadingDialog.dismiss();
+        Toast.makeText(this, "Error al cargar los recuros", Toast.LENGTH_SHORT).show();
     }
 }
