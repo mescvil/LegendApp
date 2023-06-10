@@ -78,6 +78,7 @@ public class MainActivity extends AppCompatActivity implements ObservadorDatos {
             startActivity(intent);
         });
 
+        binding.tituloFragment.setText("Biblioteca");
         controlador.cargaRecurosApi();
     }
 
@@ -167,6 +168,7 @@ public class MainActivity extends AppCompatActivity implements ObservadorDatos {
     @Override
     public void exitoObteniendoDatos() {
         loadingDialog.dismiss();
+        cambiaFragmento(bibliotecaFragment);
     }
 
     @Override

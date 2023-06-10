@@ -114,4 +114,34 @@ public class Controlador {
             observador.falloObteniendoDatos();
         }
     }
+
+    /* ================= Getters ================= */
+
+    public List<Enemigo> getListaEnemigos() {
+        return listaEnemigos;
+    }
+
+    public List<Clase> getListaClases() {
+        return listaClases;
+    }
+
+    public List<Raza> getListaRazas() {
+        return listaRazas;
+    }
+
+    public List<Hechizo> getListaHechizos() {
+        return listaHechizos;
+    }
+
+    public List<Equipamiento> getListaEquipamiento() {
+        return listaEquipamiento;
+    }
+
+    public List<Trasfondo> getListaTrasfondos() {
+        return listaTrasfondos;
+    }
+
+    public List<Competencia> getListaCompentencias() {
+        return listaCompentencias;
+    }
 }
