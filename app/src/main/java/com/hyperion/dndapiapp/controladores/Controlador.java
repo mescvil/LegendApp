@@ -131,6 +131,12 @@ public class Controlador {
         }
     }
 
+    public void removeAllFavoritos() {
+        sqLiteHelper.iniciaConexion();
+        sqLiteHelper.deleteAll();
+        sqLiteHelper.stop();
+    }
+
     public void addFavorito(Favorito favorito) {
         if (!favoritos.contains(favorito)) {
             sqLiteHelper.iniciaConexion();

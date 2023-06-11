@@ -4,7 +4,7 @@
     <item
         android:id="@+id/navBiblioteca"
         android:icon="@drawable/lista_nav_bar"
-        android:title="Biblioteca" />
+        android:title="Glosario" />
     <item
         android:id="@+id/navFavoritos"
         android:icon="@drawable/favoritos_nav_bar"

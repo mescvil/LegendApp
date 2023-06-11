@@ -77,6 +77,10 @@ public final class SQLiteHelper extends SQLiteOpenHelper {
         db.delete("Favoritos", "nombre=?", new String[]{nombre});
     }
 
+    public void deleteAll() {
+        db.execSQL("delete from Favoritos");
+    }
+
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_DB);

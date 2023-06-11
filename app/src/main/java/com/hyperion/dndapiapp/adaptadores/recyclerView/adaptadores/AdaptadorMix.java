@@ -44,7 +44,7 @@ public class AdaptadorMix extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     private final Context context;
     private final RecyclerViewClick recyclerViewClick;
     private List<GetNombreInterface> elementos;
-    private List<GetNombreInterface> elementosBackup;
+    private final List<GetNombreInterface> elementosBackup;
 
     public AdaptadorMix(Context context, RecyclerViewClick recyclerViewClick) {
         this.elementos = new ArrayList<>();

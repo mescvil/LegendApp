@@ -13,7 +13,9 @@ import com.hyperion.dndapiapp.R;
 import com.hyperion.dndapiapp.adaptadores.recyclerView.RecyclerViewClick;
 import com.hyperion.dndapiapp.adaptadores.recyclerView.holders.FavoritosHolder;
 import com.hyperion.dndapiapp.sqlite.Favorito;
+import com.hyperion.dndapiapp.utilidades.GetNombreInterface;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @SuppressLint("NotifyDataSetChanged")
@@ -21,12 +23,15 @@ public class AdaptadorFavoritos extends RecyclerView.Adapter<FavoritosHolder> {
 
     private final Context context;
     private final List<Favorito> favoritos;
+    private final List<Favorito> favoritosBackup;
     private final RecyclerViewClick recyclerViewClick;
 
     public AdaptadorFavoritos(Context context, List<Favorito> favoritos, RecyclerViewClick recyclerViewClick) {
         this.favoritos = favoritos;
         this.recyclerViewClick = recyclerViewClick;
         this.context = context;
+        favoritosBackup = new ArrayList<>();
+        favoritosBackup.addAll(favoritos);
     }
 
     @NonNull
@@ -58,11 +63,34 @@ public class AdaptadorFavoritos extends RecyclerView.Adapter<FavoritosHolder> {
 
     public void removeItem(Favorito favorito) {
         favoritos.remove(favorito);
+        favoritosBackup.clear();
+        favoritosBackup.addAll(favoritos);
         notifyDataSetChanged();
+    }
+
+    public void clearAll() {
+        favoritos.clear();
+        favoritosBackup.clear();
     }
 
     public void addItem(Favorito favorito) {
         favoritos.add(favorito);
+        favoritosBackup.clear();
+        favoritosBackup.addAll(favoritos);
+        notifyDataSetChanged();
+    }
+
+    public void filtra(String filtro) {
+        favoritos.clear();
+
+        if (filtro.isEmpty()) {
+            favoritos.addAll(favoritosBackup);
+        } else {
+            for (Favorito favorito : favoritosBackup) {
+                if (favorito.getNombre().toLowerCase().contains(filtro.toLowerCase()))
+                    favoritos.add(favorito);
+            }
+        }
         notifyDataSetChanged();
     }
 }

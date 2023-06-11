@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity implements ObservadorDatos {
         });
 
         controlador.iniciaFavoritos(getApplicationContext());
-        binding.tituloFragment.setText("Biblioteca");
+        binding.tituloFragment.setText("Glosario");
         controlador.cargaRecursos();
     }
 
@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity implements ObservadorDatos {
             int itemId = item.getItemId();
 
             if (itemId == R.id.navBiblioteca) {
-                binding.tituloFragment.setText("Biblioteca");
+                binding.tituloFragment.setText("Glosario");
                 cambiaFragmento(bibliotecaFragment);
 
             } else if (itemId == R.id.navFavoritos) {

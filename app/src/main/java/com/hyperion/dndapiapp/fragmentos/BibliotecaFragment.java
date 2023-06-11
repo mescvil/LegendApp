@@ -126,11 +126,13 @@ public class BibliotecaFragment extends Fragment implements RecyclerViewClick {
                 (dialog, which, isChecked) -> filtrosSeleccionados[which] = isChecked);
 
         builder.setPositiveButton("Hecho", (dialog, which) -> actualizaListaFiltros());
-        builder.setNegativeButton("Cancelar", (dialog, which) -> {
+        builder.setNegativeButton("Marcar todo", (dialog, which) -> {
+            Arrays.fill(filtrosSeleccionados, true);
+            actualizaListaFiltros();
         });
 
-        builder.setNeutralButton("Seleccionar todo", (dialog, which) -> {
-            Arrays.fill(filtrosSeleccionados, true);
+        builder.setNeutralButton("Desmarcar todo", (dialog, which) -> {
+            Arrays.fill(filtrosSeleccionados, false);
             actualizaListaFiltros();
         });
 
@@ -167,6 +169,7 @@ public class BibliotecaFragment extends Fragment implements RecyclerViewClick {
         /* Bindings */
         binding.botonFiltro.setOnClickListener(view -> listenerFiltro());
         binding.campoBusqueda.addTextChangedListener(new OurTextWatcher());
+        binding.botonLimpiar.setOnClickListener(v -> binding.campoBusqueda.setText(""));
 
         /* Peticion de listas */
         actualizaLista();

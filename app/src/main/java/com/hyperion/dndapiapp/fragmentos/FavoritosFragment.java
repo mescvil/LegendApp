@@ -16,12 +16,17 @@ import static com.hyperion.dndapiapp.utilidades.Constantes.RAZA_BUNDLE;
 import static com.hyperion.dndapiapp.utilidades.Constantes.TRASFONDO_COMPETENCIAS_BUNDLE;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -62,7 +67,7 @@ import com.hyperion.dndapiapp.sqlite.FavoritoClase;
 import java.util.ArrayList;
 import java.util.List;
 
-@SuppressWarnings({"ConstantConditions", "deprecation"})
+@SuppressWarnings({"deprecation"})
 public class FavoritosFragment extends Fragment implements RecyclerViewClick {
 
     private FragmentFavoritosBinding binding;
@@ -106,6 +111,10 @@ public class FavoritosFragment extends Fragment implements RecyclerViewClick {
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adaptador);
+
+        binding.campoBusquedaFav.addTextChangedListener(new OurTextWatcher());
+        binding.botonLimpiarBusqueda.setOnClickListener(v -> binding.campoBusquedaFav.setText(""));
+        binding.botonLimpiaFav.setOnClickListener(v -> creaDialogoBorrar());
 
         compruebaFavoritosVacio();
     }
@@ -321,5 +330,40 @@ public class FavoritosFragment extends Fragment implements RecyclerViewClick {
             }
         }
         compruebaFavoritosVacio();
+    }
+
+    private void limpiaAllFavoritos() {
+        binding.campoBusquedaFav.setText("");
+        adaptador.clearAll();
+        controlador.removeAllFavoritos();
+        compruebaFavoritosVacio();
+    }
+
+    private void creaDialogoBorrar() {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getContext(), R.style.DialogoFiltrosTheme);
+        alertDialogBuilder.setMessage("¿Eliminar todos los favoritos?");
+
+        alertDialogBuilder.setPositiveButton("Si", (arg0, arg1) -> limpiaAllFavoritos());
+        alertDialogBuilder.setNegativeButton("No", (dialog, which) -> {
+        });
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
+    }
+
+    private class OurTextWatcher implements TextWatcher {
+
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+        }
+
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            adaptador.filtra(charSequence.toString());
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+        }
     }
 }
