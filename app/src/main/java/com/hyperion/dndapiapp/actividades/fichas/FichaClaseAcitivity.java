@@ -6,7 +6,6 @@ import static com.hyperion.dndapiapp.utilidades.Constantes.IS_FAVORITO;
 import static com.hyperion.dndapiapp.utilidades.Constantes.IS_FAVORITO_RESULT;
 import static com.hyperion.dndapiapp.utilidades.Constantes.LISTA_FAVORITOS_BUNDLE;
 import static com.hyperion.dndapiapp.utilidades.Constantes.LISTA_FAVORITOS_CLASE_BUNDLE;
-import static com.hyperion.dndapiapp.utilidades.Constantes.LISTA_FAVORITOS_ESTADO_BUNDLE;
 
 import android.app.Activity;
 import android.content.Intent;

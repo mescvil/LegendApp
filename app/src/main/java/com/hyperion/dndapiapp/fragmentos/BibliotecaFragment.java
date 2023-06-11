@@ -284,11 +284,20 @@ public class BibliotecaFragment extends Fragment implements RecyclerViewClick {
         @Override
         public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             adaptadorMix.filtra(charSequence.toString());
+            cambiaEstadoBotonLimpiar();
             cambiaTituloBusqueda();
         }
 
         @Override
         public void afterTextChanged(Editable editable) {
+        }
+    }
+
+    private void cambiaEstadoBotonLimpiar() {
+        if (binding.campoBusqueda.getText().toString().isEmpty()) {
+            binding.botonLimpiar.setVisibility(View.INVISIBLE);
+        } else {
+            binding.botonLimpiar.setVisibility(View.VISIBLE);
         }
     }
 

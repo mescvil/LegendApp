@@ -16,7 +16,6 @@ import com.google.android.material.tabs.TabLayout;
 import com.hyperion.dndapiapp.R;
 import com.hyperion.dndapiapp.adaptadores.fragmentState.EnemigosStateAdapter;
 import com.hyperion.dndapiapp.databinding.ActivityFichaEnemigoBinding;
-import com.hyperion.dndapiapp.entidades.clases.Clase;
 import com.hyperion.dndapiapp.entidades.enemigos.Enemigo;
 import com.hyperion.dndapiapp.sqlite.Favorito;
 

@@ -14,7 +14,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.hyperion.dndapiapp.R;
 import com.hyperion.dndapiapp.databinding.ActivityFichaArmaduraBinding;
-import com.hyperion.dndapiapp.entidades.equipamiento.Arma;
 import com.hyperion.dndapiapp.entidades.equipamiento.Armadura;
 import com.hyperion.dndapiapp.sqlite.Favorito;
 

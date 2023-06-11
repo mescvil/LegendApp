@@ -13,7 +13,6 @@ import com.hyperion.dndapiapp.R;
 import com.hyperion.dndapiapp.adaptadores.recyclerView.RecyclerViewClick;
 import com.hyperion.dndapiapp.adaptadores.recyclerView.holders.FavoritosHolder;
 import com.hyperion.dndapiapp.sqlite.Favorito;
-import com.hyperion.dndapiapp.utilidades.GetNombreInterface;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -71,6 +70,7 @@ public class AdaptadorFavoritos extends RecyclerView.Adapter<FavoritosHolder> {
     public void clearAll() {
         favoritos.clear();
         favoritosBackup.clear();
+        favoritosBackup.addAll(favoritos);
     }
 
     public void addItem(Favorito favorito) {

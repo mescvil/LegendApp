@@ -4,7 +4,6 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
-import com.hyperion.dndapiapp.entidades.clases.Clase;
 import com.hyperion.dndapiapp.entidades.razas.Raza;
 import com.hyperion.dndapiapp.servicioRest.RespuestaApi;
 import com.hyperion.dndapiapp.servicioRest.RetrofitHelper;

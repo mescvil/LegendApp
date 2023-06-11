@@ -1,6 +1,5 @@
 package com.hyperion.dndapiapp.adaptadores.recyclerView.holders;
 
-import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.view.View;
 import android.widget.TextView;

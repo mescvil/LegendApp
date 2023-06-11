@@ -1,10 +1,8 @@
 package com.hyperion.dndapiapp.actividades;
 
-import static com.hyperion.dndapiapp.utilidades.Constantes.CIERRA_SESION_BUNDLE;
 import static com.hyperion.dndapiapp.utilidades.Constantes.USUARIO_BUNDLE;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 

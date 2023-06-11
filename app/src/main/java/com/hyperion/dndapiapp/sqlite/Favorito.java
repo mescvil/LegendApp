@@ -3,8 +3,6 @@ package com.hyperion.dndapiapp.sqlite;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.util.Objects;
-
 public class Favorito implements Parcelable {
 
     private final String nombre;

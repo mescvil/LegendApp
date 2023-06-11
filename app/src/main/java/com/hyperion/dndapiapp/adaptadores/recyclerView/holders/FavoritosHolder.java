@@ -1,7 +1,6 @@
 package com.hyperion.dndapiapp.adaptadores.recyclerView.holders;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.view.View;
 import android.widget.TextView;
 
@@ -13,8 +12,6 @@ import com.google.android.material.card.MaterialCardView;
 import com.hyperion.dndapiapp.R;
 import com.hyperion.dndapiapp.adaptadores.recyclerView.RecyclerViewClick;
 import com.hyperion.dndapiapp.sqlite.Favorito;
-
-import javax.crypto.Cipher;
 
 public class FavoritosHolder extends RecyclerView.ViewHolder {
 

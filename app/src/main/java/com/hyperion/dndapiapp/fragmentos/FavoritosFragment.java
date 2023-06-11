@@ -17,7 +17,6 @@ import static com.hyperion.dndapiapp.utilidades.Constantes.TRASFONDO_COMPETENCIA
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -26,16 +25,16 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
+import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.hyperion.dndapiapp.R;
-import com.hyperion.dndapiapp.actividades.MainActivity;
 import com.hyperion.dndapiapp.actividades.fichas.FichaArmaActivity;
 import com.hyperion.dndapiapp.actividades.fichas.FichaArmaduraActivity;
 import com.hyperion.dndapiapp.actividades.fichas.FichaClaseAcitivity;
@@ -115,13 +114,27 @@ public class FavoritosFragment extends Fragment implements RecyclerViewClick {
         binding.campoBusquedaFav.addTextChangedListener(new OurTextWatcher());
         binding.botonLimpiarBusqueda.setOnClickListener(v -> binding.campoBusquedaFav.setText(""));
         binding.botonLimpiaFav.setOnClickListener(v -> creaDialogoBorrar());
+        binding.campoBusquedaFav.setText("");
 
         compruebaFavoritosVacio();
     }
 
     private void compruebaFavoritosVacio() {
-        if (favoritos == null || favoritos.isEmpty())
-            recyclerView.setBackgroundResource(R.drawable.imagen_fondo_fav);
+        ConstraintLayout layoutLimpia = binding.layoutBuscadorFav;
+        ConstraintLayout layoutGeneral = binding.layoutFavoritos;
+        ConstraintLayout layoutVacio = binding.layoutTextoResultado;
+
+        if (favoritos == null || favoritos.isEmpty()) {
+            layoutGeneral.setBackgroundResource(R.drawable.imagen_fondo_fav);
+            layoutLimpia.setVisibility(View.INVISIBLE);
+            recyclerView.setVisibility(View.INVISIBLE);
+            layoutVacio.setVisibility(View.VISIBLE);
+
+        } else {
+            layoutVacio.setVisibility(View.INVISIBLE);
+            recyclerView.setVisibility(View.VISIBLE);
+            layoutLimpia.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
@@ -360,10 +373,19 @@ public class FavoritosFragment extends Fragment implements RecyclerViewClick {
         @Override
         public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             adaptador.filtra(charSequence.toString());
+            cambiaEstadoBotonLimpiar();
         }
 
         @Override
         public void afterTextChanged(Editable editable) {
+        }
+    }
+
+    private void cambiaEstadoBotonLimpiar() {
+        if (binding.campoBusquedaFav.getText().toString().isEmpty()) {
+            binding.botonLimpiarBusqueda.setVisibility(View.INVISIBLE);
+        } else {
+            binding.botonLimpiarBusqueda.setVisibility(View.VISIBLE);
         }
     }
 }

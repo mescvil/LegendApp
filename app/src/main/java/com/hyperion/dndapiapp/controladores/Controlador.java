@@ -134,6 +134,7 @@ public class Controlador {
     public void removeAllFavoritos() {
         sqLiteHelper.iniciaConexion();
         sqLiteHelper.deleteAll();
+        favoritos.clear();
         sqLiteHelper.stop();
     }
 
