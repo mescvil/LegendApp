@@ -6,10 +6,15 @@ import android.os.Parcelable;
 import com.google.gson.annotations.SerializedName;
 import com.hyperion.dndapiapp.adaptadores.recyclerView.GenericoRecyclerView;
 
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
+
 @SuppressWarnings("unused")
-public class Arma implements Equipamiento, Parcelable, GenericoRecyclerView {
+public class Arma extends RealmObject
+        implements Equipamiento, Parcelable, GenericoRecyclerView {
 
     @SerializedName("nombre")
+    @PrimaryKey
     private String nombre;
     @SerializedName("danio")
     private String danio;
@@ -23,6 +28,9 @@ public class Arma implements Equipamiento, Parcelable, GenericoRecyclerView {
     private String precio;
 
     /* =============== CONSTRUCTORES =============== */
+
+    public Arma() {
+    }
 
     /* =============== METODOS =============== */
 

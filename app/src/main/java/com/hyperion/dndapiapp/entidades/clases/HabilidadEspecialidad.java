@@ -6,14 +6,23 @@ import android.os.Parcelable;
 import com.google.gson.annotations.SerializedName;
 import com.hyperion.dndapiapp.adaptadores.recyclerView.GenericoRecyclerView;
 
-public class HabilidadEspecialidad implements Parcelable, GenericoRecyclerView {
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
+
+@SuppressWarnings("unused")
+public class HabilidadEspecialidad extends RealmObject
+        implements Parcelable, GenericoRecyclerView {
 
     @SerializedName("nombre")
+    @PrimaryKey
     private String nombre;
     @SerializedName("descripcion")
     private String descripcion;
 
     /* =============== CONSTRUCTORES =============== */
+
+    public HabilidadEspecialidad() {
+    }
 
     /* =============== METODOS =============== */
 

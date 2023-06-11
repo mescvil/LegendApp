@@ -10,12 +10,19 @@ import com.hyperion.dndapiapp.entidades.equipamiento.Armadura;
 import com.hyperion.dndapiapp.entidades.equipamiento.Hechizo;
 import com.hyperion.dndapiapp.utilidades.GetNombreInterface;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import io.realm.RealmList;
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
+
 @SuppressWarnings("unused")
-public class Clase implements GetNombreInterface, Parcelable {
+public class Clase extends RealmObject
+        implements GetNombreInterface, Parcelable {
 
     @SerializedName("nombre")
+    @PrimaryKey
     private String nombre;
     @SerializedName("imagen")
     private String imagen;
@@ -28,19 +35,22 @@ public class Clase implements GetNombreInterface, Parcelable {
     @SerializedName("tiradasSalvacion")
     private String tiradasSalvacion;
     @SerializedName("rasgosClase")
-    private List<RasgoClase> rasgosClase;
+    private RealmList<RasgoClase> rasgosClase;
     @SerializedName("armas")
-    private List<Arma> armas;
+    private RealmList<Arma> armas;
     @SerializedName("armaduras")
-    private List<Armadura> armaduras;
+    private RealmList<Armadura> armaduras;
     @SerializedName("hechizos")
-    private List<Hechizo> hechizos;
+    private RealmList<Hechizo> hechizos;
     @SerializedName("especialidades")
-    private List<Especialidad> especialidades;
+    private RealmList<Especialidad> especialidades;
     @SerializedName("competencias")
-    private List<Competencia> competencias;
+    private RealmList<Competencia> competencias;
 
     /* =============== CONSTRUCTORES =============== */
+
+    public Clase() {
+    }
 
     /* =============== METODOS =============== */
 
@@ -51,12 +61,24 @@ public class Clase implements GetNombreInterface, Parcelable {
         descripcion = in.readString();
         caracteristicaPrincipal = in.readString();
         tiradasSalvacion = in.readString();
-        rasgosClase = in.createTypedArrayList(RasgoClase.CREATOR);
-        armas = in.createTypedArrayList(Arma.CREATOR);
-        armaduras = in.createTypedArrayList(Armadura.CREATOR);
-        hechizos = in.createTypedArrayList(Hechizo.CREATOR);
-        competencias = in.createTypedArrayList(Competencia.CREATOR);
-        especialidades = in.createTypedArrayList(Especialidad.CREATOR);
+
+        rasgosClase = new RealmList<>();
+        rasgosClase.addAll(in.createTypedArrayList(RasgoClase.CREATOR));
+
+        armas = new RealmList<>();
+        armas.addAll(in.createTypedArrayList(Arma.CREATOR));
+
+        armaduras = new RealmList<>();
+        armaduras.addAll(in.createTypedArrayList(Armadura.CREATOR));
+
+        hechizos = new RealmList<>();
+        hechizos.addAll(in.createTypedArrayList(Hechizo.CREATOR));
+
+        competencias = new RealmList<>();
+        competencias.addAll(in.createTypedArrayList(Competencia.CREATOR));
+
+        especialidades = new RealmList<>();
+        especialidades.addAll(in.createTypedArrayList(Especialidad.CREATOR));
     }
 
     @Override
@@ -138,7 +160,7 @@ public class Clase implements GetNombreInterface, Parcelable {
         return rasgosClase;
     }
 
-    public void setRasgosClase(List<RasgoClase> rasgosClase) {
+    public void setRasgosClase(RealmList<RasgoClase> rasgosClase) {
         this.rasgosClase = rasgosClase;
     }
 
@@ -146,7 +168,7 @@ public class Clase implements GetNombreInterface, Parcelable {
         return armas;
     }
 
-    public void setArmas(List<Arma> armas) {
+    public void setArmas(RealmList<Arma> armas) {
         this.armas = armas;
     }
 
@@ -154,7 +176,7 @@ public class Clase implements GetNombreInterface, Parcelable {
         return armaduras;
     }
 
-    public void setArmaduras(List<Armadura> armaduras) {
+    public void setArmaduras(RealmList<Armadura> armaduras) {
         this.armaduras = armaduras;
     }
 
@@ -162,7 +184,7 @@ public class Clase implements GetNombreInterface, Parcelable {
         return hechizos;
     }
 
-    public void setHechizos(List<Hechizo> hechizos) {
+    public void setHechizos(RealmList<Hechizo> hechizos) {
         this.hechizos = hechizos;
     }
 
@@ -170,7 +192,7 @@ public class Clase implements GetNombreInterface, Parcelable {
         return especialidades;
     }
 
-    public void setEspecialidades(List<Especialidad> especialidades) {
+    public void setEspecialidades(RealmList<Especialidad> especialidades) {
         this.especialidades = especialidades;
     }
 
@@ -178,7 +200,7 @@ public class Clase implements GetNombreInterface, Parcelable {
         return competencias;
     }
 
-    public void setCompetencias(List<Competencia> competencias) {
+    public void setCompetencias(RealmList<Competencia> competencias) {
         this.competencias = competencias;
     }
 

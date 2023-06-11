@@ -11,6 +11,7 @@ import com.hyperion.dndapiapp.entidades.equipamiento.Equipamiento;
 import com.hyperion.dndapiapp.entidades.equipamiento.Hechizo;
 import com.hyperion.dndapiapp.entidades.razas.Raza;
 import com.hyperion.dndapiapp.entidades.trasfondos.Trasfondo;
+import com.hyperion.dndapiapp.realm.ClaseRealm;
 import com.hyperion.dndapiapp.servicioRest.servicios.ServicioClases;
 import com.hyperion.dndapiapp.servicioRest.servicios.ServicioCompetencias;
 import com.hyperion.dndapiapp.servicioRest.servicios.ServicioEnemigos;
@@ -25,13 +26,16 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.realm.Realm;
+import io.realm.RealmConfiguration;
+
 public class Controlador {
 
     private static Controlador controlador;
     private boolean primeraCarga;
 
     /* Observadores */
-    List<ObservadorDatos> observadoresDatos;
+    private final List<ObservadorDatos> observadoresDatos;
 
     /* Servicios Rest */
     private final ServicioEnemigos servicioEnemigos;
@@ -93,6 +97,7 @@ public class Controlador {
                     listaTrasfondos = servicioTrasfondos.getAllTrasfondosSync();
                     listaCompentencias = servicioCompetencias.getAllCompetenciasSync();
 
+                    guardaDatosRealm();
                     primeraCarga = false;
                     notificaExito();
 
@@ -103,6 +108,24 @@ public class Controlador {
 
         } else
             notificaExito();
+    }
+
+    /* ================= Realm ================= */
+    public void iniciaRealm(Context context) {
+        if (primeraCarga) {
+            Realm.init(context);
+            RealmConfiguration realmConfiguration = new RealmConfiguration.Builder()
+                    .name(Realm.DEFAULT_REALM_NAME)
+                    .schemaVersion(0)
+                    .deleteRealmIfMigrationNeeded()
+                    .build();
+
+            Realm.setDefaultConfiguration(realmConfiguration);
+        }
+    }
+
+    public void guardaDatosRealm() {
+        ClaseRealm.addClases(listaClases);
     }
 
     /* ================= Favoritos ================= */

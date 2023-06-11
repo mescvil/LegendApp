@@ -7,10 +7,15 @@ import com.google.gson.annotations.SerializedName;
 import com.hyperion.dndapiapp.adaptadores.recyclerView.GenericoRecyclerView;
 import com.hyperion.dndapiapp.utilidades.GetNombreInterface;
 
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
+
 @SuppressWarnings("unused")
-public class Hechizo implements GetNombreInterface, Parcelable, GenericoRecyclerView {
+public class Hechizo extends RealmObject
+        implements GetNombreInterface, Parcelable, GenericoRecyclerView {
 
     @SerializedName("nombre")
+    @PrimaryKey
     private String nombre;
     @SerializedName("descripcion")
     private String descripcion;
@@ -26,6 +31,9 @@ public class Hechizo implements GetNombreInterface, Parcelable, GenericoRecycler
     private String tiradaSalvacion;
 
     /* =============== CONSTRUCTORES =============== */
+
+    public Hechizo() {
+    }
 
     /* =============== METODOS =============== */
 

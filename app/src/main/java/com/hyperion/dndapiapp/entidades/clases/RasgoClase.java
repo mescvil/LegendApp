@@ -6,15 +6,23 @@ import android.os.Parcelable;
 import com.google.gson.annotations.SerializedName;
 import com.hyperion.dndapiapp.adaptadores.recyclerView.GenericoRecyclerView;
 
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
+
 @SuppressWarnings("unused")
-public class RasgoClase implements Parcelable, GenericoRecyclerView {
+public class RasgoClase extends RealmObject
+        implements Parcelable, GenericoRecyclerView {
 
     @SerializedName("nombre")
+    @PrimaryKey
     private String nombre;
     @SerializedName("descripcion")
     private String descripcion;
 
     /* =============== CONSTRUCTORES =============== */
+
+    public RasgoClase() {
+    }
 
     /* =============== METODOS =============== */
 

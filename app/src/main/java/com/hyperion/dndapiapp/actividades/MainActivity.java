@@ -73,6 +73,7 @@ public class MainActivity extends AppCompatActivity implements ObservadorDatos {
 
         controlador.iniciaFavoritos(getApplicationContext());
         binding.tituloFragment.setText("Glosario");
+        controlador.iniciaRealm(this);
         controlador.cargaRecursos();
     }
 

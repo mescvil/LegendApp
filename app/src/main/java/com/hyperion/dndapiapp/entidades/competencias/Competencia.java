@@ -7,14 +7,22 @@ import com.google.gson.annotations.SerializedName;
 import com.hyperion.dndapiapp.adaptadores.recyclerView.GenericoRecyclerView;
 import com.hyperion.dndapiapp.utilidades.GetNombreInterface;
 
-public class Competencia implements GetNombreInterface, GenericoRecyclerView, Parcelable {
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
+
+public class Competencia extends RealmObject
+        implements GetNombreInterface, GenericoRecyclerView, Parcelable {
 
     @SerializedName("nombre")
+    @PrimaryKey
     private String nombre;
     @SerializedName("descripcion")
     private String descripcion;
 
     /* =============== CONSTRUCTORES =============== */
+
+    public Competencia() {
+    }
 
     /* =============== METODOS =============== */
 

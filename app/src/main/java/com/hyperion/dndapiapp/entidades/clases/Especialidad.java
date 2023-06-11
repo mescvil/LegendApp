@@ -8,23 +8,35 @@ import com.hyperion.dndapiapp.utilidades.GetNombreInterface;
 
 import java.util.List;
 
-public class Especialidad implements Parcelable, GetNombreInterface {
+import io.realm.RealmList;
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
+
+@SuppressWarnings("unused")
+public class Especialidad extends RealmObject
+        implements Parcelable, GetNombreInterface {
 
     @SerializedName("nombre")
+    @PrimaryKey
     private String nombre;
     @SerializedName("descripcion")
     private String descripcion;
     @SerializedName("habilidades")
-    private List<HabilidadEspecialidad> habilidades;
+    private RealmList<HabilidadEspecialidad> habilidades;
 
     /* =============== CONSTRUCTORES =============== */
+
+    public Especialidad() {
+    }
 
     /* =============== METODOS =============== */
 
     protected Especialidad(Parcel in) {
         nombre = in.readString();
         descripcion = in.readString();
-        habilidades = in.createTypedArrayList(HabilidadEspecialidad.CREATOR);
+
+        habilidades = new RealmList<>();
+        habilidades.addAll(in.createTypedArrayList(HabilidadEspecialidad.CREATOR));
     }
 
     @Override
@@ -73,7 +85,7 @@ public class Especialidad implements Parcelable, GetNombreInterface {
         return habilidades;
     }
 
-    public void setHabilidades(List<HabilidadEspecialidad> habilidades) {
+    public void setHabilidades(RealmList<HabilidadEspecialidad> habilidades) {
         this.habilidades = habilidades;
     }
 }

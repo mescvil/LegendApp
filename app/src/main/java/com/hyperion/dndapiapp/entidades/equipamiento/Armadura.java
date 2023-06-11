@@ -6,10 +6,15 @@ import android.os.Parcelable;
 import com.google.gson.annotations.SerializedName;
 import com.hyperion.dndapiapp.adaptadores.recyclerView.GenericoRecyclerView;
 
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
+
 @SuppressWarnings("unused")
-public class Armadura implements Equipamiento, Parcelable, GenericoRecyclerView {
+public class Armadura extends RealmObject
+        implements Equipamiento, Parcelable, GenericoRecyclerView {
 
     @SerializedName("nombre")
+    @PrimaryKey
     private String nombre;
     @SerializedName("tipo")
     private String tipo;
@@ -25,6 +30,9 @@ public class Armadura implements Equipamiento, Parcelable, GenericoRecyclerView 
     private boolean desventajaSigilo;
 
     /* =============== CONSTRUCTORES =============== */
+
+    public Armadura() {
+    }
 
     /* =============== METODOS =============== */
 
