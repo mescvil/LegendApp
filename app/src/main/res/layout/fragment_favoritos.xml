@@ -63,7 +63,7 @@
                 android:id="@+id/campoBusquedaFav"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:backgroundTint="@color/rojaFavorito"
+                android:background="@drawable/layout_edit_text_fav"
                 android:ems="10"
                 android:hint="Realiza tu búsqueda"
                 android:inputType="text"

@@ -72,7 +72,7 @@
                     android:id="@+id/fichaDesc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:justificationMode="inter_word"
+                    android:justificationMode="none"
                     android:text="TextView"
                     android:textColor="@color/hint"
                     android:textColorHint="@color/hint" />

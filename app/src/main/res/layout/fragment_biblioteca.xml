@@ -40,7 +40,7 @@
                 android:id="@+id/campoBusqueda"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:backgroundTint="@color/lavanda"
+                android:background="@drawable/layout_edit_text_biblio"
                 android:ems="10"
                 android:hint="Realiza tu búsqueda"
                 android:inputType="text"
