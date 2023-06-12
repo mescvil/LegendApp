@@ -1,13 +1,13 @@
-package com.hyperion.dndapiapp.entidades.clases;
+package com.hyperion.dndapiapp.entidades.glosario.clases;
 
 import android.os.Parcel;
 import android.os.Parcelable;
 
 import com.google.gson.annotations.SerializedName;
-import com.hyperion.dndapiapp.entidades.competencias.Competencia;
-import com.hyperion.dndapiapp.entidades.equipamiento.Arma;
-import com.hyperion.dndapiapp.entidades.equipamiento.Armadura;
-import com.hyperion.dndapiapp.entidades.equipamiento.Hechizo;
+import com.hyperion.dndapiapp.entidades.glosario.competencias.Competencia;
+import com.hyperion.dndapiapp.entidades.glosario.equipamiento.Arma;
+import com.hyperion.dndapiapp.entidades.glosario.equipamiento.Armadura;
+import com.hyperion.dndapiapp.entidades.glosario.equipamiento.Hechizo;
 import com.hyperion.dndapiapp.utilidades.GetNombreInterface;
 
 import java.util.List;

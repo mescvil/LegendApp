@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity implements ObservadorDatos {
     private void inicializaFragmentos() {
         bibliotecaFragment = BibliotecaFragment.newInstance();
         favoritosFragment = FavoritosFragment.newInstance();
-        fichasFragment = new FichasFragment();
+        fichasFragment = FichasFragment.newInstance(usuario.getCorreo());
     }
 
     private void aniadeListenerNavBar() {

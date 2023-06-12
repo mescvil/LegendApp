@@ -1,4 +1,4 @@
-package com.hyperion.dndapiapp.entidades.enemigos;
+package com.hyperion.dndapiapp.entidades.glosario.clases;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -6,7 +6,8 @@ import android.os.Parcelable;
 import com.google.gson.annotations.SerializedName;
 import com.hyperion.dndapiapp.adaptadores.recyclerView.GenericoRecyclerView;
 
-public class Accion implements Parcelable, GenericoRecyclerView {
+@SuppressWarnings("unused")
+public class RasgoClase implements Parcelable, GenericoRecyclerView {
 
     @SerializedName("nombre")
     private String nombre;
@@ -17,7 +18,7 @@ public class Accion implements Parcelable, GenericoRecyclerView {
 
     /* =============== METODOS =============== */
 
-    protected Accion(Parcel in) {
+    protected RasgoClase(Parcel in) {
         nombre = in.readString();
         descripcion = in.readString();
     }
@@ -33,20 +34,21 @@ public class Accion implements Parcelable, GenericoRecyclerView {
         return 0;
     }
 
-    public static final Creator<Accion> CREATOR = new Creator<Accion>() {
+    public static final Creator<RasgoClase> CREATOR = new Creator<RasgoClase>() {
         @Override
-        public Accion createFromParcel(Parcel in) {
-            return new Accion(in);
+        public RasgoClase createFromParcel(Parcel in) {
+            return new RasgoClase(in);
         }
 
         @Override
-        public Accion[] newArray(int size) {
-            return new Accion[size];
+        public RasgoClase[] newArray(int size) {
+            return new RasgoClase[size];
         }
     };
 
     /* =============== GETTERS & SETTERS =============== */
 
+    @Override
     public String getNombre() {
         return nombre;
     }
@@ -55,6 +57,7 @@ public class Accion implements Parcelable, GenericoRecyclerView {
         this.nombre = nombre;
     }
 
+    @Override
     public String getDescripcion() {
         return descripcion;
     }

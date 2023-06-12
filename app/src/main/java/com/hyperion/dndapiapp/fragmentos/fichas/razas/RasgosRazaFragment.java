@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.hyperion.dndapiapp.adaptadores.recyclerView.adaptadores.AdaptadorGenerico;
 import com.hyperion.dndapiapp.databinding.FragmentRasgosRazaBinding;
-import com.hyperion.dndapiapp.entidades.razas.RasgoRaza;
+import com.hyperion.dndapiapp.entidades.glosario.razas.RasgoRaza;
 
 import java.util.Arrays;
 

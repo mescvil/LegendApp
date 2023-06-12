@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.hyperion.dndapiapp.R;
 import com.hyperion.dndapiapp.adaptadores.recyclerView.RecyclerViewClick;
-import com.hyperion.dndapiapp.entidades.enemigos.Enemigo;
+import com.hyperion.dndapiapp.entidades.glosario.enemigos.Enemigo;
 
 public class EnemigoHolder extends RecyclerView.ViewHolder {
 

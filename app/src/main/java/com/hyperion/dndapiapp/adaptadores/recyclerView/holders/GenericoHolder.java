@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.hyperion.dndapiapp.R;
 import com.hyperion.dndapiapp.adaptadores.recyclerView.GenericoRecyclerView;
-import com.hyperion.dndapiapp.entidades.equipamiento.Hechizo;
+import com.hyperion.dndapiapp.entidades.glosario.equipamiento.Hechizo;
 
 public class GenericoHolder extends RecyclerView.ViewHolder {
 

@@ -14,7 +14,7 @@ import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
 import com.hyperion.dndapiapp.databinding.FragmentGeneralRazaBinding;
-import com.hyperion.dndapiapp.entidades.razas.Raza;
+import com.hyperion.dndapiapp.entidades.glosario.razas.Raza;
 
 public class GeneralRazaFragment extends Fragment {
 

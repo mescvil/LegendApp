@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.hyperion.dndapiapp.R;
 import com.hyperion.dndapiapp.adaptadores.recyclerView.RecyclerViewClick;
-import com.hyperion.dndapiapp.entidades.trasfondos.Trasfondo;
+import com.hyperion.dndapiapp.entidades.glosario.trasfondos.Trasfondo;
 
 public class TrasfondoHolder extends RecyclerView.ViewHolder {
 

@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.hyperion.dndapiapp.adaptadores.recyclerView.adaptadores.AdaptadorGenerico;
 import com.hyperion.dndapiapp.databinding.FragmentCompetenciasTrasfodosBinding;
-import com.hyperion.dndapiapp.entidades.competencias.Competencia;
+import com.hyperion.dndapiapp.entidades.glosario.competencias.Competencia;
 
 import java.util.Arrays;
 

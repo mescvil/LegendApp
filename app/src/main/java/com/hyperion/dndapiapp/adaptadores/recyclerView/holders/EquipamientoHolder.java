@@ -9,8 +9,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.hyperion.dndapiapp.R;
 import com.hyperion.dndapiapp.adaptadores.recyclerView.RecyclerViewClick;
-import com.hyperion.dndapiapp.entidades.equipamiento.Armadura;
-import com.hyperion.dndapiapp.entidades.equipamiento.Equipamiento;
+import com.hyperion.dndapiapp.entidades.glosario.equipamiento.Armadura;
+import com.hyperion.dndapiapp.entidades.glosario.equipamiento.Equipamiento;
 
 public class EquipamientoHolder extends RecyclerView.ViewHolder {
     private ImageView imageView;

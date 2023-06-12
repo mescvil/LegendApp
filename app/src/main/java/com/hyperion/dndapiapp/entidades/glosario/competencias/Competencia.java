@@ -1,12 +1,13 @@
-package com.hyperion.dndapiapp.entidades.clases;
+package com.hyperion.dndapiapp.entidades.glosario.competencias;
 
 import android.os.Parcel;
 import android.os.Parcelable;
 
 import com.google.gson.annotations.SerializedName;
 import com.hyperion.dndapiapp.adaptadores.recyclerView.GenericoRecyclerView;
+import com.hyperion.dndapiapp.utilidades.GetNombreInterface;
 
-public class HabilidadEspecialidad implements Parcelable, GenericoRecyclerView {
+public class Competencia implements GetNombreInterface, GenericoRecyclerView, Parcelable {
 
     @SerializedName("nombre")
     private String nombre;
@@ -17,7 +18,7 @@ public class HabilidadEspecialidad implements Parcelable, GenericoRecyclerView {
 
     /* =============== METODOS =============== */
 
-    protected HabilidadEspecialidad(Parcel in) {
+    protected Competencia(Parcel in) {
         nombre = in.readString();
         descripcion = in.readString();
     }
@@ -33,20 +34,21 @@ public class HabilidadEspecialidad implements Parcelable, GenericoRecyclerView {
         return 0;
     }
 
-    public static final Creator<HabilidadEspecialidad> CREATOR = new Creator<HabilidadEspecialidad>() {
+    public static final Creator<Competencia> CREATOR = new Creator<Competencia>() {
         @Override
-        public HabilidadEspecialidad createFromParcel(Parcel in) {
-            return new HabilidadEspecialidad(in);
+        public Competencia createFromParcel(Parcel in) {
+            return new Competencia(in);
         }
 
         @Override
-        public HabilidadEspecialidad[] newArray(int size) {
-            return new HabilidadEspecialidad[size];
+        public Competencia[] newArray(int size) {
+            return new Competencia[size];
         }
     };
 
     /* =============== GETTERS & SETTERS =============== */
 
+    @Override
     public String getNombre() {
         return nombre;
     }
@@ -55,6 +57,7 @@ public class HabilidadEspecialidad implements Parcelable, GenericoRecyclerView {
         this.nombre = nombre;
     }
 
+    @Override
     public String getDescripcion() {
         return descripcion;
     }

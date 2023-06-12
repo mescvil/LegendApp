@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.hyperion.dndapiapp.databinding.FragmentGeneralTrasfondoBinding;
-import com.hyperion.dndapiapp.entidades.trasfondos.Trasfondo;
+import com.hyperion.dndapiapp.entidades.glosario.trasfondos.Trasfondo;
 
 public class GeneralTrasfondoFragment extends Fragment {
 

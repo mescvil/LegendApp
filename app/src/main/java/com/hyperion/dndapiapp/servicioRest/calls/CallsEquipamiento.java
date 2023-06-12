@@ -1,8 +1,8 @@
 package com.hyperion.dndapiapp.servicioRest.calls;
 
-import com.hyperion.dndapiapp.entidades.equipamiento.Arma;
-import com.hyperion.dndapiapp.entidades.equipamiento.Armadura;
-import com.hyperion.dndapiapp.entidades.equipamiento.Hechizo;
+import com.hyperion.dndapiapp.entidades.glosario.equipamiento.Arma;
+import com.hyperion.dndapiapp.entidades.glosario.equipamiento.Armadura;
+import com.hyperion.dndapiapp.entidades.glosario.equipamiento.Hechizo;
 import com.hyperion.dndapiapp.servicioRest.RespuestaApi;
 
 import retrofit2.Call;

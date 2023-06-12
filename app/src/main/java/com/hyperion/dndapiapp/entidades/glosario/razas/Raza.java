@@ -1,4 +1,4 @@
-package com.hyperion.dndapiapp.entidades.razas;
+package com.hyperion.dndapiapp.entidades.glosario.razas;
 
 import android.os.Parcel;
 import android.os.Parcelable;

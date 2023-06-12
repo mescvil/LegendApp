@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.hyperion.dndapiapp.adaptadores.recyclerView.adaptadores.AdaptadorGenerico;
 import com.hyperion.dndapiapp.databinding.FragmentRasgosClaseBinding;
-import com.hyperion.dndapiapp.entidades.clases.RasgoClase;
+import com.hyperion.dndapiapp.entidades.glosario.clases.RasgoClase;
 
 import java.util.Arrays;
 

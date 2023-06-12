@@ -1,6 +1,6 @@
 package com.hyperion.dndapiapp.servicioRest.calls;
 
-import com.hyperion.dndapiapp.entidades.clases.Clase;
+import com.hyperion.dndapiapp.entidades.glosario.clases.Clase;
 import com.hyperion.dndapiapp.servicioRest.RespuestaApi;
 
 import retrofit2.Call;

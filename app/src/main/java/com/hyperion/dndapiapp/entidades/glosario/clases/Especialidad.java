@@ -1,38 +1,37 @@
-package com.hyperion.dndapiapp.entidades.trasfondos;
+package com.hyperion.dndapiapp.entidades.glosario.clases;
 
 import android.os.Parcel;
 import android.os.Parcelable;
 
 import com.google.gson.annotations.SerializedName;
-import com.hyperion.dndapiapp.entidades.competencias.Competencia;
 import com.hyperion.dndapiapp.utilidades.GetNombreInterface;
 
 import java.util.List;
 
-public class Trasfondo implements GetNombreInterface, Parcelable {
+public class Especialidad implements Parcelable, GetNombreInterface {
 
     @SerializedName("nombre")
     private String nombre;
     @SerializedName("descripcion")
     private String descripcion;
-    @SerializedName("competencias")
-    private List<Competencia> competencias;
+    @SerializedName("habilidades")
+    private List<HabilidadEspecialidad> habilidades;
 
     /* =============== CONSTRUCTORES =============== */
 
     /* =============== METODOS =============== */
 
-    protected Trasfondo(Parcel in) {
+    protected Especialidad(Parcel in) {
         nombre = in.readString();
         descripcion = in.readString();
-        competencias = in.createTypedArrayList(Competencia.CREATOR);
+        habilidades = in.createTypedArrayList(HabilidadEspecialidad.CREATOR);
     }
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(nombre);
         dest.writeString(descripcion);
-        dest.writeTypedList(competencias);
+        dest.writeTypedList(habilidades);
     }
 
     @Override
@@ -40,21 +39,20 @@ public class Trasfondo implements GetNombreInterface, Parcelable {
         return 0;
     }
 
-    public static final Creator<Trasfondo> CREATOR = new Creator<Trasfondo>() {
+    public static final Creator<Especialidad> CREATOR = new Creator<Especialidad>() {
         @Override
-        public Trasfondo createFromParcel(Parcel in) {
-            return new Trasfondo(in);
+        public Especialidad createFromParcel(Parcel in) {
+            return new Especialidad(in);
         }
 
         @Override
-        public Trasfondo[] newArray(int size) {
-            return new Trasfondo[size];
+        public Especialidad[] newArray(int size) {
+            return new Especialidad[size];
         }
     };
 
     /* =============== GETTERS & SETTERS =============== */
 
-    @Override
     public String getNombre() {
         return nombre;
     }
@@ -71,11 +69,11 @@ public class Trasfondo implements GetNombreInterface, Parcelable {
         this.descripcion = descripcion;
     }
 
-    public List<Competencia> getCompetencias() {
-        return competencias;
+    public List<HabilidadEspecialidad> getHabilidades() {
+        return habilidades;
     }
 
-    public void setCompetencias(List<Competencia> competencias) {
-        this.competencias = competencias;
+    public void setHabilidades(List<HabilidadEspecialidad> habilidades) {
+        this.habilidades = habilidades;
     }
 }

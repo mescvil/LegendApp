@@ -1,37 +1,31 @@
-package com.hyperion.dndapiapp.entidades.clases;
+package com.hyperion.dndapiapp.entidades.glosario.clases;
 
 import android.os.Parcel;
 import android.os.Parcelable;
 
 import com.google.gson.annotations.SerializedName;
-import com.hyperion.dndapiapp.utilidades.GetNombreInterface;
+import com.hyperion.dndapiapp.adaptadores.recyclerView.GenericoRecyclerView;
 
-import java.util.List;
-
-public class Especialidad implements Parcelable, GetNombreInterface {
+public class HabilidadEspecialidad implements Parcelable, GenericoRecyclerView {
 
     @SerializedName("nombre")
     private String nombre;
     @SerializedName("descripcion")
     private String descripcion;
-    @SerializedName("habilidades")
-    private List<HabilidadEspecialidad> habilidades;
 
     /* =============== CONSTRUCTORES =============== */
 
     /* =============== METODOS =============== */
 
-    protected Especialidad(Parcel in) {
+    protected HabilidadEspecialidad(Parcel in) {
         nombre = in.readString();
         descripcion = in.readString();
-        habilidades = in.createTypedArrayList(HabilidadEspecialidad.CREATOR);
     }
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(nombre);
         dest.writeString(descripcion);
-        dest.writeTypedList(habilidades);
     }
 
     @Override
@@ -39,15 +33,15 @@ public class Especialidad implements Parcelable, GetNombreInterface {
         return 0;
     }
 
-    public static final Creator<Especialidad> CREATOR = new Creator<Especialidad>() {
+    public static final Creator<HabilidadEspecialidad> CREATOR = new Creator<HabilidadEspecialidad>() {
         @Override
-        public Especialidad createFromParcel(Parcel in) {
-            return new Especialidad(in);
+        public HabilidadEspecialidad createFromParcel(Parcel in) {
+            return new HabilidadEspecialidad(in);
         }
 
         @Override
-        public Especialidad[] newArray(int size) {
-            return new Especialidad[size];
+        public HabilidadEspecialidad[] newArray(int size) {
+            return new HabilidadEspecialidad[size];
         }
     };
 
@@ -67,13 +61,5 @@ public class Especialidad implements Parcelable, GetNombreInterface {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
-    }
-
-    public List<HabilidadEspecialidad> getHabilidades() {
-        return habilidades;
-    }
-
-    public void setHabilidades(List<HabilidadEspecialidad> habilidades) {
-        this.habilidades = habilidades;
     }
 }

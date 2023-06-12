@@ -1,4 +1,4 @@
-package com.hyperion.dndapiapp.entidades.equipamiento;
+package com.hyperion.dndapiapp.entidades.glosario.equipamiento;
 
 import android.os.Parcel;
 import android.os.Parcelable;

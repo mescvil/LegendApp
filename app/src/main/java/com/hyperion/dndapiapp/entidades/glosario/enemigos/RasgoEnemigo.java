@@ -1,4 +1,4 @@
-package com.hyperion.dndapiapp.entidades.enemigos;
+package com.hyperion.dndapiapp.entidades.glosario.enemigos;
 
 import android.os.Parcel;
 import android.os.Parcelable;

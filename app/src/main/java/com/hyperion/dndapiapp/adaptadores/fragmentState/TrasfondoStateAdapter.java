@@ -5,8 +5,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import com.hyperion.dndapiapp.entidades.competencias.Competencia;
-import com.hyperion.dndapiapp.entidades.trasfondos.Trasfondo;
+import com.hyperion.dndapiapp.entidades.glosario.competencias.Competencia;
+import com.hyperion.dndapiapp.entidades.glosario.trasfondos.Trasfondo;
 import com.hyperion.dndapiapp.fragmentos.fichas.trasfondos.CompetenciasTrasfodosFragment;
 import com.hyperion.dndapiapp.fragmentos.fichas.trasfondos.GeneralTrasfondoFragment;
 

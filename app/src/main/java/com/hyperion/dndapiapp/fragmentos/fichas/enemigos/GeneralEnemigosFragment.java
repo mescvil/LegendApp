@@ -13,7 +13,7 @@ import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
 import com.hyperion.dndapiapp.databinding.FragmentGeneralEnemigosBinding;
-import com.hyperion.dndapiapp.entidades.enemigos.Enemigo;
+import com.hyperion.dndapiapp.entidades.glosario.enemigos.Enemigo;
 
 public class GeneralEnemigosFragment extends Fragment {
 

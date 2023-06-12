@@ -19,7 +19,7 @@ import com.google.android.material.tabs.TabLayout;
 import com.hyperion.dndapiapp.R;
 import com.hyperion.dndapiapp.adaptadores.fragmentState.ClaseStateAdapter;
 import com.hyperion.dndapiapp.databinding.ActivityFichaClaseBinding;
-import com.hyperion.dndapiapp.entidades.clases.Clase;
+import com.hyperion.dndapiapp.entidades.glosario.clases.Clase;
 import com.hyperion.dndapiapp.sqlite.Favorito;
 import com.hyperion.dndapiapp.sqlite.FavoritoClase;
 

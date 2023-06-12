@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.hyperion.dndapiapp.R;
 import com.hyperion.dndapiapp.adaptadores.recyclerView.RecyclerViewClick;
-import com.hyperion.dndapiapp.entidades.equipamiento.Hechizo;
+import com.hyperion.dndapiapp.entidades.glosario.equipamiento.Hechizo;
 import com.hyperion.dndapiapp.utilidades.GetNombreInterface;
 
 public class EquipoEspecialidadHolder extends RecyclerView.ViewHolder {

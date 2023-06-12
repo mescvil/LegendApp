@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.hyperion.dndapiapp.adaptadores.recyclerView.GenericoRecyclerView;
 import com.hyperion.dndapiapp.adaptadores.recyclerView.adaptadores.AdaptadorGenerico;
 import com.hyperion.dndapiapp.databinding.ActivityFichaEspecialidadBinding;
-import com.hyperion.dndapiapp.entidades.clases.Especialidad;
+import com.hyperion.dndapiapp.entidades.glosario.clases.Especialidad;
 
 import java.util.ArrayList;
 import java.util.List;

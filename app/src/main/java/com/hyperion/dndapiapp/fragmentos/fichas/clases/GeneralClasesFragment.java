@@ -13,7 +13,7 @@ import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
 import com.hyperion.dndapiapp.databinding.FragmentGeneralClasesBinding;
-import com.hyperion.dndapiapp.entidades.clases.Clase;
+import com.hyperion.dndapiapp.entidades.glosario.clases.Clase;
 
 public class GeneralClasesFragment extends Fragment {
 

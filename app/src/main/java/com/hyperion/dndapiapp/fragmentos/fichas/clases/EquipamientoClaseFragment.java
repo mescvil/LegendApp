@@ -28,9 +28,9 @@ import com.hyperion.dndapiapp.actividades.fichas.FichaHechizoActivity;
 import com.hyperion.dndapiapp.adaptadores.recyclerView.RecyclerViewClick;
 import com.hyperion.dndapiapp.adaptadores.recyclerView.adaptadores.AdaptadorEquipoEspecialidades;
 import com.hyperion.dndapiapp.databinding.FragmentEquipamientoClaseBinding;
-import com.hyperion.dndapiapp.entidades.equipamiento.Arma;
-import com.hyperion.dndapiapp.entidades.equipamiento.Armadura;
-import com.hyperion.dndapiapp.entidades.equipamiento.Hechizo;
+import com.hyperion.dndapiapp.entidades.glosario.equipamiento.Arma;
+import com.hyperion.dndapiapp.entidades.glosario.equipamiento.Armadura;
+import com.hyperion.dndapiapp.entidades.glosario.equipamiento.Hechizo;
 import com.hyperion.dndapiapp.sqlite.Favorito;
 import com.hyperion.dndapiapp.utilidades.GetNombreInterface;
 

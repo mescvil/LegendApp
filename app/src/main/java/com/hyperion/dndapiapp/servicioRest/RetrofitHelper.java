@@ -4,6 +4,7 @@ import com.hyperion.dndapiapp.servicioRest.calls.CallsClases;
 import com.hyperion.dndapiapp.servicioRest.calls.CallsCompetencias;
 import com.hyperion.dndapiapp.servicioRest.calls.CallsEnemigos;
 import com.hyperion.dndapiapp.servicioRest.calls.CallsEquipamiento;
+import com.hyperion.dndapiapp.servicioRest.calls.CallsFichas;
 import com.hyperion.dndapiapp.servicioRest.calls.CallsRazas;
 import com.hyperion.dndapiapp.servicioRest.calls.CallsTrasfondos;
 import com.hyperion.dndapiapp.servicioRest.calls.CallsUsuario;
@@ -53,7 +54,11 @@ public class RetrofitHelper {
         return retrofit.create(CallsTrasfondos.class);
     }
 
-    public CallsCompetencias getCallCompetencias(){
+    public CallsCompetencias getCallCompetencias() {
         return retrofit.create(CallsCompetencias.class);
+    }
+
+    public CallsFichas getCallFichas() {
+        return retrofit.create(CallsFichas.class);
     }
 }

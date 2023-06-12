@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.hyperion.dndapiapp.R;
 import com.hyperion.dndapiapp.adaptadores.recyclerView.RecyclerViewClick;
-import com.hyperion.dndapiapp.entidades.razas.Raza;
+import com.hyperion.dndapiapp.entidades.glosario.razas.Raza;
 
 public class RazaHolder extends RecyclerView.ViewHolder {
 

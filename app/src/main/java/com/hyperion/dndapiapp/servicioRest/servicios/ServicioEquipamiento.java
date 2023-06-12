@@ -4,9 +4,9 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
-import com.hyperion.dndapiapp.entidades.equipamiento.Arma;
-import com.hyperion.dndapiapp.entidades.equipamiento.Armadura;
-import com.hyperion.dndapiapp.entidades.equipamiento.Hechizo;
+import com.hyperion.dndapiapp.entidades.glosario.equipamiento.Arma;
+import com.hyperion.dndapiapp.entidades.glosario.equipamiento.Armadura;
+import com.hyperion.dndapiapp.entidades.glosario.equipamiento.Hechizo;
 import com.hyperion.dndapiapp.servicioRest.RespuestaApi;
 import com.hyperion.dndapiapp.servicioRest.RetrofitHelper;
 import com.hyperion.dndapiapp.servicioRest.callbacks.CallbackCustom;

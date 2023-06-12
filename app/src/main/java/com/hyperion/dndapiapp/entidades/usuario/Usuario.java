@@ -24,6 +24,10 @@ public class Usuario implements Parcelable {
         this.contrasenia = contrasenia;
     }
 
+    public Usuario(String correo) {
+        this.correo = correo;
+    }
+
     public Usuario(String nombre, String correo, String contrasenia) {
         this.nombre = nombre;
         this.correo = correo;

@@ -16,7 +16,7 @@ import com.google.android.material.tabs.TabLayout;
 import com.hyperion.dndapiapp.R;
 import com.hyperion.dndapiapp.adaptadores.fragmentState.RazaStateAdapter;
 import com.hyperion.dndapiapp.databinding.ActivityFichaRazaBinding;
-import com.hyperion.dndapiapp.entidades.razas.Raza;
+import com.hyperion.dndapiapp.entidades.glosario.razas.Raza;
 import com.hyperion.dndapiapp.sqlite.Favorito;
 
 public class FichaRazaActivity extends AppCompatActivity {

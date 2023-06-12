@@ -4,19 +4,23 @@ import static com.hyperion.dndapiapp.utilidades.Constantes.DB_NAME;
 
 import android.content.Context;
 
-import com.hyperion.dndapiapp.entidades.clases.Clase;
-import com.hyperion.dndapiapp.entidades.competencias.Competencia;
-import com.hyperion.dndapiapp.entidades.enemigos.Enemigo;
-import com.hyperion.dndapiapp.entidades.equipamiento.Equipamiento;
-import com.hyperion.dndapiapp.entidades.equipamiento.Hechizo;
-import com.hyperion.dndapiapp.entidades.razas.Raza;
-import com.hyperion.dndapiapp.entidades.trasfondos.Trasfondo;
+import com.hyperion.dndapiapp.entidades.fichas.PersonajeFicha;
+import com.hyperion.dndapiapp.entidades.glosario.clases.Clase;
+import com.hyperion.dndapiapp.entidades.glosario.competencias.Competencia;
+import com.hyperion.dndapiapp.entidades.glosario.enemigos.Enemigo;
+import com.hyperion.dndapiapp.entidades.glosario.equipamiento.Equipamiento;
+import com.hyperion.dndapiapp.entidades.glosario.equipamiento.Hechizo;
+import com.hyperion.dndapiapp.entidades.glosario.razas.Raza;
+import com.hyperion.dndapiapp.entidades.glosario.trasfondos.Trasfondo;
+import com.hyperion.dndapiapp.entidades.usuario.Usuario;
+import com.hyperion.dndapiapp.servicioRest.callbacks.CallbackLista;
 import com.hyperion.dndapiapp.servicioRest.servicios.ServicioClases;
 import com.hyperion.dndapiapp.servicioRest.servicios.ServicioCompetencias;
 import com.hyperion.dndapiapp.servicioRest.servicios.ServicioEnemigos;
 import com.hyperion.dndapiapp.servicioRest.servicios.ServicioEquipamiento;
 import com.hyperion.dndapiapp.servicioRest.servicios.ServicioRazas;
 import com.hyperion.dndapiapp.servicioRest.servicios.ServicioTrasfondos;
+import com.hyperion.dndapiapp.servicioRest.servicios.ServiciosFichas;
 import com.hyperion.dndapiapp.sqlite.Favorito;
 import com.hyperion.dndapiapp.sqlite.FavoritoClase;
 import com.hyperion.dndapiapp.sqlite.SQLiteHelper;
@@ -40,6 +44,7 @@ public class Controlador {
     private final ServicioRazas servicioRazas;
     private final ServicioTrasfondos servicioTrasfondos;
     private final ServicioCompetencias servicioCompetencias;
+    private final ServiciosFichas serviciosFichas;
 
     /* Lista de elementos */
     private List<Enemigo> listaEnemigos;
@@ -64,6 +69,7 @@ public class Controlador {
         servicioRazas = ServicioRazas.getInstance();
         servicioTrasfondos = ServicioTrasfondos.getInstance();
         servicioCompetencias = ServicioCompetencias.getInstance();
+        serviciosFichas = ServiciosFichas.getInstance();
 
         listaEnemigos = new ArrayList<>();
         listaClases = new ArrayList<>();

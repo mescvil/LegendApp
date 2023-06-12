@@ -4,7 +4,7 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
-import com.hyperion.dndapiapp.entidades.competencias.Competencia;
+import com.hyperion.dndapiapp.entidades.glosario.competencias.Competencia;
 import com.hyperion.dndapiapp.servicioRest.RespuestaApi;
 import com.hyperion.dndapiapp.servicioRest.RetrofitHelper;
 import com.hyperion.dndapiapp.servicioRest.callbacks.CallbackLista;

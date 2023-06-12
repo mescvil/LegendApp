@@ -1,48 +1,49 @@
 package com.hyperion.dndapiapp.fragmentos;
 
+import static com.hyperion.dndapiapp.utilidades.Constantes.CORREO_USUARIO_BUNDLE;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import com.hyperion.dndapiapp.R;
+import com.hyperion.dndapiapp.actividades.NewPersonajeActivity;
+import com.hyperion.dndapiapp.adaptadores.recyclerView.RecyclerViewClick;
+import com.hyperion.dndapiapp.adaptadores.recyclerView.adaptadores.AdaptadorFichas;
+import com.hyperion.dndapiapp.databinding.FragmentFichasBinding;
+import com.hyperion.dndapiapp.dialogos.LoadingDialog;
+import com.hyperion.dndapiapp.entidades.fichas.PersonajeFicha;
+import com.hyperion.dndapiapp.entidades.usuario.Usuario;
+import com.hyperion.dndapiapp.servicioRest.callbacks.CallbackLista;
+import com.hyperion.dndapiapp.servicioRest.servicios.ServiciosFichas;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link FichasFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class FichasFragment extends Fragment {
+import java.util.ArrayList;
+import java.util.List;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+public class FichasFragment extends Fragment implements RecyclerViewClick {
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private FragmentFichasBinding binding;
+    private String correoUsuario;
+    private List<PersonajeFicha> listaPersonajes;
+    private boolean primeraCarga;
+    private LoadingDialog loadingDialog;
 
     public FichasFragment() {
-        // Required empty public constructor
+        listaPersonajes = new ArrayList<>();
+        primeraCarga = true;
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment FichasFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static FichasFragment newInstance(String param1, String param2) {
+    public static FichasFragment newInstance(String correoUsuario) {
         FichasFragment fragment = new FichasFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putString(CORREO_USUARIO_BUNDLE, correoUsuario);
         fragment.setArguments(args);
         return fragment;
     }
@@ -51,15 +52,68 @@ public class FichasFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            correoUsuario = getArguments().getString(CORREO_USUARIO_BUNDLE);
         }
+        loadingDialog = new LoadingDialog(getContext());
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_fichas, container, false);
+
+        binding = FragmentFichasBinding.inflate(inflater, container, false);
+        iniciarFragmento();
+        return binding.getRoot();
+    }
+
+    private void iniciarFragmento() {
+        fetchListaPersonajes();
+        iniciaListenerBotones();
+    }
+
+    private void iniciaListenerBotones() {
+        binding.floatingActionButton.setOnClickListener(view -> {
+            Intent intent = new Intent(getContext(), NewPersonajeActivity.class);
+            // TODO
+        });
+    }
+
+    private void fetchListaPersonajes() {
+        if (primeraCarga) {
+            loadingDialog.show("Cargado fichas");
+            ServiciosFichas.getInstance().getAllFichasUsuario(new CallbackLista<PersonajeFicha>() {
+                @Override
+                public void exito(List<PersonajeFicha> listaResultado) {
+                    listaPersonajes = listaResultado;
+                    primeraCarga = false;
+                    cargaListaRecyclerView();
+                    loadingDialog.dismiss();
+                }
+
+                @Override
+                public void fallo() {
+                    loadingDialog.dismiss();
+                    Toast.makeText(getContext(), "Error al obtener las fichas", Toast.LENGTH_SHORT).show();
+                }
+            }, new Usuario(correoUsuario));
+
+        } else {
+            cargaListaRecyclerView();
+        }
+    }
+
+    private void cargaListaRecyclerView() {
+        RecyclerView recyclerView = binding.listaFichasUsuario;
+        AdaptadorFichas adaptador = new AdaptadorFichas(listaPersonajes, this);
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(adaptador);
+    }
+
+    @Override
+    public void onCosaCliked(int posicion) {
+        Toast.makeText(getContext(), "Click", Toast.LENGTH_SHORT).show();
     }
 }

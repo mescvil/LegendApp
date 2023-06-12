@@ -13,7 +13,7 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.hyperion.dndapiapp.databinding.ActivityFichaHechizoBinding;
-import com.hyperion.dndapiapp.entidades.equipamiento.Hechizo;
+import com.hyperion.dndapiapp.entidades.glosario.equipamiento.Hechizo;
 import com.hyperion.dndapiapp.sqlite.Favorito;
 
 public class FichaHechizoActivity extends AppCompatActivity {

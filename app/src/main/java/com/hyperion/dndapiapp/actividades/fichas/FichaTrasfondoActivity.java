@@ -16,7 +16,7 @@ import com.google.android.material.tabs.TabLayout;
 import com.hyperion.dndapiapp.R;
 import com.hyperion.dndapiapp.adaptadores.fragmentState.TrasfondoStateAdapter;
 import com.hyperion.dndapiapp.databinding.ActivityFichaTrasfondoBinding;
-import com.hyperion.dndapiapp.entidades.trasfondos.Trasfondo;
+import com.hyperion.dndapiapp.entidades.glosario.trasfondos.Trasfondo;
 import com.hyperion.dndapiapp.sqlite.Favorito;
 
 public class FichaTrasfondoActivity extends AppCompatActivity {

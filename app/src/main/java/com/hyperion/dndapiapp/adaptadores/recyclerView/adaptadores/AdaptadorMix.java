@@ -27,13 +27,13 @@ import com.hyperion.dndapiapp.adaptadores.recyclerView.holders.EquipamientoHolde
 import com.hyperion.dndapiapp.adaptadores.recyclerView.holders.HechizoHolder;
 import com.hyperion.dndapiapp.adaptadores.recyclerView.holders.RazaHolder;
 import com.hyperion.dndapiapp.adaptadores.recyclerView.holders.TrasfondoHolder;
-import com.hyperion.dndapiapp.entidades.clases.Clase;
-import com.hyperion.dndapiapp.entidades.competencias.Competencia;
-import com.hyperion.dndapiapp.entidades.enemigos.Enemigo;
-import com.hyperion.dndapiapp.entidades.equipamiento.Equipamiento;
-import com.hyperion.dndapiapp.entidades.equipamiento.Hechizo;
-import com.hyperion.dndapiapp.entidades.razas.Raza;
-import com.hyperion.dndapiapp.entidades.trasfondos.Trasfondo;
+import com.hyperion.dndapiapp.entidades.glosario.clases.Clase;
+import com.hyperion.dndapiapp.entidades.glosario.competencias.Competencia;
+import com.hyperion.dndapiapp.entidades.glosario.enemigos.Enemigo;
+import com.hyperion.dndapiapp.entidades.glosario.equipamiento.Equipamiento;
+import com.hyperion.dndapiapp.entidades.glosario.equipamiento.Hechizo;
+import com.hyperion.dndapiapp.entidades.glosario.razas.Raza;
+import com.hyperion.dndapiapp.entidades.glosario.trasfondos.Trasfondo;
 import com.hyperion.dndapiapp.utilidades.GetNombreInterface;
 
 import java.util.ArrayList;

@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.hyperion.dndapiapp.adaptadores.recyclerView.adaptadores.AdaptadorGenerico;
 import com.hyperion.dndapiapp.databinding.FragmentAccionesEnemigosBinding;
-import com.hyperion.dndapiapp.entidades.enemigos.Accion;
+import com.hyperion.dndapiapp.entidades.glosario.enemigos.Accion;
 
 import java.util.Arrays;
 

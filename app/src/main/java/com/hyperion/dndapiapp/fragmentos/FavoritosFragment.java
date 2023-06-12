@@ -25,7 +25,6 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -47,13 +46,13 @@ import com.hyperion.dndapiapp.adaptadores.recyclerView.adaptadores.AdaptadorFavo
 import com.hyperion.dndapiapp.controladores.Controlador;
 import com.hyperion.dndapiapp.databinding.FragmentFavoritosBinding;
 import com.hyperion.dndapiapp.dialogos.LoadingDialog;
-import com.hyperion.dndapiapp.entidades.clases.Clase;
-import com.hyperion.dndapiapp.entidades.enemigos.Enemigo;
-import com.hyperion.dndapiapp.entidades.equipamiento.Arma;
-import com.hyperion.dndapiapp.entidades.equipamiento.Armadura;
-import com.hyperion.dndapiapp.entidades.equipamiento.Hechizo;
-import com.hyperion.dndapiapp.entidades.razas.Raza;
-import com.hyperion.dndapiapp.entidades.trasfondos.Trasfondo;
+import com.hyperion.dndapiapp.entidades.glosario.clases.Clase;
+import com.hyperion.dndapiapp.entidades.glosario.enemigos.Enemigo;
+import com.hyperion.dndapiapp.entidades.glosario.equipamiento.Arma;
+import com.hyperion.dndapiapp.entidades.glosario.equipamiento.Armadura;
+import com.hyperion.dndapiapp.entidades.glosario.equipamiento.Hechizo;
+import com.hyperion.dndapiapp.entidades.glosario.razas.Raza;
+import com.hyperion.dndapiapp.entidades.glosario.trasfondos.Trasfondo;
 import com.hyperion.dndapiapp.servicioRest.callbacks.CallbackCustom;
 import com.hyperion.dndapiapp.servicioRest.servicios.ServicioClases;
 import com.hyperion.dndapiapp.servicioRest.servicios.ServicioEnemigos;

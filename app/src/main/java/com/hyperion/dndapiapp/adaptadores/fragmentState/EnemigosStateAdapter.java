@@ -5,9 +5,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import com.hyperion.dndapiapp.entidades.enemigos.Accion;
-import com.hyperion.dndapiapp.entidades.enemigos.Enemigo;
-import com.hyperion.dndapiapp.entidades.enemigos.RasgoEnemigo;
+import com.hyperion.dndapiapp.entidades.glosario.enemigos.Accion;
+import com.hyperion.dndapiapp.entidades.glosario.enemigos.Enemigo;
+import com.hyperion.dndapiapp.entidades.glosario.enemigos.RasgoEnemigo;
 import com.hyperion.dndapiapp.fragmentos.fichas.enemigos.AccionesEnemigosFragment;
 import com.hyperion.dndapiapp.fragmentos.fichas.enemigos.GeneralEnemigosFragment;
 import com.hyperion.dndapiapp.fragmentos.fichas.enemigos.RasgosEnemigosFragment;
