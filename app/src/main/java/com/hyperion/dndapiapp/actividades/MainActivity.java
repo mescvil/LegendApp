@@ -4,6 +4,7 @@ import static com.hyperion.dndapiapp.utilidades.Constantes.ACTIVIDAD_USER;
 import static com.hyperion.dndapiapp.utilidades.Constantes.CIERRA_SESION_BUNDLE;
 import static com.hyperion.dndapiapp.utilidades.Constantes.USUARIO_BUNDLE;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -58,12 +59,16 @@ public class MainActivity extends AppCompatActivity implements ObservadorDatos {
         iniciaActividad();
     }
 
+    @SuppressLint("DiscouragedApi")
     private void iniciaActividad() {
         loadingDialog = new LoadingDialog(this);
         loadingDialog.show("Cargando recursos");
 
         inicializaFragmentos();
         aniadeListenerNavBar();
+
+        int resImage = getResources().getIdentifier(usuario.getImagenPerfil(), "drawable", getPackageName());
+        binding.botonUsuario.setImageResource(resImage);
 
         binding.botonUsuario.setOnClickListener(view -> {
             Intent intent = new Intent(this, UserActivity.class);
