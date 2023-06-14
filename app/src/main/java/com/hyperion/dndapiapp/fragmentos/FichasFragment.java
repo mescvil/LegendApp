@@ -5,6 +5,7 @@ import static com.hyperion.dndapiapp.utilidades.Constantes.CORREO_USUARIO_BUNDLE
 import static com.hyperion.dndapiapp.utilidades.Constantes.FICHA_BUNDLE;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -18,7 +19,9 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.hyperion.dndapiapp.R;
 import com.hyperion.dndapiapp.actividades.NewPersonajeActivity;
+import com.hyperion.dndapiapp.adaptadores.recyclerView.EliminarFichaClick;
 import com.hyperion.dndapiapp.adaptadores.recyclerView.RecyclerViewClick;
 import com.hyperion.dndapiapp.adaptadores.recyclerView.adaptadores.AdaptadorFichas;
 import com.hyperion.dndapiapp.databinding.FragmentFichasBinding;
@@ -33,13 +36,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 @SuppressWarnings("deprecation")
-public class FichasFragment extends Fragment implements RecyclerViewClick {
+public class FichasFragment extends Fragment implements RecyclerViewClick, EliminarFichaClick {
 
     private FragmentFichasBinding binding;
     private String correoUsuario;
     private List<PersonajeFicha> listaPersonajes;
     private boolean primeraCarga;
     private LoadingDialog loadingDialog;
+    private AdaptadorFichas adaptadorFichas;
 
     public FichasFragment() {
         listaPersonajes = new ArrayList<>();
@@ -110,17 +114,12 @@ public class FichasFragment extends Fragment implements RecyclerViewClick {
 
     private void cargaListaRecyclerView() {
         RecyclerView recyclerView = binding.listaFichasUsuario;
-        AdaptadorFichas adaptador = new AdaptadorFichas(listaPersonajes, this);
+        adaptadorFichas = new AdaptadorFichas(listaPersonajes, this, this);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(adaptador);
-    }
-
-    @Override
-    public void onCosaCliked(int posicion) {
-        Toast.makeText(getContext(), "Click", Toast.LENGTH_SHORT).show();
+        recyclerView.setAdapter(adaptadorFichas);
     }
 
     @Override
@@ -151,5 +150,47 @@ public class FichasFragment extends Fragment implements RecyclerViewClick {
                 loading.dismiss();
             }
         }, new Usuario(correoUsuario), ficha);
+    }
+
+    @Override
+    public void eliminarFichaClicked(int posicionFicha) {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getContext(), R.style.DialogoFiltrosTheme);
+        alertDialogBuilder.setMessage("¿Eliminar ficha?");
+
+        alertDialogBuilder.setPositiveButton("Si", (arg0, arg1) -> eliminarFicha(posicionFicha));
+
+        alertDialogBuilder.setNegativeButton("No", (dialog, which) -> {
+        });
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
+    }
+
+    private void eliminarFicha(int posicionFicha) {
+        LoadingDialog loading = new LoadingDialog(getContext());
+        loading.show("Eliminado ficha");
+
+        PersonajeFicha ficha = adaptadorFichas.getItem(posicionFicha);
+        Usuario usuario = new Usuario(correoUsuario);
+
+        ServiciosFichas.getInstance().eliminaFicha(new CallbackCustom<Boolean>() {
+            @Override
+            public void exito(Boolean resultado) {
+                loading.dismiss();
+                primeraCarga = true;
+                fetchListaPersonajes();
+            }
+
+            @Override
+            public void fallo(String mensaje) {
+                loading.dismiss();
+            }
+
+        }, usuario, ficha);
+    }
+
+    @Override
+    public void onCosaCliked(int posicion) {
+        Toast.makeText(getContext(), "Click: " + posicion, Toast.LENGTH_SHORT).show();
     }
 }

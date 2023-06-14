@@ -111,7 +111,6 @@ public class NewPersonajeActivity extends AppCompatActivity {
 
         AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.show();
-
     }
 
     private void generaFicha() {

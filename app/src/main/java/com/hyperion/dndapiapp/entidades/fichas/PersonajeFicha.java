@@ -8,7 +8,7 @@ import com.google.gson.annotations.SerializedName;
 @SuppressWarnings("unused")
 public class PersonajeFicha implements Parcelable {
 
-    @SerializedName("id")
+    @SerializedName("idFicha")
     private long id;
     @SerializedName("nombre")
     private String nombre;

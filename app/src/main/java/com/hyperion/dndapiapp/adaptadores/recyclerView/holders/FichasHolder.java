@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.hyperion.dndapiapp.R;
+import com.hyperion.dndapiapp.adaptadores.recyclerView.EliminarFichaClick;
 import com.hyperion.dndapiapp.adaptadores.recyclerView.RecyclerViewClick;
 import com.hyperion.dndapiapp.entidades.fichas.PersonajeFicha;
 
@@ -16,7 +17,7 @@ public class FichasHolder extends RecyclerView.ViewHolder {
     private final TextView nombrePersonaje;
     private final TextView clasePersonaje;
 
-    public FichasHolder(@NonNull View itemView, RecyclerViewClick recyclerViewClick) {
+    public FichasHolder(@NonNull View itemView, RecyclerViewClick recyclerViewClick, EliminarFichaClick eliminarFichaClick) {
         super(itemView);
 
         nombrePersonaje = itemView.findViewById(R.id.textViewNombrePersonaje);
@@ -31,7 +32,10 @@ public class FichasHolder extends RecyclerView.ViewHolder {
         });
 
         botonBorrarFicha.setOnClickListener(view -> {
-
+            int posicion = getAdapterPosition();
+            if (posicion != RecyclerView.NO_POSITION) {
+                eliminarFichaClick.eliminarFichaClicked(posicion);
+            }
         });
     }
 

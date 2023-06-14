@@ -46,7 +46,7 @@
             android:layout_height="40dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/icono_borrar"
-            android:backgroundTint="@color/rojoOscuro"
+            android:backgroundTint="@color/rojo"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

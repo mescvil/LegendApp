@@ -9,6 +9,7 @@ import com.hyperion.dndapiapp.entidades.usuario.Usuario;
 import com.hyperion.dndapiapp.servicioRest.RetrofitHelper;
 import com.hyperion.dndapiapp.servicioRest.callbacks.CallbackCustom;
 import com.hyperion.dndapiapp.servicioRest.callbacks.CallbackLista;
+import com.hyperion.dndapiapp.servicioRest.servicios.utils.PayloadEliminarFicha;
 import com.hyperion.dndapiapp.servicioRest.servicios.utils.PayloadFicha;
 import com.hyperion.dndapiapp.servicioRest.servicios.utils.RespuestaApi;
 import com.hyperion.dndapiapp.servicioRest.servicios.utils.RespuestaSimple;
@@ -85,6 +86,39 @@ public class ServiciosFichas {
                 callback.fallo("Algo salio mal");
             }
         });
+    }
 
+    public void eliminaFicha(CallbackCustom<Boolean> callback, Usuario usuario, PersonajeFicha ficha) {
+        PayloadEliminarFicha payload = new PayloadEliminarFicha(usuario.getCorreo(), ficha.getId());
+        RetrofitHelper retrofitHelper = RetrofitHelper.getInstance();
+        Call<RespuestaSimple> call = retrofitHelper.getCallFichas().eliminaFicha(payload);
+
+        call.enqueue(new Callback<RespuestaSimple>() {
+            @Override
+            public void onResponse(@NonNull Call<RespuestaSimple> call,
+                                   @NonNull Response<RespuestaSimple> response) {
+
+                if (response.code() == 200) {
+                    if (response.body() != null) {
+                        if (response.body().getCodigo().equals("200")) {
+                            Log.d("API", "Ficha eliminada para el usuario " + usuario.getCorreo() + " idFicha: " + ficha.getId());
+                            callback.exito(true);
+                        }
+                    }
+
+                } else {
+                    Log.d("API", response.toString());
+                    callback.fallo("Error al guardar la ficha");
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<RespuestaSimple> call,
+                                  @NonNull Throwable t) {
+
+                Log.d("API-ERROR", "No es posible obtener las fichas :" + t);
+                callback.fallo("Algo salio mal");
+            }
+        });
     }
 }
