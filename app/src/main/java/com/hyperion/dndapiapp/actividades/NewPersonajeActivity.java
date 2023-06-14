@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -15,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.hyperion.dndapiapp.R;
 import com.hyperion.dndapiapp.controladores.Controlador;
@@ -82,6 +84,8 @@ public class NewPersonajeActivity extends AppCompatActivity {
                 sab.setText(String.valueOf(dados[4]));
                 car.setText(String.valueOf(dados[5]));
 
+                cambiaColorStats();
+
                 nIntentos--;
                 Toast.makeText(this, "Te quedan " + nIntentos + " tiradas", Toast.LENGTH_SHORT).show();
 
@@ -98,6 +102,28 @@ public class NewPersonajeActivity extends AppCompatActivity {
             else
                 generaFicha();
         });
+    }
+
+    private void cambiaColorStats() {
+        ConstraintLayout layout = binding.cajaStats;
+
+        for (int i = 0; i < layout.getChildCount(); i++) {
+            TextView caja = (TextView) layout.getChildAt(i);
+            String texto = caja.getText().toString();
+
+            if (Utils.esNumerico(texto)) {
+                int n = Integer.parseInt(texto);
+
+                if (n == 18 || n == 4 || n == 3)
+                    caja.setTextColor(getColor(R.color.doradoMetalico));
+                else if (n >= 15)
+                    caja.setTextColor(getColor(R.color.verdeCriatura));
+                else if (n < 10)
+                    caja.setTextColor(getColor(R.color.rojo));
+                else
+                    caja.setTextColor(getColor(R.color.white));
+            }
+        }
     }
 
     private void creaDialoIntentos() {

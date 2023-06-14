@@ -60,4 +60,13 @@ public class Utils {
         }
         return resultado.toString();
     }
+
+    public static boolean esNumerico(String cadena) {
+        try {
+            Double.parseDouble(cadena);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
 }
