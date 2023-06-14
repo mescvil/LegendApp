@@ -7,7 +7,6 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -30,6 +29,8 @@ import com.hyperion.dndapiapp.entidades.fichas.RazaPersonaje;
 import com.hyperion.dndapiapp.entidades.glosario.Alineamientos;
 import com.hyperion.dndapiapp.entidades.glosario.clases.Clase;
 import com.hyperion.dndapiapp.entidades.glosario.clases.Especialidad;
+import com.hyperion.dndapiapp.entidades.glosario.equipamiento.Arma;
+import com.hyperion.dndapiapp.entidades.glosario.equipamiento.Armadura;
 import com.hyperion.dndapiapp.entidades.glosario.razas.Raza;
 import com.hyperion.dndapiapp.entidades.glosario.trasfondos.Trasfondo;
 import com.hyperion.dndapiapp.utilidades.Utils;
@@ -55,6 +56,8 @@ public class NewPersonajeActivity extends AppCompatActivity {
     private Spinner spinnerEspecialidad;
     private Spinner spinnerTrasfondo;
     private Spinner spinnerAlineamiento;
+    private Spinner spinnerArmas;
+    private Spinner spinnerArmaduras;
 
     private TextView maxEdad;
     private EditText edad;
@@ -163,6 +166,8 @@ public class NewPersonajeActivity extends AppCompatActivity {
         Trasfondo trasfondo = (Trasfondo) spinnerTrasfondo.getSelectedItem();
         Raza raza = (Raza) spinerRaza.getSelectedItem();
         String alineamiento = (String) spinnerAlineamiento.getSelectedItem();
+        Arma arma = (Arma) spinnerArmas.getSelectedItem();
+        Armadura armadura = (Armadura) spinnerArmaduras.getSelectedItem();
 
         int edadPersonaje = Integer.parseInt(edad.getText().toString());
         float tamanioPersonaje = Float.parseFloat(tamanio.getText().toString());
@@ -178,7 +183,7 @@ public class NewPersonajeActivity extends AppCompatActivity {
         }
 
 
-        EquipamientoPersonaje equipamientoPersonaje = new EquipamientoPersonaje(clase);
+        EquipamientoPersonaje equipamientoPersonaje = new EquipamientoPersonaje(clase, arma, armadura);
         ClasePersonaje clasePersonaje = new ClasePersonaje(clase, especialidad.getNombre());
         HistoriaPersonaje historiaPersonaje = new HistoriaPersonaje(trasfondo, clase);
         RazaPersonaje razaPersonaje = new RazaPersonaje(raza);
@@ -196,7 +201,7 @@ public class NewPersonajeActivity extends AppCompatActivity {
         ficha.setSabiduria(Integer.parseInt(sab.getText().toString()));
         ficha.setCarisma(Integer.parseInt(car.getText().toString()));
 
-        ficha.setClaseArmadura(11); // TODO ?
+        ficha.setClaseArmadura(armadura.getClaseArmadura());
         ficha.setRaza(razaPersonaje);
         ficha.setClase(clasePersonaje);
         ficha.setEquipamiento(equipamientoPersonaje);
@@ -222,6 +227,8 @@ public class NewPersonajeActivity extends AppCompatActivity {
         spinnerEspecialidad = binding.spinnerEspec;
         spinnerTrasfondo = binding.spinnerTrasf;
         spinnerAlineamiento = binding.spinerAlineamiento;
+        spinnerArmas = binding.spinnerArma;
+        spinnerArmaduras = binding.spinnerArmadura;
 
         maxEdad = binding.edadMaxima;
         minMaxTamanio = binding.tamanioMinMax;
@@ -253,6 +260,13 @@ public class NewPersonajeActivity extends AppCompatActivity {
         ArrayAdapter<Object> adapterTrans = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, listaTrasfondos.toArray());
         spinnerTrasfondo.setAdapter(adapterTrans);
 
+        /* Cosas de armas y armaduras */
+        ArrayAdapter<Object> adapterArma = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, new ArrayList<>());
+        spinnerArmas.setAdapter(adapterArma);
+
+        ArrayAdapter<Object> adapterArmadura = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, new ArrayList<>());
+        spinnerArmaduras.setAdapter(adapterArmadura);
+
         /* Cosas de alineamiento */
         Alineamientos[] alineamientos = Alineamientos.values();
         String[] alineamientosStrings = new String[alineamientos.length];
@@ -271,7 +285,12 @@ public class NewPersonajeActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> adapterView, View view, int posicion, long l) {
                 Clase clase = (Clase) adapterView.getItemAtPosition(posicion);
                 adapterEspec.clear();
+                adapterArma.clear();
+                adapterArmadura.clear();
+
                 adapterEspec.addAll(clase.getEspecialidades());
+                adapterArma.addAll(clase.getArmas());
+                adapterArmadura.addAll(clase.getArmadurasSinEscudo());
             }
 
             @Override

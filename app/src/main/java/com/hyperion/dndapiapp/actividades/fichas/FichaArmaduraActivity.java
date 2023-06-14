@@ -42,7 +42,7 @@ public class FichaArmaduraActivity extends AppCompatActivity {
     @SuppressLint("SetTextI18n")
     private void iniciaActividad() {
         binding.fichaArmaduraTitulo.setText(armadura.getNombre());
-        binding.fichaCA.setText(armadura.getClaseArmadura());
+        binding.fichaCA.setText(String.valueOf(armadura.getClaseArmadura()));
         binding.fichaPrecioArmadura.setText(armadura.getPrecio());
         binding.fichaTipoArmadura.setText(armadura.getTipo());
         binding.fichaPesoArmadura.setText(armadura.getPeso() + " Kg");

@@ -12,6 +12,7 @@ import com.hyperion.dndapiapp.entidades.glosario.equipamiento.Armadura;
 import com.hyperion.dndapiapp.entidades.glosario.equipamiento.Hechizo;
 import com.hyperion.dndapiapp.utilidades.GetNombreInterface;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @SuppressWarnings("unused")
@@ -160,6 +161,16 @@ public class Clase implements GetNombreInterface, Parcelable {
 
     public List<Armadura> getArmaduras() {
         return armaduras;
+    }
+
+    public List<Armadura> getArmadurasSinEscudo() {
+        List<Armadura> lista = new ArrayList<>();
+        for (Armadura armadura : armaduras) {
+            if (!armadura.getNombre().equalsIgnoreCase("escudo"))
+                lista.add(armadura);
+        }
+
+        return lista;
     }
 
     public void setArmaduras(List<Armadura> armaduras) {

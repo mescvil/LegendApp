@@ -82,6 +82,42 @@
                 app:layout_constraintStart_toStartOf="@+id/cajaStats"
                 app:layout_constraintTop_toBottomOf="@+id/cajaStats">
 
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/spinnerArma"
+                    android:layout_width="0dp"
+                    android:layout_height="42dp"
+                    android:layout_marginTop="4dp"
+                    android:background="@drawable/layout_edit_text_ficha"
+                    android:popupBackground="@drawable/borde_redondeado_imagen"
+                    android:spinnerMode="dropdown"
+                    app:layout_constraintEnd_toEndOf="@+id/textView21"
+                    app:layout_constraintStart_toStartOf="@+id/textView21"
+                    app:layout_constraintTop_toBottomOf="@+id/textView21" />
+
+                <TextView
+                    android:id="@+id/textView22"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Selecciona tu Armadura"
+                    app:layout_constraintEnd_toEndOf="@+id/spinnerArma"
+                    app:layout_constraintStart_toStartOf="@+id/spinnerArma"
+                    app:layout_constraintTop_toBottomOf="@+id/spinnerArma" />
+
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/spinnerArmadura"
+                    android:layout_width="0dp"
+                    android:layout_height="42dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/layout_edit_text_ficha"
+                    android:popupBackground="@drawable/borde_redondeado_imagen"
+                    android:spinnerMode="dropdown"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/textView22"
+                    app:layout_constraintStart_toStartOf="@+id/textView22"
+                    app:layout_constraintTop_toBottomOf="@+id/textView22" />
+
                 <TextView
                     android:id="@+id/textView9"
                     android:layout_width="0dp"
@@ -106,30 +142,6 @@
                     app:layout_constraintStart_toStartOf="@+id/textView9"
                     app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
-                <androidx.appcompat.widget.AppCompatSpinner
-                    android:id="@+id/spinnerTrasf"
-                    android:layout_width="0dp"
-                    android:layout_height="42dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginBottom="16dp"
-                    android:background="@drawable/layout_edit_text_ficha"
-                    android:popupBackground="@drawable/borde_redondeado_imagen"
-                    android:spinnerMode="dropdown"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="@+id/spinnerEspec"
-                    app:layout_constraintStart_toStartOf="@+id/textView18"
-                    app:layout_constraintTop_toBottomOf="@+id/textView18" />
-
-                <TextView
-                    android:id="@+id/textView18"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="Selecciona el Trasfondo"
-                    app:layout_constraintEnd_toEndOf="@+id/spinnerEspec"
-                    app:layout_constraintStart_toStartOf="@+id/spinnerEspec"
-                    app:layout_constraintTop_toBottomOf="@+id/spinnerEspec" />
-
                 <TextView
                     android:id="@+id/textView3"
                     android:layout_width="0dp"
@@ -151,6 +163,16 @@
                     app:layout_constraintEnd_toEndOf="@+id/textView3"
                     app:layout_constraintStart_toStartOf="@+id/textView3"
                     app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+                <TextView
+                    android:id="@+id/textView21"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Selecciona tu Arma"
+                    app:layout_constraintEnd_toEndOf="@+id/spinnerEspec"
+                    app:layout_constraintStart_toStartOf="@+id/spinnerEspec"
+                    app:layout_constraintTop_toBottomOf="@+id/spinnerEspec" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -350,17 +372,39 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
+                <TextView
+                    android:id="@+id/textView18"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Selecciona el Trasfondo"
+                    app:layout_constraintEnd_toEndOf="@+id/spinerAlineamiento"
+                    app:layout_constraintStart_toStartOf="@+id/spinerAlineamiento"
+                    app:layout_constraintTop_toBottomOf="@+id/spinerAlineamiento" />
+
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/spinnerTrasf"
+                    android:layout_width="0dp"
+                    android:layout_height="42dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/layout_edit_text_ficha"
+                    android:popupBackground="@drawable/borde_redondeado_imagen"
+                    android:spinnerMode="dropdown"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/textView18"
+                    app:layout_constraintStart_toStartOf="@+id/textView18"
+                    app:layout_constraintTop_toBottomOf="@+id/textView18" />
+
                 <androidx.appcompat.widget.AppCompatSpinner
                     android:id="@+id/spinerAlineamiento"
                     android:layout_width="0dp"
                     android:layout_height="42dp"
                     android:layout_marginTop="4dp"
                     android:layout_marginEnd="16dp"
-                    android:layout_marginBottom="16dp"
                     android:background="@drawable/layout_edit_text_ficha"
                     android:popupBackground="@drawable/borde_redondeado_imagen"
                     android:spinnerMode="dropdown"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/textView10"
                     app:layout_constraintTop_toBottomOf="@+id/textView10" />
@@ -484,6 +528,17 @@
                     android:text="Alineamiento"
                     app:layout_constraintStart_toStartOf="@+id/edadMaxima"
                     app:layout_constraintTop_toBottomOf="@+id/edadMaxima" />
+
+                <TextView
+                    android:id="@+id/textView19"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="pies"
+                    app:layout_constraintBottom_toBottomOf="@+id/campoTamanio"
+                    app:layout_constraintStart_toEndOf="@+id/campoTamanio"
+                    app:layout_constraintTop_toTopOf="@+id/campoTamanio"
+                    app:layout_constraintVertical_bias="1.0" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>

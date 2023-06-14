@@ -5,6 +5,8 @@ import android.os.Parcelable;
 
 import com.google.gson.annotations.SerializedName;
 import com.hyperion.dndapiapp.entidades.glosario.clases.Clase;
+import com.hyperion.dndapiapp.entidades.glosario.equipamiento.Arma;
+import com.hyperion.dndapiapp.entidades.glosario.equipamiento.Armadura;
 import com.hyperion.dndapiapp.utilidades.GetNombreInterface;
 import com.hyperion.dndapiapp.utilidades.Utils;
 
@@ -31,13 +33,11 @@ public class EquipamientoPersonaje implements Parcelable {
         this.hechizos = hechizos;
     }
 
-    public EquipamientoPersonaje(Clase clase) {
-        List<GetNombreInterface> listaArmas = new ArrayList<>(clase.getArmas());
-        List<GetNombreInterface> listaArmaduras = new ArrayList<>(clase.getArmaduras());
+    public EquipamientoPersonaje(Clase clase, Arma arma, Armadura armadura) {
         List<GetNombreInterface> listaHechizos = new ArrayList<>(clase.getHechizos());
 
-        armas = Utils.listaToString(listaArmas);
-        armaduras = Utils.listaToString(listaArmaduras);
+        armas = arma.getNombre();
+        armaduras = armadura.getNombre();
         hechizos = Utils.listaToString(listaHechizos);
     }
 

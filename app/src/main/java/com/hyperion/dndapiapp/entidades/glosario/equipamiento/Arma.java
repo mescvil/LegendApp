@@ -3,6 +3,8 @@ package com.hyperion.dndapiapp.entidades.glosario.equipamiento;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.annotation.NonNull;
+
 import com.google.gson.annotations.SerializedName;
 import com.hyperion.dndapiapp.adaptadores.recyclerView.GenericoRecyclerView;
 
@@ -61,6 +63,12 @@ public class Arma implements Equipamiento, Parcelable, GenericoRecyclerView {
             return new Arma[size];
         }
     };
+
+    @NonNull
+    @Override
+    public String toString() {
+        return getNombre();
+    }
 
     /* =============== GETTERS & SETTERS =============== */
 

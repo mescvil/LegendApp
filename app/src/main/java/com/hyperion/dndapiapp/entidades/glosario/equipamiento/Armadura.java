@@ -3,6 +3,8 @@ package com.hyperion.dndapiapp.entidades.glosario.equipamiento;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.annotation.NonNull;
+
 import com.google.gson.annotations.SerializedName;
 import com.hyperion.dndapiapp.adaptadores.recyclerView.GenericoRecyclerView;
 
@@ -16,7 +18,7 @@ public class Armadura implements Equipamiento, Parcelable, GenericoRecyclerView 
     @SerializedName("peso")
     private int peso;
     @SerializedName("claseArmadura")
-    private String claseArmadura;
+    private int claseArmadura;
     @SerializedName("precio")
     private String precio;
     @SerializedName("fuerzaRequerida")
@@ -33,7 +35,7 @@ public class Armadura implements Equipamiento, Parcelable, GenericoRecyclerView 
         nombre = in.readString();
         tipo = in.readString();
         peso = in.readInt();
-        claseArmadura = in.readString();
+        claseArmadura = in.readInt();
         precio = in.readString();
         fuerzaRequerida = in.readInt();
         desventajaSigilo = in.readByte() != 0;
@@ -44,7 +46,7 @@ public class Armadura implements Equipamiento, Parcelable, GenericoRecyclerView 
         dest.writeString(nombre);
         dest.writeString(tipo);
         dest.writeInt(peso);
-        dest.writeString(claseArmadura);
+        dest.writeInt(claseArmadura);
         dest.writeString(precio);
         dest.writeInt(fuerzaRequerida);
         dest.writeByte((byte) (desventajaSigilo ? 1 : 0));
@@ -66,6 +68,12 @@ public class Armadura implements Equipamiento, Parcelable, GenericoRecyclerView 
             return new Armadura[size];
         }
     };
+
+    @NonNull
+    @Override
+    public String toString() {
+        return getNombre();
+    }
 
     /* =============== GETTERS & SETTERS =============== */
 
@@ -99,11 +107,11 @@ public class Armadura implements Equipamiento, Parcelable, GenericoRecyclerView 
         this.peso = peso;
     }
 
-    public String getClaseArmadura() {
+    public int getClaseArmadura() {
         return claseArmadura;
     }
 
-    public void setClaseArmadura(String claseArmadura) {
+    public void setClaseArmadura(int claseArmadura) {
         this.claseArmadura = claseArmadura;
     }
 
