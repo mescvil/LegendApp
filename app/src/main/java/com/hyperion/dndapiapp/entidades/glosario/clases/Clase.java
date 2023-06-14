@@ -3,6 +3,8 @@ package com.hyperion.dndapiapp.entidades.glosario.clases;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.annotation.NonNull;
+
 import com.google.gson.annotations.SerializedName;
 import com.hyperion.dndapiapp.entidades.glosario.competencias.Competencia;
 import com.hyperion.dndapiapp.entidades.glosario.equipamiento.Arma;
@@ -91,6 +93,12 @@ public class Clase implements GetNombreInterface, Parcelable {
             return new Clase[size];
         }
     };
+
+    @NonNull
+    @Override
+    public String toString() {
+        return getNombre();
+    }
 
     /* =============== GETTERS & SETTERS =============== */
 

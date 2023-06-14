@@ -3,6 +3,8 @@ package com.hyperion.dndapiapp.entidades.glosario.razas;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.annotation.NonNull;
+
 import com.google.gson.annotations.SerializedName;
 import com.hyperion.dndapiapp.utilidades.GetNombreInterface;
 
@@ -71,6 +73,12 @@ public class Raza implements GetNombreInterface, Parcelable {
             return new Raza[size];
         }
     };
+
+    @NonNull
+    @Override
+    public String toString() {
+        return getNombre();
+    }
 
     /* =============== GETTERS & SETTERS =============== */
 

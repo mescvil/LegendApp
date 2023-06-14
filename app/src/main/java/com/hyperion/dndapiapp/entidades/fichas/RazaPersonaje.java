@@ -4,6 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import com.google.gson.annotations.SerializedName;
+import com.hyperion.dndapiapp.entidades.glosario.razas.Raza;
+import com.hyperion.dndapiapp.utilidades.GetNombreInterface;
+import com.hyperion.dndapiapp.utilidades.Utils;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @SuppressWarnings("unused")
 public class RazaPersonaje implements Parcelable {
@@ -16,6 +22,17 @@ public class RazaPersonaje implements Parcelable {
     private String rasgos;
 
     /* =============== CONSTRUCTORES =============== */
+
+    public RazaPersonaje(String nombre, String rasgos) {
+        this.nombre = nombre;
+        this.rasgos = rasgos;
+    }
+
+    public RazaPersonaje(Raza raza) {
+        nombre = raza.getNombre();
+        List<GetNombreInterface> rasgos = new ArrayList<>(raza.getRasgosRaza());
+        this.rasgos = Utils.listaToString(rasgos);
+    }
 
     /* =============== METODOS =============== */
 

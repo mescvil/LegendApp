@@ -1,7 +1,10 @@
 package com.hyperion.dndapiapp.fragmentos;
 
+import static com.hyperion.dndapiapp.utilidades.Constantes.ACTIVIDAD_NUEVA_FICHA;
 import static com.hyperion.dndapiapp.utilidades.Constantes.CORREO_USUARIO_BUNDLE;
+import static com.hyperion.dndapiapp.utilidades.Constantes.FICHA_BUNDLE;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -21,12 +25,14 @@ import com.hyperion.dndapiapp.databinding.FragmentFichasBinding;
 import com.hyperion.dndapiapp.dialogos.LoadingDialog;
 import com.hyperion.dndapiapp.entidades.fichas.PersonajeFicha;
 import com.hyperion.dndapiapp.entidades.usuario.Usuario;
+import com.hyperion.dndapiapp.servicioRest.callbacks.CallbackCustom;
 import com.hyperion.dndapiapp.servicioRest.callbacks.CallbackLista;
 import com.hyperion.dndapiapp.servicioRest.servicios.ServiciosFichas;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@SuppressWarnings("deprecation")
 public class FichasFragment extends Fragment implements RecyclerViewClick {
 
     private FragmentFichasBinding binding;
@@ -74,7 +80,7 @@ public class FichasFragment extends Fragment implements RecyclerViewClick {
     private void iniciaListenerBotones() {
         binding.floatingActionButton.setOnClickListener(view -> {
             Intent intent = new Intent(getContext(), NewPersonajeActivity.class);
-            // TODO
+            startActivityForResult(intent, ACTIVIDAD_NUEVA_FICHA);
         });
     }
 
@@ -115,5 +121,35 @@ public class FichasFragment extends Fragment implements RecyclerViewClick {
     @Override
     public void onCosaCliked(int posicion) {
         Toast.makeText(getContext(), "Click", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == ACTIVIDAD_NUEVA_FICHA && resultCode == Activity.RESULT_OK) {
+            if (data != null) {
+                PersonajeFicha ficha = data.getParcelableExtra(FICHA_BUNDLE);
+                posteaFicha(ficha);
+            }
+        }
+    }
+
+    private void posteaFicha(PersonajeFicha ficha) {
+        LoadingDialog loading = new LoadingDialog(getContext());
+        loading.show("Enviando ficha");
+        ServiciosFichas.getInstance().posteaFicha(new CallbackCustom<Boolean>() {
+            @Override
+            public void exito(Boolean resultado) {
+                loading.dismiss();
+                primeraCarga = true;
+                fetchListaPersonajes();
+            }
+
+            @Override
+            public void fallo(String mensaje) {
+                loading.dismiss();
+            }
+        }, new Usuario(correoUsuario), ficha);
     }
 }

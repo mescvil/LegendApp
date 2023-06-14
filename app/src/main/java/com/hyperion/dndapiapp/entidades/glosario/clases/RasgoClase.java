@@ -5,9 +5,10 @@ import android.os.Parcelable;
 
 import com.google.gson.annotations.SerializedName;
 import com.hyperion.dndapiapp.adaptadores.recyclerView.GenericoRecyclerView;
+import com.hyperion.dndapiapp.utilidades.GetNombreInterface;
 
 @SuppressWarnings("unused")
-public class RasgoClase implements Parcelable, GenericoRecyclerView {
+public class RasgoClase implements Parcelable, GenericoRecyclerView, GetNombreInterface {
 
     @SerializedName("nombre")
     private String nombre;

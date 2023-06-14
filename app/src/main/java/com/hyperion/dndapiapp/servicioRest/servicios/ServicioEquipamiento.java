@@ -7,10 +7,10 @@ import androidx.annotation.NonNull;
 import com.hyperion.dndapiapp.entidades.glosario.equipamiento.Arma;
 import com.hyperion.dndapiapp.entidades.glosario.equipamiento.Armadura;
 import com.hyperion.dndapiapp.entidades.glosario.equipamiento.Hechizo;
-import com.hyperion.dndapiapp.servicioRest.RespuestaApi;
 import com.hyperion.dndapiapp.servicioRest.RetrofitHelper;
 import com.hyperion.dndapiapp.servicioRest.callbacks.CallbackCustom;
 import com.hyperion.dndapiapp.servicioRest.callbacks.CallbackLista;
+import com.hyperion.dndapiapp.servicioRest.servicios.utils.RespuestaApi;
 
 import java.io.IOException;
 import java.util.List;

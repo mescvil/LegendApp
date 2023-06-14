@@ -4,6 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import com.google.gson.annotations.SerializedName;
+import com.hyperion.dndapiapp.entidades.glosario.clases.Clase;
+import com.hyperion.dndapiapp.utilidades.GetNombreInterface;
+import com.hyperion.dndapiapp.utilidades.Utils;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @SuppressWarnings("unused")
 public class EquipamientoPersonaje implements Parcelable {
@@ -18,6 +24,22 @@ public class EquipamientoPersonaje implements Parcelable {
     private String hechizos;
 
     /* =============== CONSTRUCTORES =============== */
+
+    public EquipamientoPersonaje(String armas, String armaduras, String hechizos) {
+        this.armas = armas;
+        this.armaduras = armaduras;
+        this.hechizos = hechizos;
+    }
+
+    public EquipamientoPersonaje(Clase clase) {
+        List<GetNombreInterface> listaArmas = new ArrayList<>(clase.getArmas());
+        List<GetNombreInterface> listaArmaduras = new ArrayList<>(clase.getArmaduras());
+        List<GetNombreInterface> listaHechizos = new ArrayList<>(clase.getHechizos());
+
+        armas = Utils.listaToString(listaArmas);
+        armaduras = Utils.listaToString(listaArmaduras);
+        hechizos = Utils.listaToString(listaHechizos);
+    }
 
     /* =============== METODOS =============== */
 

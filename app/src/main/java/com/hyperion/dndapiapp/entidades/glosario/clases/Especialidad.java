@@ -3,6 +3,8 @@ package com.hyperion.dndapiapp.entidades.glosario.clases;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.annotation.NonNull;
+
 import com.google.gson.annotations.SerializedName;
 import com.hyperion.dndapiapp.utilidades.GetNombreInterface;
 
@@ -50,6 +52,12 @@ public class Especialidad implements Parcelable, GetNombreInterface {
             return new Especialidad[size];
         }
     };
+
+    @NonNull
+    @Override
+    public String toString() {
+        return getNombre();
+    }
 
     /* =============== GETTERS & SETTERS =============== */
 

@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.hyperion.dndapiapp.R;
 import com.hyperion.dndapiapp.adaptadores.recyclerView.RecyclerViewClick;
 import com.hyperion.dndapiapp.adaptadores.recyclerView.holders.FichasHolder;
-import com.hyperion.dndapiapp.adaptadores.recyclerView.holders.GenericoHolder;
 import com.hyperion.dndapiapp.entidades.fichas.PersonajeFicha;
 
 import java.util.List;

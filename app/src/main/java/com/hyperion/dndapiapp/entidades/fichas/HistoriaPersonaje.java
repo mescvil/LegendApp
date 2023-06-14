@@ -4,6 +4,14 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import com.google.gson.annotations.SerializedName;
+import com.hyperion.dndapiapp.entidades.glosario.clases.Clase;
+import com.hyperion.dndapiapp.entidades.glosario.trasfondos.Trasfondo;
+import com.hyperion.dndapiapp.utilidades.GetNombreInterface;
+import com.hyperion.dndapiapp.utilidades.Utils;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 @SuppressWarnings("unused")
 public class HistoriaPersonaje implements Parcelable {
@@ -18,6 +26,23 @@ public class HistoriaPersonaje implements Parcelable {
     private String competencias;
 
     /* =============== CONSTRUCTORES =============== */
+
+    public HistoriaPersonaje(String trasfondo, String idiomas, String competencias) {
+        this.trasfondo = trasfondo;
+        this.idiomas = idiomas;
+        this.competencias = competencias;
+    }
+
+    public HistoriaPersonaje(Trasfondo trasfondo, Clase clase) {
+        this.trasfondo = trasfondo.getNombre();
+        idiomas = "Horror Ganchudo";
+
+        Set<GetNombreInterface> competencias = new HashSet<>();
+        competencias.addAll(trasfondo.getCompetencias());
+        competencias.addAll(clase.getCompetencias());
+
+        this.competencias = Utils.listaToString(new ArrayList<>(competencias));
+    }
 
     /* =============== METODOS =============== */
 

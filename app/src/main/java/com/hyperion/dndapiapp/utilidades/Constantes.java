@@ -3,6 +3,8 @@ package com.hyperion.dndapiapp.utilidades;
 @SuppressWarnings("unused")
 public abstract class Constantes {
 
+    public static final String DELIMITER_STRING = ";";
+
     /* ================= Favoritos  ================= */
     public static final String DB_NAME = "FavoritosDnD";
 
@@ -31,15 +33,16 @@ public abstract class Constantes {
     public static final String LISTA_FAVORITOS_BUNDLE = "listaFavoritos";
     public static final String LISTA_FAVORITOS_CLASE_BUNDLE = "listaFavoritosClase";
     public static final String LISTA_FAVORITOS_ESTADO_BUNDLE = "listaFavoritosEstado";
-
+    public static final String FICHA_BUNDLE = "F";
 
     /* ================= Actividades  ================= */
     public final static int ACTIVIDAD_LOGIN = 1;
     public final static int ACTIVIDAD_USER = 2;
     public final static int ACTIVIDAD_REGISTER = 3;
-    public final static int ACTIVIDAD_IMAGEN = 6;
-    public final static int ACTIVIDAD_FAVORITO = 4;
-    public final static int ACTIVIDAD_FAVORITO_CLASE = 5;
+    public final static int ACTIVIDAD_IMAGEN = 4;
+    public final static int ACTIVIDAD_FAVORITO = 5;
+    public final static int ACTIVIDAD_FAVORITO_CLASE = 6;
+    public final static int ACTIVIDAD_NUEVA_FICHA = 7;
 
     /* ============== Filtros busquedas ============== */
     public static final String[] filtros = new String[]{"Enemigos", "Clases", "Razas", "Hechizos", "Equipamiento", "Trasfondos", "Competencias"};

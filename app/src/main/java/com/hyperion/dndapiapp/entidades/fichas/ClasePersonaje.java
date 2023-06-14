@@ -3,6 +3,13 @@ package com.hyperion.dndapiapp.entidades.fichas;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.hyperion.dndapiapp.entidades.glosario.clases.Clase;
+import com.hyperion.dndapiapp.utilidades.GetNombreInterface;
+import com.hyperion.dndapiapp.utilidades.Utils;
+
+import java.util.ArrayList;
+import java.util.List;
+
 @SuppressWarnings("unused")
 public class ClasePersonaje implements Parcelable {
 
@@ -16,6 +23,29 @@ public class ClasePersonaje implements Parcelable {
     private String especialidad;
 
     /* =============== CONSTRUCTORES =============== */
+
+    public ClasePersonaje(String nombre, String dadosGolpe, String descripcion, String caracteristicaPrincipal, String tiradasSalvacion, String rasgos, String especialidad) {
+        this.nombre = nombre;
+        this.dadosGolpe = dadosGolpe;
+        this.descripcion = descripcion;
+        this.caracteristicaPrincipal = caracteristicaPrincipal;
+        this.tiradasSalvacion = tiradasSalvacion;
+        this.rasgos = rasgos;
+        this.especialidad = especialidad;
+    }
+
+    public ClasePersonaje(Clase clase, String especialidad) {
+        nombre = clase.getNombre();
+        dadosGolpe = clase.getDadosGolpe();
+        descripcion = clase.getDescripcion();
+        caracteristicaPrincipal = clase.getCaracteristicaPrincipal();
+        tiradasSalvacion = clase.getTiradasSalvacion();
+
+        List<GetNombreInterface> listaClases = new ArrayList<>(clase.getRasgosClase());
+        rasgos = Utils.listaToString(listaClases);
+
+        this.especialidad = especialidad;
+    }
 
     /* =============== METODOS =============== */
 

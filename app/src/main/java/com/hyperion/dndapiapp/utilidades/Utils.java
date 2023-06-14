@@ -1,6 +1,9 @@
 package com.hyperion.dndapiapp.utilidades;
 
+import static com.hyperion.dndapiapp.utilidades.Constantes.DELIMITER_STRING;
+
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Utils {
@@ -21,5 +24,40 @@ public class Utils {
         List<GetNombreInterface> listaOrdenada = new ArrayList<>(listaRecibida);
         listaOrdenada.sort((ordenablePorNombre, t1) -> ordenablePorNombre.getNombre().compareToIgnoreCase(t1.getNombre()));
         return listaOrdenada;
+    }
+
+    public static int[] tiraDados() {
+        int[] dados = new int[6];
+        int min = 1;
+        int max = 6;
+
+        for (int i = 0; i < dados.length; i++) {
+            int[] nRandoms = new int[4];
+            int resultado = 0;
+
+            for (int j = 0; j < nRandoms.length; j++) {
+                nRandoms[j] = (int) (Math.random() * ((max - min) + 1)) + min;
+            }
+
+            Arrays.sort(nRandoms);
+            resultado += nRandoms[3];
+            resultado += nRandoms[2];
+            resultado += nRandoms[1];
+            dados[i] = resultado;
+        }
+
+        return dados;
+    }
+
+    public static String listaToString(List<GetNombreInterface> lista) {
+        StringBuilder resultado = new StringBuilder();
+        for (int i = 0; i < lista.size(); i++) {
+            if (i != lista.size() - 1) {
+                resultado.append(lista.get(i).getNombre()).append(DELIMITER_STRING);
+            } else {
+                resultado.append(lista.get(i).getNombre());
+            }
+        }
+        return resultado.toString();
     }
 }

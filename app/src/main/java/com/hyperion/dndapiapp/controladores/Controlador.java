@@ -4,7 +4,6 @@ import static com.hyperion.dndapiapp.utilidades.Constantes.DB_NAME;
 
 import android.content.Context;
 
-import com.hyperion.dndapiapp.entidades.fichas.PersonajeFicha;
 import com.hyperion.dndapiapp.entidades.glosario.clases.Clase;
 import com.hyperion.dndapiapp.entidades.glosario.competencias.Competencia;
 import com.hyperion.dndapiapp.entidades.glosario.enemigos.Enemigo;
@@ -12,8 +11,6 @@ import com.hyperion.dndapiapp.entidades.glosario.equipamiento.Equipamiento;
 import com.hyperion.dndapiapp.entidades.glosario.equipamiento.Hechizo;
 import com.hyperion.dndapiapp.entidades.glosario.razas.Raza;
 import com.hyperion.dndapiapp.entidades.glosario.trasfondos.Trasfondo;
-import com.hyperion.dndapiapp.entidades.usuario.Usuario;
-import com.hyperion.dndapiapp.servicioRest.callbacks.CallbackLista;
 import com.hyperion.dndapiapp.servicioRest.servicios.ServicioClases;
 import com.hyperion.dndapiapp.servicioRest.servicios.ServicioCompetencias;
 import com.hyperion.dndapiapp.servicioRest.servicios.ServicioEnemigos;

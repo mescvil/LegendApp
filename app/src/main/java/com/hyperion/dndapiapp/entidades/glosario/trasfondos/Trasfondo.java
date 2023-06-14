@@ -3,6 +3,8 @@ package com.hyperion.dndapiapp.entidades.glosario.trasfondos;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.annotation.NonNull;
+
 import com.google.gson.annotations.SerializedName;
 import com.hyperion.dndapiapp.entidades.glosario.competencias.Competencia;
 import com.hyperion.dndapiapp.utilidades.GetNombreInterface;
@@ -51,6 +53,12 @@ public class Trasfondo implements GetNombreInterface, Parcelable {
             return new Trasfondo[size];
         }
     };
+
+    @NonNull
+    @Override
+    public String toString() {
+        return getNombre();
+    }
 
     /* =============== GETTERS & SETTERS =============== */
 

@@ -43,6 +43,9 @@ public class PersonajeFicha implements Parcelable {
 
     /* =============== CONSTRUCTORES =============== */
 
+    public PersonajeFicha() {
+    }
+
     /* =============== METODOS =============== */
 
     protected PersonajeFicha(Parcel in) {

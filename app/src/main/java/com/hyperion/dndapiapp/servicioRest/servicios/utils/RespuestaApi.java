@@ -1,4 +1,4 @@
-package com.hyperion.dndapiapp.servicioRest;
+package com.hyperion.dndapiapp.servicioRest.servicios.utils;
 
 import com.google.gson.annotations.SerializedName;
 
