@@ -11,12 +11,15 @@ import com.hyperion.dndapiapp.utilidades.GetNombreInterface;
 
 import java.util.List;
 
+@SuppressWarnings("unused")
 public class Trasfondo implements GetNombreInterface, Parcelable {
 
     @SerializedName("nombre")
     private String nombre;
     @SerializedName("descripcion")
     private String descripcion;
+    @SerializedName("idiomas")
+    private List<Idioma> idiomas;
     @SerializedName("competencias")
     private List<Competencia> competencias;
 
@@ -28,6 +31,7 @@ public class Trasfondo implements GetNombreInterface, Parcelable {
         nombre = in.readString();
         descripcion = in.readString();
         competencias = in.createTypedArrayList(Competencia.CREATOR);
+        idiomas = in.createTypedArrayList(Idioma.CREATOR);
     }
 
     @Override
@@ -35,6 +39,7 @@ public class Trasfondo implements GetNombreInterface, Parcelable {
         dest.writeString(nombre);
         dest.writeString(descripcion);
         dest.writeTypedList(competencias);
+        dest.writeTypedList(idiomas);
     }
 
     @Override
@@ -85,5 +90,13 @@ public class Trasfondo implements GetNombreInterface, Parcelable {
 
     public void setCompetencias(List<Competencia> competencias) {
         this.competencias = competencias;
+    }
+
+    public List<Idioma> getIdiomas() {
+        return idiomas;
+    }
+
+    public void setIdiomas(List<Idioma> idiomas) {
+        this.idiomas = idiomas;
     }
 }

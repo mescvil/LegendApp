@@ -11,6 +11,7 @@ import com.hyperion.dndapiapp.utilidades.Utils;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @SuppressWarnings("unused")
@@ -35,7 +36,9 @@ public class HistoriaPersonaje implements Parcelable {
 
     public HistoriaPersonaje(Trasfondo trasfondo, Clase clase) {
         this.trasfondo = trasfondo.getNombre();
-        idiomas = "Horror Ganchudo";
+
+        List<GetNombreInterface> lista = new ArrayList<>(trasfondo.getIdiomas());
+        idiomas = Utils.listaToString(lista);
 
         Set<GetNombreInterface> competencias = new HashSet<>();
         competencias.addAll(trasfondo.getCompetencias());
