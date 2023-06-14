@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.hyperion.dndapiapp.R;
+import com.hyperion.dndapiapp.actividades.FichaPersonajeActivity;
 import com.hyperion.dndapiapp.actividades.NewPersonajeActivity;
 import com.hyperion.dndapiapp.adaptadores.recyclerView.EliminarFichaClick;
 import com.hyperion.dndapiapp.adaptadores.recyclerView.RecyclerViewClick;
@@ -191,6 +192,8 @@ public class FichasFragment extends Fragment implements RecyclerViewClick, Elimi
 
     @Override
     public void onCosaCliked(int posicion) {
-        Toast.makeText(getContext(), "Click: " + posicion, Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(getContext(), FichaPersonajeActivity.class);
+        intent.putExtra(FICHA_BUNDLE, adaptadorFichas.getItem(posicion));
+        startActivity(intent);
     }
 }

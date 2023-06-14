@@ -5,6 +5,7 @@ import static com.hyperion.dndapiapp.utilidades.Constantes.DELIMITER_STRING;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.SplittableRandom;
 
 public class Utils {
 
@@ -59,6 +60,11 @@ public class Utils {
             }
         }
         return resultado.toString();
+    }
+
+    public static List<String> StringToLista(String cadena) {
+        String[] partes = cadena.split(DELIMITER_STRING);
+        return Arrays.asList(partes);
     }
 
     public static boolean esNumerico(String cadena) {
