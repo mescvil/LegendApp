@@ -1,14 +1,460 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragmentos.personaje.GeneralPersonajeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-</FrameLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cajaStats"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@color/fondoClaro"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cajaStats1">
+
+                <TextView
+                    android:id="@+id/campoCar"
+                    android:layout_width="65dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="24dp"
+                    android:background="@drawable/borde_redondeado_imagen"
+                    android:gravity="center"
+                    android:text="10"
+                    android:textAlignment="center"
+                    android:textSize="24sp"
+                    app:layout_constraintEnd_toEndOf="@+id/modCon"
+                    app:layout_constraintStart_toStartOf="@+id/modCon"
+                    app:layout_constraintTop_toBottomOf="@+id/modCon" />
+
+                <TextView
+                    android:id="@+id/modCar"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="CAR"
+                    android:textAlignment="center"
+                    android:textColor="@color/hint"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="@+id/campoCar"
+                    app:layout_constraintStart_toStartOf="@+id/campoCar"
+                    app:layout_constraintTop_toBottomOf="@+id/campoCar" />
+
+                <TextView
+                    android:id="@+id/campoSab"
+                    android:layout_width="65dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="24dp"
+                    android:background="@drawable/borde_redondeado_imagen"
+                    android:gravity="center"
+                    android:text="10"
+                    android:textAlignment="center"
+                    android:textSize="24sp"
+                    app:layout_constraintEnd_toEndOf="@+id/modDes"
+                    app:layout_constraintStart_toStartOf="@+id/modDes"
+                    app:layout_constraintTop_toBottomOf="@+id/modDes" />
+
+                <TextView
+                    android:id="@+id/modSab"
+                    android:layout_width="0dp"
+                    android:layout_height="22dp"
+                    android:layout_marginTop="2dp"
+                    android:text="SAB"
+                    android:textAlignment="center"
+                    android:textColor="@color/hint"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="@+id/campoSab"
+                    app:layout_constraintStart_toStartOf="@+id/campoSab"
+                    app:layout_constraintTop_toBottomOf="@+id/campoSab" />
+
+                <TextView
+                    android:id="@+id/campoInte"
+                    android:layout_width="65dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="24dp"
+                    android:background="@drawable/borde_redondeado_imagen"
+                    android:gravity="center"
+                    android:text="10"
+                    android:textAlignment="center"
+                    android:textSize="24sp"
+                    app:layout_constraintEnd_toEndOf="@+id/modFue"
+                    app:layout_constraintStart_toStartOf="@+id/modFue"
+                    app:layout_constraintTop_toBottomOf="@+id/modFue" />
+
+                <TextView
+                    android:id="@+id/modInt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="16dp"
+                    android:text="INT"
+                    android:textAlignment="center"
+                    android:textColor="@color/hint"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/campoInte"
+                    app:layout_constraintStart_toStartOf="@+id/campoInte"
+                    app:layout_constraintTop_toBottomOf="@+id/campoInte" />
+
+                <TextView
+                    android:id="@+id/campoCons"
+                    android:layout_width="65dp"
+                    android:layout_height="60dp"
+                    android:layout_marginEnd="50dp"
+                    android:background="@drawable/borde_redondeado_imagen"
+                    android:gravity="center"
+                    android:text="10"
+                    android:textAlignment="center"
+                    android:textSize="24sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/campoDestreza"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/campoDestreza"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <TextView
+                    android:id="@+id/modCon"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="CON"
+                    android:textAlignment="center"
+                    android:textColor="@color/hint"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="@+id/campoCons"
+                    app:layout_constraintStart_toStartOf="@+id/campoCons"
+                    app:layout_constraintTop_toBottomOf="@+id/campoCons" />
+
+                <TextView
+                    android:id="@+id/campoDestreza"
+                    android:layout_width="65dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/borde_redondeado_imagen"
+                    android:gravity="center"
+                    android:text="10"
+                    android:textAlignment="center"
+                    android:textSize="24sp"
+                    app:layout_constraintEnd_toStartOf="@+id/campoCons"
+                    app:layout_constraintStart_toEndOf="@+id/campoFuerza"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/modDes"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="DES"
+                    android:textAlignment="center"
+                    android:textColor="@color/hint"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="@+id/campoDestreza"
+                    app:layout_constraintStart_toStartOf="@+id/campoDestreza"
+                    app:layout_constraintTop_toBottomOf="@+id/campoDestreza" />
+
+                <TextView
+                    android:id="@+id/campoFuerza"
+                    android:layout_width="65dp"
+                    android:layout_height="60dp"
+                    android:layout_marginStart="50dp"
+                    android:background="@drawable/borde_redondeado_imagen"
+                    android:gravity="center"
+                    android:text="10"
+                    android:textAlignment="center"
+                    android:textSize="24sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/campoDestreza"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/campoDestreza" />
+
+                <TextView
+                    android:id="@+id/modFue"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="FUE"
+                    android:textAlignment="center"
+                    android:textColor="@color/hint"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="@+id/campoFuerza"
+                    app:layout_constraintStart_toStartOf="@+id/campoFuerza"
+                    app:layout_constraintTop_toBottomOf="@+id/campoFuerza" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cajaStats1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@color/fondoTarjeta"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cajaGeneral">
+
+                <TextView
+                    android:id="@+id/campoInicativa"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="32dp"
+                    android:background="@drawable/borde_imagen_rojo"
+                    android:gravity="center"
+                    android:text="10"
+                    android:textAlignment="center"
+                    android:textSize="24sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/campoCA"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/campoVelocidad"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/borde_imagen_rojo"
+                    android:gravity="center"
+                    android:text="10"
+                    android:textAlignment="center"
+                    android:textSize="24sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView37" />
+
+                <TextView
+                    android:id="@+id/campoVida"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="32dp"
+                    android:background="@drawable/borde_imagen_enemigo"
+                    android:gravity="center"
+                    android:text="10"
+                    android:textAlignment="center"
+                    android:textSize="24sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/campoVelocidad"
+                    app:layout_constraintTop_toBottomOf="@+id/textView39" />
+
+                <TextView
+                    android:id="@+id/campoCA"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="32dp"
+                    android:background="@drawable/borde_imagen_rojo"
+                    android:gravity="center"
+                    android:text="10"
+                    android:textAlignment="center"
+                    android:textSize="24sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView37"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="CA"
+                    android:textAlignment="center"
+                    app:layout_constraintEnd_toEndOf="@+id/campoCA"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/campoCA"
+                    app:layout_constraintTop_toBottomOf="@+id/campoCA" />
+
+                <TextView
+                    android:id="@+id/textView39"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Iniciativa"
+                    android:textAlignment="center"
+                    app:layout_constraintEnd_toEndOf="@+id/campoInicativa"
+                    app:layout_constraintStart_toStartOf="@+id/campoInicativa"
+                    app:layout_constraintTop_toBottomOf="@+id/campoInicativa" />
+
+                <TextView
+                    android:id="@+id/textView40"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="32dp"
+                    android:text="Velocidad"
+                    android:textAlignment="center"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/campoVelocidad"
+                    app:layout_constraintStart_toStartOf="@+id/campoVelocidad"
+                    app:layout_constraintTop_toBottomOf="@+id/campoVelocidad" />
+
+                <TextView
+                    android:id="@+id/textView41"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="PV"
+                    android:textAlignment="center"
+                    app:layout_constraintEnd_toEndOf="@+id/campoVida"
+                    app:layout_constraintStart_toStartOf="@+id/campoVida"
+                    app:layout_constraintTop_toBottomOf="@+id/campoVida" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cajaGeneral"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@color/fondoClaro"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/textView24"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="Raza"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/razaPersonaje"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="semi elfo"
+                    android:textAlignment="gravity"
+                    android:textColor="@color/hint"
+                    app:layout_constraintStart_toStartOf="@+id/textView24"
+                    app:layout_constraintTop_toBottomOf="@+id/textView24" />
+
+                <TextView
+                    android:id="@+id/textView26"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Trasfondo"
+                    app:layout_constraintStart_toStartOf="@+id/razaPersonaje"
+                    app:layout_constraintTop_toBottomOf="@+id/alineamientoPersonaje" />
+
+                <TextView
+                    android:id="@+id/trasfondoPersonaje"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="16dp"
+                    android:text="tras"
+                    android:textColor="@color/hint"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/textView26"
+                    app:layout_constraintTop_toBottomOf="@+id/textView26" />
+
+                <TextView
+                    android:id="@+id/textView28"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Clase"
+                    app:layout_constraintStart_toStartOf="@+id/trasfondoPersonaje"
+                    app:layout_constraintTop_toBottomOf="@+id/trasfondoPersonaje" />
+
+                <TextView
+                    android:id="@+id/clasePersonaje"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="explorador"
+                    android:textColor="@color/hint"
+                    app:layout_constraintStart_toStartOf="@+id/textView28"
+                    app:layout_constraintTop_toBottomOf="@+id/textView28" />
+
+                <TextView
+                    android:id="@+id/textView30"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="24dp"
+                    android:text="Nivel"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <EditText
+                    android:id="@+id/nivelPersonaje"
+                    android:layout_width="wrap_content"
+                    android:layout_height="42dp"
+                    android:layout_marginTop="4dp"
+                    android:background="@drawable/layout_edit_text_ficha"
+                    android:ems="2"
+                    android:inputType="number"
+                    android:maxLength="2"
+                    android:text="1"
+                    android:textAlignment="center"
+                    app:layout_constraintEnd_toEndOf="@+id/textView30"
+                    app:layout_constraintStart_toStartOf="@+id/textView30"
+                    app:layout_constraintTop_toBottomOf="@+id/textView30" />
+
+                <TextView
+                    android:id="@+id/textView32"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:text="Especialidad"
+                    app:layout_constraintStart_toEndOf="@+id/textView28"
+                    app:layout_constraintTop_toTopOf="@+id/textView28" />
+
+                <TextView
+                    android:id="@+id/especialidadPersonaje"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:text="especialidad"
+                    android:textColor="@color/hint"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/textView32"
+                    app:layout_constraintTop_toBottomOf="@+id/textView32" />
+
+                <TextView
+                    android:id="@+id/textView34"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:text="Alineamiento"
+                    app:layout_constraintStart_toEndOf="@+id/textView24"
+                    app:layout_constraintTop_toTopOf="@+id/textView24" />
+
+                <TextView
+                    android:id="@+id/alineamientoPersonaje"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="caotico neutral"
+                    android:textColor="@color/hint"
+                    app:layout_constraintStart_toStartOf="@+id/textView34"
+                    app:layout_constraintTop_toBottomOf="@+id/textView34" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

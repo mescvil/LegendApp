@@ -34,7 +34,7 @@ public class PersonajeStateAdapter extends FragmentStateAdapter {
             case 3:
                 return MochilaPersonajeFragment.newInstance(ficha.getEquipamiento());
             default:
-                return new GeneralPersonajeFragment();
+                return GeneralPersonajeFragment.newInstance(ficha);
         }
     }
 
