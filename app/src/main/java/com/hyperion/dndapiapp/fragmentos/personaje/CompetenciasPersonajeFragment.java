@@ -1,49 +1,36 @@
 package com.hyperion.dndapiapp.fragmentos.personaje;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.hyperion.dndapiapp.R;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link CompetenciasPersonajeFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import com.hyperion.dndapiapp.adaptadores.recyclerView.adaptadores.AdaptadorGenericoFichaPersonaje;
+import com.hyperion.dndapiapp.databinding.FragmentCompetenciasPersonajeBinding;
+import com.hyperion.dndapiapp.entidades.fichas.HistoriaPersonaje;
+import com.hyperion.dndapiapp.utilidades.Utils;
+
+import java.util.List;
+
 public class CompetenciasPersonajeFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private static final String ARG_HISTORIA = "historia";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private FragmentCompetenciasPersonajeBinding binding;
+    private HistoriaPersonaje historia;
 
     public CompetenciasPersonajeFragment() {
-        // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment CompetenciasPersonajeFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static CompetenciasPersonajeFragment newInstance(String param1, String param2) {
+    public static CompetenciasPersonajeFragment newInstance(HistoriaPersonaje historia) {
         CompetenciasPersonajeFragment fragment = new CompetenciasPersonajeFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putParcelable(ARG_HISTORIA, historia);
         fragment.setArguments(args);
         return fragment;
     }
@@ -52,15 +39,32 @@ public class CompetenciasPersonajeFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            historia = getArguments().getParcelable(ARG_HISTORIA);
         }
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_competencias_personaje, container, false);
+
+        binding = FragmentCompetenciasPersonajeBinding.inflate(inflater, container, false);
+        iniciaFragmento();
+        return binding.getRoot();
+    }
+
+    private void iniciaFragmento() {
+        String idiomas = historia.getIdiomas().replace(";", ", ");
+        binding.listaIdiomasPersonaje.setText(idiomas);
+
+        List<String> competencias = Utils.StringToLista(historia.getCompetencias());
+
+        RecyclerView recyclerView = binding.listaCompetenciasPersonaje;
+        AdaptadorGenericoFichaPersonaje adaptadorGenerico = new AdaptadorGenericoFichaPersonaje(competencias);
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(adaptadorGenerico);
+
     }
 }

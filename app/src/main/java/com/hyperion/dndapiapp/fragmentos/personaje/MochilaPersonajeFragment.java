@@ -1,49 +1,36 @@
 package com.hyperion.dndapiapp.fragmentos.personaje;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.hyperion.dndapiapp.R;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link MochilaPersonajeFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import com.hyperion.dndapiapp.adaptadores.recyclerView.adaptadores.AdaptadorGenericoFichaPersonaje;
+import com.hyperion.dndapiapp.databinding.FragmentMochilaPersonajeBinding;
+import com.hyperion.dndapiapp.entidades.fichas.EquipamientoPersonaje;
+import com.hyperion.dndapiapp.utilidades.Utils;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class MochilaPersonajeFragment extends Fragment {
+    private static final String ARG_EQUIPAMIENTO = "equipamiento";
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private FragmentMochilaPersonajeBinding binding;
+    private EquipamientoPersonaje equipamiento;
 
     public MochilaPersonajeFragment() {
-        // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment MochilaPersonajeFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static MochilaPersonajeFragment newInstance(String param1, String param2) {
+    public static MochilaPersonajeFragment newInstance(EquipamientoPersonaje equipamiento) {
         MochilaPersonajeFragment fragment = new MochilaPersonajeFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putParcelable(ARG_EQUIPAMIENTO, equipamiento);
         fragment.setArguments(args);
         return fragment;
     }
@@ -52,15 +39,37 @@ public class MochilaPersonajeFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            equipamiento = getArguments().getParcelable(ARG_EQUIPAMIENTO);
         }
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_mochila_personaje, container, false);
+
+        binding = FragmentMochilaPersonajeBinding.inflate(inflater, container, false);
+        iniciaFragmento();
+        return binding.getRoot();
+    }
+
+    private void iniciaFragmento() {
+        List<String> armas = Utils.StringToLista(equipamiento.getArmas());
+        List<String> armaduras = Utils.StringToLista(equipamiento.getArmaduras());
+        List<String> hechizos = Utils.StringToListaHechizos(equipamiento.getHechizos());
+        List<String> listaMix = new ArrayList<>();
+
+        listaMix.addAll(armas);
+        listaMix.addAll(armaduras);
+
+        if (!hechizos.get(0).equalsIgnoreCase(Utils.FLAG_HECHIZO))
+            listaMix.addAll(hechizos);
+
+        RecyclerView recyclerView = binding.listaMochilaPersonaje;
+        AdaptadorGenericoFichaPersonaje adaptadorGenerico = new AdaptadorGenericoFichaPersonaje(listaMix);
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(adaptadorGenerico);
     }
 }

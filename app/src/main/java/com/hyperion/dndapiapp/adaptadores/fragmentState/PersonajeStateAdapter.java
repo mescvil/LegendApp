@@ -37,9 +37,9 @@ public class PersonajeStateAdapter extends FragmentStateAdapter {
                         ficha.getRaza().getRasgos()
                 );
             case 2:
-                return new CompetenciasPersonajeFragment();
+                return CompetenciasPersonajeFragment.newInstance(ficha.getHistoria());
             case 3:
-                return new MochilaPersonajeFragment();
+                return MochilaPersonajeFragment.newInstance(ficha.getEquipamiento());
             default:
                 return new GeneralPersonajeFragment();
         }

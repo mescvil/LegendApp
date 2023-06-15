@@ -12,6 +12,7 @@ public class Utils {
     private final static String EXPRESION_CONTRASENIA = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}$";
     private final static String EXPRESION_CORREO = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" +
             "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+    public final static String FLAG_HECHIZO = "*";
 
     public static boolean verifcaContrasenia(String pass) {
         return pass.matches(EXPRESION_CONTRASENIA);
@@ -64,6 +65,15 @@ public class Utils {
 
     public static List<String> StringToLista(String cadena) {
         String[] partes = cadena.split(DELIMITER_STRING);
+        return Arrays.asList(partes);
+    }
+
+    public static List<String> StringToListaHechizos(String cadena) {
+        String[] partes = cadena.split(DELIMITER_STRING);
+        for (int i = 0; i < partes.length; i++) {
+            partes[i] = partes[i] + FLAG_HECHIZO;
+        }
+
         return Arrays.asList(partes);
     }
 
