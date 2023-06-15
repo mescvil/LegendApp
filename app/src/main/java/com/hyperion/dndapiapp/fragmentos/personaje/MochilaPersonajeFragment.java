@@ -71,6 +71,7 @@ public class MochilaPersonajeFragment extends Fragment implements RecyclerViewCl
 
         listaMix.addAll(armas);
         listaMix.addAll(armaduras);
+        listaMix.remove("");
 
         if (!hechizos.get(0).equalsIgnoreCase(Utils.FLAG_HECHIZO))
             listaMix.addAll(hechizos);

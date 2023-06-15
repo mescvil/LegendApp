@@ -57,6 +57,7 @@ public class CompetenciasPersonajeFragment extends Fragment {
         binding.listaIdiomasPersonaje.setText(idiomas);
 
         List<String> competencias = Utils.StringToLista(historia.getCompetencias());
+        competencias.remove("");
 
         RecyclerView recyclerView = binding.listaCompetenciasPersonaje;
         AdaptadorGenericoFichaPersonaje adaptadorGenerico = new AdaptadorGenericoFichaPersonaje(competencias, getContext());

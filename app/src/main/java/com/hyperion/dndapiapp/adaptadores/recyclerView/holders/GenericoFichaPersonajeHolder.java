@@ -2,6 +2,7 @@ package com.hyperion.dndapiapp.adaptadores.recyclerView.holders;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;

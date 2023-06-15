@@ -66,8 +66,10 @@ public class RasgosPersonajeFragment extends Fragment {
         List<String> rasgos = Utils.StringToLista(rasgosClase);
         List<String> rasgos_ = Utils.StringToLista(rasgosRaza);
         List<String> mixRasgos = new ArrayList<>();
+
         mixRasgos.addAll(rasgos);
         mixRasgos.addAll(rasgos_);
+        mixRasgos.remove("");
 
         RecyclerView recyclerView = binding.listaRagosPersonaje;
         AdaptadorGenericoFichaPersonaje adaptadorGenerico = new AdaptadorGenericoFichaPersonaje(mixRasgos, getContext());
