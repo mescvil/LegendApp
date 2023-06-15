@@ -1,5 +1,6 @@
 package com.hyperion.dndapiapp.adaptadores.recyclerView.adaptadores;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,12 +13,16 @@ import com.hyperion.dndapiapp.adaptadores.recyclerView.holders.GenericoFichaPers
 
 import java.util.List;
 
+import javax.crypto.Cipher;
+
 public class AdaptadorGenericoFichaPersonaje extends RecyclerView.Adapter<GenericoFichaPersonajeHolder> {
 
     private final List<String> listaElementos;
+    private final Context context;
 
-    public AdaptadorGenericoFichaPersonaje(List<String> listaElementos) {
+    public AdaptadorGenericoFichaPersonaje(List<String> listaElementos, Context context) {
         this.listaElementos = listaElementos;
+        this.context = context;
     }
 
     @NonNull
@@ -31,7 +36,7 @@ public class AdaptadorGenericoFichaPersonaje extends RecyclerView.Adapter<Generi
 
     @Override
     public void onBindViewHolder(@NonNull GenericoFichaPersonajeHolder holder, int position) {
-        holder.bindItem(listaElementos.get(position));
+        holder.bindItem(listaElementos.get(position), context);
     }
 
     @Override

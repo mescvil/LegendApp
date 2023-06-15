@@ -6,13 +6,6 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import com.hyperion.dndapiapp.entidades.fichas.PersonajeFicha;
-import com.hyperion.dndapiapp.entidades.glosario.clases.Especialidad;
-import com.hyperion.dndapiapp.entidades.glosario.clases.RasgoClase;
-import com.hyperion.dndapiapp.entidades.glosario.competencias.Competencia;
-import com.hyperion.dndapiapp.fragmentos.fichas.clases.EspecialidadClaseFragment;
-import com.hyperion.dndapiapp.fragmentos.fichas.clases.GeneralClasesFragment;
-import com.hyperion.dndapiapp.fragmentos.fichas.clases.RasgosClaseFragment;
-import com.hyperion.dndapiapp.fragmentos.fichas.trasfondos.CompetenciasTrasfodosFragment;
 import com.hyperion.dndapiapp.fragmentos.personaje.CompetenciasPersonajeFragment;
 import com.hyperion.dndapiapp.fragmentos.personaje.GeneralPersonajeFragment;
 import com.hyperion.dndapiapp.fragmentos.personaje.MochilaPersonajeFragment;

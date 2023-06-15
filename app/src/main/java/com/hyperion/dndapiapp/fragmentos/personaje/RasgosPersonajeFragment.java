@@ -70,7 +70,7 @@ public class RasgosPersonajeFragment extends Fragment {
         mixRasgos.addAll(rasgos_);
 
         RecyclerView recyclerView = binding.listaRagosPersonaje;
-        AdaptadorGenericoFichaPersonaje adaptadorGenerico = new AdaptadorGenericoFichaPersonaje(mixRasgos);
+        AdaptadorGenericoFichaPersonaje adaptadorGenerico = new AdaptadorGenericoFichaPersonaje(mixRasgos, getContext());
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);

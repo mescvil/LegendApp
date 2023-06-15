@@ -2,6 +2,9 @@ package com.hyperion.dndapiapp.utilidades;
 
 import static com.hyperion.dndapiapp.utilidades.Constantes.DELIMITER_STRING;
 
+import android.content.Context;
+import android.util.TypedValue;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -84,5 +87,12 @@ public class Utils {
         } catch (NumberFormatException e) {
             return false;
         }
+    }
+
+    public static int numeroToDP(int numero, Context context) {
+        return (int) TypedValue.applyDimension(
+                TypedValue.COMPLEX_UNIT_DIP, numero, context
+                        .getResources()
+                        .getDisplayMetrics());
     }
 }

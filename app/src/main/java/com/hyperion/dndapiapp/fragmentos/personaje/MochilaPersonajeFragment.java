@@ -65,7 +65,7 @@ public class MochilaPersonajeFragment extends Fragment {
             listaMix.addAll(hechizos);
 
         RecyclerView recyclerView = binding.listaMochilaPersonaje;
-        AdaptadorGenericoFichaPersonaje adaptadorGenerico = new AdaptadorGenericoFichaPersonaje(listaMix);
+        AdaptadorGenericoFichaPersonaje adaptadorGenerico = new AdaptadorGenericoFichaPersonaje(listaMix, getContext());
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);

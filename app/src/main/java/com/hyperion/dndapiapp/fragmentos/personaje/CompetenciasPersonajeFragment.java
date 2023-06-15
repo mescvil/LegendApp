@@ -59,7 +59,7 @@ public class CompetenciasPersonajeFragment extends Fragment {
         List<String> competencias = Utils.StringToLista(historia.getCompetencias());
 
         RecyclerView recyclerView = binding.listaCompetenciasPersonaje;
-        AdaptadorGenericoFichaPersonaje adaptadorGenerico = new AdaptadorGenericoFichaPersonaje(competencias);
+        AdaptadorGenericoFichaPersonaje adaptadorGenerico = new AdaptadorGenericoFichaPersonaje(competencias, getContext());
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
