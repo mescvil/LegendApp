@@ -205,6 +205,11 @@ public class Controlador {
         return listaHechizos;
     }
 
+    public Hechizo getHechizoByNombre(String nombre) {
+        int i = listaHechizos.indexOf(new Hechizo(nombre));
+        return (i != -1) ? listaHechizos.get(i) : null;
+    }
+
     public List<Equipamiento> getListaEquipamiento() {
         return listaEquipamiento;
     }

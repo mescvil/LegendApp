@@ -7,6 +7,8 @@ import com.google.gson.annotations.SerializedName;
 import com.hyperion.dndapiapp.adaptadores.recyclerView.GenericoRecyclerView;
 import com.hyperion.dndapiapp.utilidades.GetNombreInterface;
 
+import java.util.Objects;
+
 @SuppressWarnings("unused")
 public class Hechizo implements GetNombreInterface, Parcelable, GenericoRecyclerView {
 
@@ -26,6 +28,13 @@ public class Hechizo implements GetNombreInterface, Parcelable, GenericoRecycler
     private String tiradaSalvacion;
 
     /* =============== CONSTRUCTORES =============== */
+
+    public Hechizo() {
+    }
+
+    public Hechizo(String nombre) {
+        this.nombre = nombre;
+    }
 
     /* =============== METODOS =============== */
 
@@ -66,6 +75,21 @@ public class Hechizo implements GetNombreInterface, Parcelable, GenericoRecycler
             return new Hechizo[size];
         }
     };
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Hechizo hechizo = (Hechizo) o;
+
+        return Objects.equals(nombre, hechizo.nombre);
+    }
+
+    @Override
+    public int hashCode() {
+        return nombre != null ? nombre.hashCode() : 0;
+    }
 
     /* =============== GETTERS & SETTERS =============== */
 

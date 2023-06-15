@@ -4,11 +4,13 @@ import static com.hyperion.dndapiapp.utilidades.Constantes.FAVORITO_BUNDLE;
 import static com.hyperion.dndapiapp.utilidades.Constantes.HECHIZOS_BUNDLE;
 import static com.hyperion.dndapiapp.utilidades.Constantes.IS_FAVORITO;
 import static com.hyperion.dndapiapp.utilidades.Constantes.IS_FAVORITO_RESULT;
+import static com.hyperion.dndapiapp.utilidades.Constantes.IS_READ_ONLY;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -20,6 +22,7 @@ public class FichaHechizoActivity extends AppCompatActivity {
 
     private Hechizo hechizo;
     private boolean isFavorito;
+    private boolean isSoloLectura;
     private ActivityFichaHechizoBinding binding;
 
     @Override
@@ -32,6 +35,7 @@ public class FichaHechizoActivity extends AppCompatActivity {
         if (bundle != null) {
             hechizo = bundle.getParcelable(HECHIZOS_BUNDLE);
             isFavorito = bundle.getBoolean(IS_FAVORITO);
+            isSoloLectura = bundle.getBoolean(IS_READ_ONLY);
         }
 
         iniciaActividad();
@@ -49,6 +53,9 @@ public class FichaHechizoActivity extends AppCompatActivity {
         binding.fichaLanzamiento.setText(hechizo.getTiempoLanzamiento());
         binding.fichaSalvacion.setText(hechizo.getTiradaSalvacion());
         binding.fichaDesc.setText(hechizo.getDescripcion());
+
+        if (isSoloLectura)
+            binding.botonFavHechizo.setVisibility(View.INVISIBLE);
     }
 
     private void finaliza() {

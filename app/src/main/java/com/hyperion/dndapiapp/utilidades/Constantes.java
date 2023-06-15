@@ -27,13 +27,19 @@ public abstract class Constantes {
     public static final String RASGOS_CLASE_BUNDLE = "rasgosClase";
     public static final String CLASE_BUNDLE = "clase";
     public static final String ESPECIALIDADES_BUNDLE = "especialidades";
+
     public static final String FAVORITO_BUNDLE = "favorito";
+
     public static final String IS_FAVORITO = "isFavorito";
+
     public static final String IS_FAVORITO_RESULT = "isFavoritoResult";
     public static final String LISTA_FAVORITOS_BUNDLE = "listaFavoritos";
     public static final String LISTA_FAVORITOS_CLASE_BUNDLE = "listaFavoritosClase";
+
     public static final String LISTA_FAVORITOS_ESTADO_BUNDLE = "listaFavoritosEstado";
     public static final String FICHA_BUNDLE = "F";
+
+    public static final String IS_READ_ONLY = "readOnly";
 
     /* ================= Actividades  ================= */
     public final static int ACTIVIDAD_LOGIN = 1;
