@@ -63,6 +63,7 @@
             android:background="@color/fondoClaro"
             app:tabIndicatorColor="@color/rojo"
             app:tabIndicatorHeight="4dp"
+            app:tabMode="scrollable"
             app:tabRippleColor="@color/fondoTarjeta"
             app:tabSelectedTextColor="@color/rojo"
             app:tabTextColor="@color/white">
