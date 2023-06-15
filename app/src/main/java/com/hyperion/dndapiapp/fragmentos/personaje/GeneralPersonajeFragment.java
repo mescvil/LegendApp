@@ -79,22 +79,22 @@ public class GeneralPersonajeFragment extends Fragment {
         binding.campoCar.setText(String.valueOf(ficha.getCarisma()));
 
         bono = Utils.calculaBonificador(ficha.getFuerza());
-        binding.modFue.setText(String.format("FUE (%s)", (bono > 0) ? "+" + bono : String.valueOf(bono)));
+        binding.modFue.setText(String.format("FUE (%s)", (bono >= 0) ? "+" + bono : String.valueOf(bono)));
 
         bono = Utils.calculaBonificador(ficha.getDestreza());
-        binding.modDes.setText(String.format("DES (%s)", (bono > 0) ? "+" + bono : String.valueOf(bono)));
+        binding.modDes.setText(String.format("DES (%s)", (bono >= 0) ? "+" + bono : String.valueOf(bono)));
 
         bono = Utils.calculaBonificador(ficha.getConstitucion());
-        binding.modCon.setText(String.format("CON (%s)", (bono > 0) ? "+" + bono : String.valueOf(bono)));
+        binding.modCon.setText(String.format("CON (%s)", (bono >= 0) ? "+" + bono : String.valueOf(bono)));
 
         bono = Utils.calculaBonificador(ficha.getInteligencia());
-        binding.modInt.setText(String.format("INT (%s)", (bono > 0) ? "+" + bono : String.valueOf(bono)));
+        binding.modInt.setText(String.format("INT (%s)", (bono >= 0) ? "+" + bono : String.valueOf(bono)));
 
         bono = Utils.calculaBonificador(ficha.getSabiduria());
-        binding.modSab.setText(String.format("SAB (%s)", (bono > 0) ? "+" + bono : String.valueOf(bono)));
+        binding.modSab.setText(String.format("SAB (%s)", (bono >= 0) ? "+" + bono : String.valueOf(bono)));
 
         bono = Utils.calculaBonificador(ficha.getCarisma());
-        binding.modCar.setText(String.format("CAR (%s)", (bono > 0) ? "+" + bono : String.valueOf(bono)));
+        binding.modCar.setText(String.format("CAR (%s)", (bono >= 0) ? "+" + bono : String.valueOf(bono)));
 
         binding.nivelPersonaje.addTextChangedListener(new OurTextWatcher());
     }

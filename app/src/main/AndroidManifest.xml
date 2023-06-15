@@ -18,10 +18,14 @@
         tools:targetApi="31">
         <activity
             android:name=".actividades.FichaPersonajeActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".actividades.NewPersonajeActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".actividades.fichas.FichaEspecialidadActivity"
             android:exported="false"

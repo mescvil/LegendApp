@@ -28,6 +28,13 @@ public class Armadura implements Equipamiento, Parcelable, GenericoRecyclerView 
 
     /* =============== CONSTRUCTORES =============== */
 
+    public Armadura() {
+    }
+
+    public Armadura(String nombre) {
+        this.nombre = nombre;
+    }
+
     /* =============== METODOS =============== */
 
 

@@ -284,13 +284,19 @@ public class NewPersonajeActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int posicion, long l) {
                 Clase clase = (Clase) adapterView.getItemAtPosition(posicion);
+                List<Armadura> armaduras = clase.getArmadurasSinEscudo();
+
                 adapterEspec.clear();
                 adapterArma.clear();
                 adapterArmadura.clear();
 
                 adapterEspec.addAll(clase.getEspecialidades());
                 adapterArma.addAll(clase.getArmas());
-                adapterArmadura.addAll(clase.getArmadurasSinEscudo());
+
+                if (!armaduras.isEmpty())
+                    adapterArmadura.addAll(clase.getArmadurasSinEscudo());
+                else
+                    adapterArmadura.add(new Armadura("Sin armadura"));
             }
 
             @Override
