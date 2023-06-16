@@ -62,7 +62,8 @@ public class GeneralPersonajeFragment extends Fragment {
         binding.clasePersonaje.setText(ficha.getClase().getNombre());
         binding.especialidadPersonaje.setText(ficha.getClase().getEspecialidad());
 
-        binding.campoCA.setText(String.valueOf(ficha.getClaseArmadura()));
+        int ca = ficha.getClaseArmadura() == 0 ? 11 : ficha.getClaseArmadura();
+        binding.campoCA.setText(String.valueOf(ca));
         binding.campoVelocidad.setText(String.valueOf(30));
 
         int bono = Utils.calculaBonificador(ficha.getDestreza());

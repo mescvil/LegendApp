@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.content.res.AppCompatResources;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -121,6 +122,16 @@ public class FichasFragment extends Fragment implements RecyclerViewClick, Elimi
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adaptadorFichas);
+
+        if (!listaPersonajes.isEmpty()) {
+            binding.listaFichasUsuario.setVisibility(View.VISIBLE);
+            binding.textoSinFichas.setVisibility(View.GONE);
+            binding.layoutFichas.setBackground(null);
+
+        } else {
+            binding.textoSinFichas.setVisibility(View.VISIBLE);
+            binding.layoutFichas.setBackgroundResource(R.drawable.imagen_fichas);
+        }
     }
 
     @Override
